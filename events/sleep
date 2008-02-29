@@ -1,0 +1,2 @@
+event=button/sleep SLPB
+action=/etc/acpi/actions/suspend.sh

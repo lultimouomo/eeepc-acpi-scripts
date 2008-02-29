@@ -1,0 +1,6 @@
+eeepc-acpi-scripts (1.0) unstable; urgency=low
+
+  * Initial release (Closes: #466544).
+
+ -- Nico Golde <nion@debian.org>  Tue, 19 Feb 2008 14:12:17 +0100
+

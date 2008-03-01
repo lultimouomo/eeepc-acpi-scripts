@@ -1,3 +1,9 @@
+eeepc-acpi-scripts (1.1) unstable; urgency=low
+
+  * Change hotkey.sh shell to bash since it makes use of bashisms.
+
+ -- Nico Golde <nion@debian.org>  Sat, 01 Mar 2008 17:11:08 +0100
+
 eeepc-acpi-scripts (1.0) unstable; urgency=low
 
   * Initial release (Closes: #466544).

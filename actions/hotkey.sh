@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 . /etc/default/eeepc-acpi-scripts
 code=$3

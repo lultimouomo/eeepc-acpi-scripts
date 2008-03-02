@@ -14,6 +14,7 @@ notify() {
 	user=$(who | sed -n '/ (:0[\.0].*)$\| :0 /{s/ .*//p;q}')
 	XAUTHORITY=/home/$user/.Xauthority
 	[ -f $XAUTHORITY ] && export XAUTHORITY
+	killall -q aosd_cat
 	if [ -n "$2" -a -z "$(echo $2 | sed 's/[0-9]//g')" ]; then
 		echo "$@%" | aosd_cat -f 0 -u 100 -o 0 -n "$OSD_FONT" &
 	else

@@ -15,9 +15,9 @@ notify() {
 	XAUTHORITY=/home/$user/.Xauthority
 	[ -f $XAUTHORITY ] && export XAUTHORITY
 	if [ -n "$2" -a -z "$(echo $2 | sed 's/[0-9]//g')" ]; then
-		echo "$@%" | aosd_cat -f 0 -u 100 -o 0 -n "$OSD_FONT"
+		echo "$@%" | aosd_cat -f 0 -u 100 -o 0 -n "$OSD_FONT" &
 	else
-		echo "$@" | aosd_cat -n "$OSD_FONT" -f 100 -u 1000 -o 100
+		echo "$@" | aosd_cat -n "$OSD_FONT" -f 100 -u 1000 -o 100 &
 	fi
     else
 	echo "$@" > /dev/console

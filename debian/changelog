@@ -1,6 +1,8 @@
 eeepc-acpi-scripts (1.1) unstable; urgency=low
 
   * Change hotkey.sh shell to bash since it makes use of bashisms.
+  * Start aosd_cat in the background to avoid output that is lacking
+    behind on long key presses.
 
  -- Nico Golde <nion@debian.org>  Sat, 01 Mar 2008 17:11:08 +0100
 

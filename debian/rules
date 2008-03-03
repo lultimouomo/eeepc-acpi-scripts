@@ -20,7 +20,7 @@ configure-stamp:
 
 build: build-stamp
 
-build-stamp: configure-stamp 
+build-stamp: configure-stamp
 	dh_testdir
 	touch $@
 
@@ -28,12 +28,12 @@ clean:
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp configure-stamp
-	dh_clean 
+	dh_clean
 
 install: build
 	dh_testdir
 	dh_testroot
-	dh_clean -k 
+	dh_clean -k
 	dh_installdirs
 	install actions/* $(CURDIR)/debian/eeepc-acpi-scripts/etc/acpi/actions
 	install -m 644 events/* $(CURDIR)/debian/eeepc-acpi-scripts/etc/acpi/events
@@ -41,7 +41,7 @@ install: build
 binary-indep: build install
 	dh_testdir
 	dh_testroot
-	dh_installchangelogs 
+	dh_installchangelogs
 	dh_installdocs
 	dh_installinit
 	dh_compress

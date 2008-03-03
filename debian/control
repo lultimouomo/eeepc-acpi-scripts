@@ -11,7 +11,7 @@ Vcs-Browser: http://git.debian.org/?p=debian-eeepc/eeepc-acpi-scripts.git
 Package: eeepc-acpi-scripts
 Architecture: all
 Conflicts: acpi-support
-Depends: acpid (>= 1.0.4), acpi-support-base, alsa-utils, pm-utils
+Depends: acpid (>= 1.0.4), acpi-support-base, alsa-utils, pm-utils, bash
 Suggests: aosd-cat, ttf-dejavu | ttf-bitstream-vera | ttf-freefont | gsfonts-x11 | msttcorefonts
 Description: Scripts to support suspend and hotkeys on the Asus Eee PC laptop
  Sleep (suspend) and hotkeys such as wireless, brightness, mute and volume are

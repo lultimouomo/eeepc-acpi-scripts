@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 . /etc/default/eeepc-acpi-scripts
 code=$3
@@ -25,14 +25,14 @@ notify() {
     fi
 }
 
-show_wireless() {
-    if grep -q ath0 /proc/net/wireless; then
-	status=On
-    else
-	status=Off
-    fi
-    notify Wireless $status
-}
+#show_wireless() {
+#    if grep -q ath0 /proc/net/wireless; then
+#	status=On
+#    else
+#	status=Off
+#    fi
+#    notify Wireless $status
+#}
 
 show_muteness() {
     status=$(amixer get $VOLUME_LABEL | sed -n '/%/{s/.*\[\(on\|off\)\].*/\u\1/p;q}')

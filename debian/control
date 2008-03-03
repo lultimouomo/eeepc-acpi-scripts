@@ -5,6 +5,8 @@ Maintainer: Debian Eee PC Team <debian-eeepc-devel@lists.alioth.debian.org>
 Uploaders: Ben Armstrong <synrg@sanctuary.nslug.ns.ca>, Nico Golde <nion@debian.org>
 Build-Depends: debhelper (>= 6)
 Standards-Version: 3.7.3
+Vcs-Git: git://git.debian.org/git/debian-eeepc/eeepc-acpi-scripts.git
+Vcs-Browser: http://git.debian.org/?p=debian-eeepc/eeepc-acpi-scripts.git
 
 Package: eeepc-acpi-scripts
 Architecture: all

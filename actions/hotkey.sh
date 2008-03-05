@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# do nothing if package is removed
+[ -d /usr/share/doc/eeepc-acpi-scripts ] || exit 0
+
 . /etc/default/eeepc-acpi-scripts
 code=$3
 

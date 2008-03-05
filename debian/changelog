@@ -9,6 +9,9 @@ eeepc-acpi-scripts (1.1) unstable; urgency=low
   * Prevent the system to go into suspend after a lid event if a shutdown
     is in progress (Closes: #469505).
 
+  [ Damyan Ivanov ]
+  * Make actions do nothing when package is removed
+
  -- Nico Golde <nion@debian.org>  Sat, 01 Mar 2008 17:11:08 +0100
 
 eeepc-acpi-scripts (1.0) unstable; urgency=low

@@ -6,6 +6,8 @@ eeepc-acpi-scripts (1.1) unstable; urgency=low
   * Start aosd_cat in the background and kill aosd_cat before each new call
     to avoid output that it is lagging behind on long key presses.
   * Adding Vcs-Browser and Vcs-Git control fields.
+  * Prevent the system to go into suspend after a lid event if a shutdown
+    is in progress (Closes: #469505).
 
  -- Nico Golde <nion@debian.org>  Sat, 01 Mar 2008 17:11:08 +0100
 

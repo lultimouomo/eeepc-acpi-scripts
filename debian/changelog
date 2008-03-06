@@ -1,4 +1,4 @@
-eeepc-acpi-scripts (1.1) unstable; urgency=low
+eeepc-acpi-scripts (1.0.1) unstable; urgency=low
 
   [ Nico Golde ]
   * Uncomment show_brightness function in hotkey.sh as it uses a bashism and

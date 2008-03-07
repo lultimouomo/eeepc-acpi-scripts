@@ -8,6 +8,7 @@ eeepc-acpi-scripts (1.0.1) unstable; urgency=low
   * Adding Vcs-Browser and Vcs-Git control fields.
   * Prevent the system to go into suspend after a lid event if a shutdown
     is in progress (Closes: #469505).
+  * Add basic support for Fn-F5 key (vga toggle).
 
   [ Damyan Ivanov ]
   * Make actions do nothing when package is removed

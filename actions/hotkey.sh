@@ -15,7 +15,7 @@ notify() {
 	[ -f $XAUTHORITY ] && export XAUTHORITY
 
     if [ "x$ENABLE_OSD" = "xno" ]; then
-        exit
+        return
     fi
 
 	killall -q aosd_cat

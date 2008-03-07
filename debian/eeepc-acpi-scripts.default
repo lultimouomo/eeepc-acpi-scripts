@@ -1,8 +1,12 @@
 # by default OSD output of function keys is disabled because it's too slow
 # set to yes if you want fancy osd overlayS
-ENABLE_OSD="no"
+ENABLE_OSD='no'
 OSD_FONT='DejaVuSans 36'
 
 # lookup the following values by using amixer if they don't work for you
 VOLUME_LABEL='LineOut'
 HEADPHONE_LABEL='iSpeaker'
+
+# these are the switches for xrandr --output VGA when Fn-F5 is used to
+# select LCD+VGA mode
+COMBINED_DISPLAY_SWITCHES='--mode 640x480'

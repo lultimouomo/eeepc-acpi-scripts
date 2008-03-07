@@ -28,14 +28,14 @@ notify() {
     fi
 }
 
-#show_wireless() {
-#    if grep -q ath0 /proc/net/wireless; then
-#	status=On
-#    else
-#	status=Off
-#    fi
-#    notify Wireless $status
-#}
+show_wireless() {
+    if grep -q ath0 /proc/net/wireless; then
+	status=On
+    else
+	status=Off
+    fi
+    notify Wireless $status
+}
 
 show_muteness() {
     status=$(amixer get $VOLUME_LABEL | sed -n '/%/{s/.*\[\(on\|off\)\].*/\u\1/p;q}')
@@ -47,13 +47,13 @@ show_volume() {
     notify Volume $percent
 }
 
-show_brightness() {
-    # final digit of ACPI code is brightness level in hex
-    level=0x${code:${#code}-1}
-    # convert hex digit to percent
-    percent=$(((100 * $level + 8) / 15))
-    notify Brightness $percent
-}
+#show_brightness() {
+#    # final digit of ACPI code is brightness level in hex
+#    level=0x${code:${#code}-1}
+#    # convert hex digit to percent
+#    percent=$(((100 * $level + 8) / 15))
+#    notify Brightness $percent
+#}
 
 case $code in
     # Fn+F2 -- toggle wireless

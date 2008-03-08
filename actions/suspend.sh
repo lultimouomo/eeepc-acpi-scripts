@@ -3,7 +3,7 @@
 # do nothing if package is removed
 [ -d /usr/share/doc/eeepc-acpi-scripts ] || exit 0
 
-if (runlevel | grep -q [06]) || (ps x | grep -q '/sbin/shutdown'); then
+if (runlevel | grep -q [06]) || (pidof '/sbin/shutdown' > /dev/null); then
     exit 0
 fi
 

@@ -1,3 +1,13 @@
+eeepc-acpi-scripts (1.0.2) unstable; urgency=low
+
+  * suspend.sh: fix detection of running shutdown.
+    The code in 1.0.1 could wrongly decide that shutdown is running,
+    cancelling the suspend, possibly leading to overheating if one had closed
+    the lid and put the eee in its bag
+  * add myself to Uploaders
+
+ -- Damyan Ivanov <dmn@debian.org>  Sat, 08 Mar 2008 23:19:26 +0200
+
 eeepc-acpi-scripts (1.0.1) unstable; urgency=low
 
   [ Nico Golde ]

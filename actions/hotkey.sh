@@ -11,7 +11,8 @@ notify() {
     if [ -S /tmp/.X11-unix/X0 ]; then
 	export DISPLAY=:0
 	user=$(who | sed -n '/ (:0[\.0].*)$\| :0 /{s/ .*//p;q}')
-	XAUTHORITY=/home/$user/.Xauthority
+        home=$(getent passwd $user | cut -d: -f6)
+	XAUTHORITY=$home/.Xauthority
 	[ -f $XAUTHORITY ] && export XAUTHORITY
 
     if [ "x$ENABLE_OSD" = "xno" ]; then

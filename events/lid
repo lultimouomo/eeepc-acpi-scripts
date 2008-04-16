@@ -1,2 +1,2 @@
 event=button/lid LID
-action=/etc/acpi/actions/suspend.sh
+action=/etc/acpi/actions/lid.sh

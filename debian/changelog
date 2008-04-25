@@ -2,6 +2,7 @@ eeepc-acpi-scripts (1.0.3) unstable; urgency=low
 
   * lid.sh, lid: only suspend if a power manager is not present,
     otherwise let the power manager handle it.
+  * Fix regex for display detection in hotkey.sh.
 
  -- Ben Armstrong <synrg@sanctuary.nslug.ns.ca>  Wed, 16 Apr 2008 06:03:20 -0300
 

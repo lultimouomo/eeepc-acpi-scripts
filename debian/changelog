@@ -9,7 +9,7 @@ eeepc-acpi-scripts (1.0.3) unstable; urgency=low
     otherwise let the power manager handle it.
   * Fix regex for display detection in hotkey.sh.
 
- -- Ben Armstrong <synrg@sanctuary.nslug.ns.ca>  Wed, 16 Apr 2008 06:03:20 -0300
+ -- Nico Golde <nion@debian.org>  Wed, 18 Jun 2008 21:03:34 +0200
 
 eeepc-acpi-scripts (1.0.2) unstable; urgency=low
 

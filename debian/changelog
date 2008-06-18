@@ -1,5 +1,10 @@
 eeepc-acpi-scripts (1.0.3) unstable; urgency=low
 
+  [ Nico Golde]
+  * Add sleep after loading ath_pci to prevent ifconfig failing
+    because the interface is not already up (Closes: #485236).
+
+  [ Ben Armstrong ]
   * lid.sh, lid: only suspend if a power manager is not present,
     otherwise let the power manager handle it.
   * Fix regex for display detection in hotkey.sh.

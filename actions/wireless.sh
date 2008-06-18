@@ -9,6 +9,9 @@ case $1 in
 	    modprobe pciehp pciehp_force=1
 	    echo 1 > $wlan_control
 	    modprobe ath_pci
+	    # adding a sleep here, due to some bug the driver loading is not atomic here
+	    # and could cause ifconfig to fail
+	    sleep 1
 	    if ! ifconfig ath0 up; then exec $0 off; fi
 	fi
 	;;

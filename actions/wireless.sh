@@ -1,6 +1,7 @@
 #!/bin/sh
 
-wlan_control=/proc/acpi/asus/wlan
+wlan_control=/sys/devices/platform/eeepc/wlan
+[ -e $wlan_control ] || wlan_control=/proc/acpi/asus/wlan # pre-2.6.26
 
 case $1 in
     on|enable)

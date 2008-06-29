@@ -1,3 +1,10 @@
+eeepc-acpi-scripts (1.0.4) UNRELEASED; urgency=low
+
+  * add support for the new locations of wireless and brightness control files
+    for 2.6.26 kernels. Closes: 488412. Thanks to Astrid S. de Wijn.
+
+ -- Damyan Ivanov <dmn@debian.org>  Sun, 29 Jun 2008 17:51:48 +0300
+
 eeepc-acpi-scripts (1.0.3) unstable; urgency=low
 
   [ Nico Golde]

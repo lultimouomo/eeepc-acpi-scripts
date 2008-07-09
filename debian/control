@@ -13,7 +13,7 @@ Package: eeepc-acpi-scripts
 Architecture: all
 Conflicts: acpi-support
 Depends: acpid (>= 1.0.4), acpi-support-base, alsa-utils, pm-utils
-Suggests: aosd-cat, ttf-dejavu | ttf-bitstream-vera | ttf-freefont | gsfonts-x11 | msttcorefonts
+Suggests: aosd-cat, ttf-dejavu | ttf-bitstream-vera | ttf-freefont | gsfonts-x11 | ttf-mscorefonts-installer | ttf-liberation
 Description: Scripts to support suspend and hotkeys on the Asus Eee PC laptop
  Sleep (suspend) and hotkeys such as wireless, brightness, mute and volume are
  all supported by the ACPI scripts in this package on the Asus Eee PC laptop.

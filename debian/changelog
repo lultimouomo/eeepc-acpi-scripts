@@ -1,3 +1,11 @@
+eeepc-acpi-scripts (1.0.5) unstable; urgency=low
+
+  * Change msttcorefonts font suggestion to ttf-mscorefonts-installer
+    as the package name changed and additionally suggest the ttf-liberation
+    fonts as an alternative (Closes: #490055).
+
+ -- Nico Golde <nion@debian.org>  Wed, 09 Jul 2008 17:27:49 +0200
+
 eeepc-acpi-scripts (1.0.4) unstable; urgency=low
 
   * add support for the new locations of wireless and brightness control files

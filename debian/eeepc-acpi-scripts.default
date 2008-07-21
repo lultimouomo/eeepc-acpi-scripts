@@ -10,3 +10,6 @@ HEADPHONE_LABEL='iSpeaker'
 # these are the switches for xrandr --output VGA when Fn-F5 is used to
 # select LCD+VGA mode
 COMBINED_DISPLAY_SWITCHES='--mode 640x480'
+
+# attempt to lock running xscreensaver or gnome-screensaver on suspend
+LOCK_SCREEN_ON_SUSPEND='yes'

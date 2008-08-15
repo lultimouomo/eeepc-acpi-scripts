@@ -1,5 +1,13 @@
 #!/bin/sh
 
+WLAN_IF=ath0
+WLAN_MOD=ath_pci
+
+DEFAULT=/etc/default/eee-acpi-scripts
+if [ -r $DEFAULT ]; then
+    . $DEFAULT
+fi
+
 wlan_control=/sys/devices/platform/eeepc/wlan
 [ -e $wlan_control ] || wlan_control=/proc/acpi/asus/wlan # pre-2.6.26
 
@@ -9,17 +17,17 @@ case $1 in
 	    modprobe -r pciehp
 	    modprobe pciehp pciehp_force=1
 	    echo 1 > $wlan_control
-	    modprobe ath_pci
+	    modprobe $WLAN_MOD
 	    # adding a sleep here, due to some bug the driver loading is not atomic here
 	    # and could cause ifconfig to fail
 	    sleep 1
-	    if ! ifconfig ath0 up; then exec $0 off; fi
+	    if ! ifconfig $WLAN_IF up; then exec $0 off; fi
 	fi
 	;;
     off|disable)
 	if [ $(cat $wlan_control) = 1 ]; then
-	    ifdown --force ath0
-	    modprobe -r ath_pci
+	    ifdown --force $WLAN_IF
+	    modprobe -r $WLAN_MOD
 	    echo 0 > $wlan_control
 	fi
 	;;

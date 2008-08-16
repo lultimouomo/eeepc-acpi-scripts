@@ -2,30 +2,8 @@
 
 set -e
 
-DEFAULT=/etc/default/eeepc-acpi-scripts
-
-add_wlan_vars_to_default()
-{
-    if ! egrep -q '^WLAN_(IF|MOD)' $DEFAULT; then
-        if lspci|grep Network|grep Atheros|grep -q wireless; then
-            WLAN_IF=ath0
-            WLAN_MOD=ath_pci
-        elif lspci|grep Network|grep -q RaLink; then
-            WLAN_IF=ra0
-            WLAN_MOD=rt2860sta
-        fi
-        cat <<EOF >>$DEFAULT
-
-# Model-specific wireless interface and module
-WLAN_IF=$WLAN_IF
-WLAN_MOD=$WLAN_MOD
-EOF
-    fi
-}
-
 case "$1" in
     configure)
-        add_wlan_vars_to_default
         invoke-rc.d acpid restart>/dev/null
     ;;
 

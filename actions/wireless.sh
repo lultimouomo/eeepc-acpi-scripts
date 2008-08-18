@@ -1,20 +1,9 @@
 #!/bin/sh
 
+. /usr/share/eeepc-acpi-scripts/functions.sh
+
 wlan_control=/sys/devices/platform/eeepc/wlan
 [ -e $wlan_control ] || wlan_control=/proc/acpi/asus/wlan # pre-2.6.26
-
-detect_wlan()
-{
-    if lspci|grep -i 'network controller'|grep -q 'RaLink'; then
-        WLAN_IF=ra0
-        WLAN_MOD=rt2860sta
-    elif lspci|grep -i 'atheros'|grep -q -i 'wireless'; then
-        WLAN_IF=ath0
-        WLAN_MOD=ath_pci
-    fi
-
-    echo "Detected WLAN module $WLAN_MOD on $WLAN_IF" >&2
-}
 
 case $1 in
     on|enable)

@@ -29,6 +29,7 @@ install: build
 	dh_installdirs
 	install actions/* $(CURDIR)/debian/eeepc-acpi-scripts/etc/acpi/actions
 	install -m 644 events/* $(CURDIR)/debian/eeepc-acpi-scripts/etc/acpi/events
+	install -m 0644 functions.sh $(CURDIR)/debian/eeepc-acpi-scripts/usr/share/eeepc-acpi-scripts/
 
 binary-indep: build install
 	dh_testdir

@@ -1,3 +1,4 @@
 etc/default
 etc/acpi/actions
 etc/acpi/events
+usr/share/eeepc-acpi-scripts

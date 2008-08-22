@@ -1,11 +1,18 @@
 eeepc-acpi-scripts (1.0.5) unstable; urgency=low
 
+  [ Nico Golde ]
   * Change msttcorefonts font suggestion to ttf-mscorefonts-installer
     as the package name changed and additionally suggest the ttf-liberation
     fonts as an alternative (Closes: #490055).
   * Bump to policy version 3.8.0, no changes needed.
 
- -- Nico Golde <nion@debian.org>  Wed, 09 Jul 2008 17:27:49 +0200
+  [ Damyan Ivanov ]
+  * suspend.sh: lock running screensavers on suspend
+    controlled by LOCK_SCREEN_ON_SUSPEND, defaults to 'yes'
+  * add common functions.sh with detect_wlan() in it, used by wireless.sh
+  * rules: simplify a bit using PKG and TMP variables
+
+ -- Damyan Ivanov <dmn@debian.org>  Fri, 22 Aug 2008 17:28:31 +0300
 
 eeepc-acpi-scripts (1.0.4) unstable; urgency=low
 

@@ -13,3 +13,16 @@ detect_wlan()
 
     echo "Detected WLAN module $WLAN_MOD on $WLAN_IF" >&2
 }
+
+detect_x_display()
+{
+    local user
+    local home
+    user=$(who | sed -n '/ (:0[\.0]*)$\| :0 /{s/ .*//p;q}')
+    home=$(getent passwd $user | cut -d: -f6)
+    XAUTHORITY=$home/.Xauthority
+    if [ -f $XAUTHORITY ]; then
+        export XAUTHORITY
+        export DISPLAY=:0
+    fi
+}

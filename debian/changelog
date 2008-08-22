@@ -11,8 +11,9 @@ eeepc-acpi-scripts (1.0.5) unstable; urgency=low
     controlled by LOCK_SCREEN_ON_SUSPEND, defaults to 'yes'
   * add common functions.sh with detect_wlan() in it, used by wireless.sh
   * rules: simplify a bit using PKG and TMP variables
+  * move X detection to functions.sh/detect_x_display()
 
- -- Damyan Ivanov <dmn@debian.org>  Fri, 22 Aug 2008 17:28:31 +0300
+ -- Damyan Ivanov <dmn@debian.org>  Fri, 22 Aug 2008 17:38:16 +0300
 
 eeepc-acpi-scripts (1.0.4) unstable; urgency=low
 

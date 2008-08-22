@@ -4,16 +4,13 @@
 [ -d /usr/share/doc/eeepc-acpi-scripts ] || exit 0
 
 . /etc/default/eeepc-acpi-scripts
+. /usr/share/eeepc-acpi-scripts/functions.sh
 code=$3
 
 notify() {
     echo "$@"  # for /var/log/acpid
     if [ -S /tmp/.X11-unix/X0 ]; then
-	export DISPLAY=:0
-	user=$(who | sed -n '/ (:0[\.0]*)$\| :0 /{s/ .*//p;q}')
-        home=$(getent passwd $user | cut -d: -f6)
-	XAUTHORITY=$home/.Xauthority
-	[ -f $XAUTHORITY ] && export XAUTHORITY
+        detect_x_display
 
     if [ "x$ENABLE_OSD" = "xno" ]; then
         return

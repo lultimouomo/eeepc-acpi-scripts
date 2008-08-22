@@ -9,15 +9,13 @@ fi
 
 [ -r /etc/default/eeepc-acpi-scripts ] && . /etc/default/eeepc-acpi-scripts
 
+. /usr/share/eeepc-acpi-scripts/functions.sh
+
 if [ "$LOCK_SCREEN_ON_SUSPEND" = "yes" ]; then
     # activate screensaver if available
     if [ -S /tmp/.X11-unix/X0 ]; then
-        export DISPLAY=:0
-        user=$(who | sed -n '/ (:0[\.0]*)$\| :0 /{s/ .*//p;q}')
-        home=$(getent passwd $user | cut -d: -f6)
-        XAUTHORITY=$home/.Xauthority
+        detect_x_display
         if [ -f $XAUTHORITY ]; then
-            export XAUTHORITY
             for ss in xscreensaver gnome-screensaver; do
                 [ -x /usr/bin/$ss-command ] \
                     && pidof /usr/bin/$ss > /dev/null \

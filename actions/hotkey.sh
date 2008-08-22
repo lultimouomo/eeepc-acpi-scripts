@@ -28,7 +28,8 @@ notify() {
 }
 
 show_wireless() {
-    if grep -q ath0 /proc/net/wireless; then
+    detect_wlan
+    if grep -q $WLAN_IF /proc/net/wireless; then
 	status=On
     else
 	status=Off

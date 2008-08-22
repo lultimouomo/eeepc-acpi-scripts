@@ -12,6 +12,7 @@ eeepc-acpi-scripts (1.0.5) unstable; urgency=low
   * add common functions.sh with detect_wlan() in it, used by wireless.sh
   * rules: simplify a bit using PKG and TMP variables
   * move X detection to functions.sh/detect_x_display()
+  * detect_x_display: support users using 'startx' after console login
 
  -- Damyan Ivanov <dmn@debian.org>  Fri, 22 Aug 2008 17:38:16 +0300
 

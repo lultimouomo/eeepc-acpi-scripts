@@ -19,6 +19,13 @@ detect_x_display()
     local user
     local home
     user=$(who | sed -n '/ (:0[\.0]*)$\| :0 /{s/ .*//p;q}')
+    if [ "$user" = "" ]; then
+        # no users seem to be logged on a X display?
+        # try the first logged user without any filters
+        # useful for users starting X via 'startx' after logging
+        # on the console
+        user=$( who | head -n 1 | cut -d' ' -f1 )
+    fi
     home=$(getent passwd $user | cut -d: -f6)
     XAUTHORITY=$home/.Xauthority
     if [ -f $XAUTHORITY ]; then

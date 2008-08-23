@@ -16,7 +16,7 @@ eeepc-acpi-scripts (1.0.5) unstable; urgency=low
   * suspend.sh: use detect_x_display for X detection
   * hotkey.sh: use $WLAN_IF when checking for wireless status
 
- -- Damyan Ivanov <dmn@debian.org>  Fri, 22 Aug 2008 17:48:27 +0300
+ -- Damyan Ivanov <dmn@debian.org>  Sat, 23 Aug 2008 22:19:08 +0300
 
 eeepc-acpi-scripts (1.0.4) unstable; urgency=low
 

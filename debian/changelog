@@ -1,3 +1,10 @@
+eeepc-acpi-scripts (1.0.6) UNRELEASED; urgency=low
+
+  * hotkey.sh, functions.sh: support toggling of Bluetooth on model 901 via
+    soft-button #4
+
+ -- Damyan Ivanov <dmn@debian.org>  Sun, 31 Aug 2008 12:50:22 +0300
+
 eeepc-acpi-scripts (1.0.5) unstable; urgency=low
 
   [ Nico Golde ]

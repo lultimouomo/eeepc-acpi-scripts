@@ -47,6 +47,14 @@ show_volume() {
     notify Volume $percent
 }
 
+show_bluetooth() {
+    if bluetooth_is_on; then
+	notify Bluetooth On
+    else
+	notify Bluetooth Off
+    fi
+}
+
 #show_brightness() {
 #    # final digit of ACPI code is brightness level in hex
 #    level=0x${code:${#code}-1}
@@ -94,5 +102,10 @@ case $code in
     # Fn+F4 -- increase brightness
     0000002?)
 	# actual brightness change is handled in hardware
+	;;
+    0000001d)
+	# soft-buton 4 -- toggle bluetooth
+	toggle_bluetooth
+	show_bluetooth
 	;;
 esac

@@ -16,21 +16,23 @@ detect_wlan()
 
 detect_x_display()
 {
-    local user
-    local home
-    user=$(who | sed -n '/ (:0[\.0]*)$\| :0 /{s/ .*//p;q}')
-    if [ "$user" = "" ]; then
+    local _user
+    local _home
+    _user=$(who | sed -n '/ (:0[\.0]*)$\| :0 /{s/ .*//p;q}')
+    if [ "$_user" = "" ]; then
         # no users seem to be logged on a X display?
         # try the first logged user without any filters
         # useful for users starting X via 'startx' after logging
         # on the console
-        user=$( who | head -n 1 | cut -d' ' -f1 )
+        _user=$( who | head -n 1 | cut -d' ' -f1 )
     fi
-    home=$(getent passwd $user | cut -d: -f6)
-    XAUTHORITY=$home/.Xauthority
+    _home=$(getent passwd $_user | cut -d: -f6)
+    XAUTHORITY=$_home/.Xauthority
     if [ -f $XAUTHORITY ]; then
         export XAUTHORITY
         export DISPLAY=:0
+        user=$_user
+        home=$_home
     fi
 }
 

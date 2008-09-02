@@ -55,6 +55,14 @@ show_bluetooth() {
     fi
 }
 
+show_camera() {
+    if camera_is_on; then
+	notify Camera Enabled
+    else
+	notify Camera Disabled
+    fi
+}
+
 #show_brightness() {
 #    # final digit of ACPI code is brightness level in hex
 #    level=0x${code:${#code}-1}
@@ -102,6 +110,11 @@ case $code in
     # Fn+F4 -- increase brightness
     0000002?)
 	# actual brightness change is handled in hardware
+	;;
+    0000001c)
+	# soft-buton 3 -- toggle camera
+	toggle_camera
+	show_camera
 	;;
     0000001d)
 	# soft-buton 4 -- toggle bluetooth

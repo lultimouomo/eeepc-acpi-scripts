@@ -5,6 +5,8 @@ eeepc-acpi-scripts (1.0.6) UNRELEASED; urgency=low
     soft-button #4
   * add support for toggling the built-in camera and bind that to
     soft-button #3
+  * hotkey.sh, functions.sh: pass notifications to gnome-osd server if that is
+    detected running. Add gnome-osd to Suggests.
 
  -- Damyan Ivanov <dmn@debian.org>  Sun, 31 Aug 2008 12:50:22 +0300
 

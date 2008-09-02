@@ -1,7 +1,10 @@
 eeepc-acpi-scripts (1.0.6) UNRELEASED; urgency=low
+    NOTE BEFORE UPLOADING: the binding of soft-button #3 needs to be decided
 
   * hotkey.sh, functions.sh: support toggling of Bluetooth on model 901 via
     soft-button #4
+  * add support for toggling the built-in camera and bind that to
+    soft-button #3
 
  -- Damyan Ivanov <dmn@debian.org>  Sun, 31 Aug 2008 12:50:22 +0300
 

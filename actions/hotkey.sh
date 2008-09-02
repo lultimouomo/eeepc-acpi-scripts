@@ -16,12 +16,31 @@ notify() {
         return
     fi
 
+    OSD_SHOWN=
+
+    # try to show a nice OSD notification via GNOME OSD service
+    GOSDC=/usr/bin/gnome-osd-client
+    if [ -x $GOSDC ]; then
+	if ps -u $user -o cmd= | grep -q '^/usr/bin/python /usr/bin/gnome-osd-event-bridge'; then
+	    if echo "$2" | grep -q '[0-9]'; then
+		animations='off'
+	    else
+		animations='on'
+	    fi
+	    echo "<message id='eee-$1' osd_fake_translucent_bg='off' osd_vposition='bottom' animations='$animations' hide_timeout='1200' osd_halignment='center'>$@</message>" \
+		| sudo -u $user $GOSDC -s --dbus
+	    OSD_SHOWN=1
+	fi
+    fi
+
+    if [ -z "$OSD_SHOWN" ]; then
 	killall -q aosd_cat
 	if [ -n "$2" -a -z "$(echo $2 | sed 's/[0-9]//g')" ]; then
 		echo "$@%" | aosd_cat -f 0 -u 100 -o 0 -n "$OSD_FONT" &
 	else
 		echo "$@" | aosd_cat -n "$OSD_FONT" -f 100 -u 1000 -o 100 &
 	fi
+    fi
     else
 	echo "$@" > /dev/console
     fi

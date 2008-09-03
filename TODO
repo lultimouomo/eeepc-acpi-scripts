@@ -2,3 +2,13 @@
   something like
   SOFTBTN4_action='handle_bluetoth_toggle'
   SOFTBTN1_action='NONE'
+* improve the display-switching script so that it handles three states:
+  - internal LCD on, external - off
+  - internal LCD on, external - on, one large display
+  - internal LCD off, external - on
+
+  the script should check if the Virtual setting of xorg.conf allows
+  for the second mode to be engaged and report via notify() if not
+
+  perhaps even the choice if two- or three-state dsplay configuration can
+  be configured.

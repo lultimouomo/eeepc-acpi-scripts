@@ -1,0 +1,4 @@
+* add support for configuring the hot-key actions
+  something like
+  SOFTBTN4_action='handle_bluetoth_toggle'
+  SOFTBTN1_action='NONE'

@@ -9,6 +9,7 @@
 
   the script should check if the Virtual setting of xorg.conf allows
   for the second mode to be engaged and report via notify() if not
+    15:45 < SynrG> dam: xrandr | sed -ne '/Screen/ { s/.*maximum // ; p }'
 
   perhaps even the choice if two- or three-state dsplay configuration can
   be configured.

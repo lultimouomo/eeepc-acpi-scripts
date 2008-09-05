@@ -91,6 +91,15 @@ show_camera() {
     fi
 }
 
+handle_camera_toggle() {
+    if [ -e $CAM_CTL ]; then
+	toggle_camera
+	show_camera
+    else
+	notify Camera unavailable
+    fi
+}
+
 #show_brightness() {
 #    # final digit of ACPI code is brightness level in hex
 #    level=0x${code:${#code}-1}
@@ -141,8 +150,7 @@ case $code in
 	;;
     0000001c)
 	# soft-buton 3 -- toggle camera
-	toggle_camera
-	show_camera
+	handle_camera_toggle
 	;;
     0000001d)
 	# soft-buton 4 -- toggle bluetooth

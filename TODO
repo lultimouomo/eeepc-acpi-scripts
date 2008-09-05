@@ -1,7 +1,3 @@
-* add support for configuring the hot-key actions
-  something like
-  SOFTBTN4_action='handle_bluetoth_toggle'
-  SOFTBTN1_action='NONE'
 * improve the display-switching script so that it handles three states:
   - internal LCD on, external - off
   - internal LCD on, external - on, one large display

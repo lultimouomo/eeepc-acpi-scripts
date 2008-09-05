@@ -148,12 +148,28 @@ case $code in
     0000002?)
 	# actual brightness change is handled in hardware
 	;;
+    0000001a)
+	# soft-buton 1
+	if [ "${SOFTBTN1_ACTION}" != 'NONE' ]; then
+	    ${SOFTBTN1_ACTION}
+	fi
+	;;
+    0000001b)
+	# soft-buton 2
+	if [ "${SOFTBTN2_ACTION}" != 'NONE' ]; then
+	    ${SOFTBTN2_ACTION}
+	fi
+	;;
     0000001c)
-	# soft-buton 3 -- toggle camera
-	handle_camera_toggle
+	# soft-buton 3
+	if [ "${SOFTBTN3_ACTION:-handle_camera_toggle}" != 'NONE' ]; then
+	    ${SOFTBTN3_ACTION:-handle_camera_toggle}
+	fi
 	;;
     0000001d)
-	# soft-buton 4 -- toggle bluetooth
-	handle_bluetooth_toggle
+	# soft-buton 4
+	if [ "${SOFTBTN4_ACTION:-handle_bluetooth_toggle}" != 'NONE' ]; then
+	    ${SOFTBTN4_ACTION:-handle_bluetooth_toggle}
+	fi
 	;;
 esac

@@ -18,3 +18,22 @@ LOCK_SCREEN_ON_SUSPEND='yes'
 # bluetooth state when the bluetooth control node in
 # /sys/devices/platform/bluetooth is not present
 BLUETOOTH_FALLBACK_TO_HCITOOL='yes'
+
+# Configuration of "soft" keys found on models 900 and above
+# The possible actions are:
+#  - handle_bluetooth_toggle
+#      Toggles internal bluetooth adapter on/off.
+#      When there is no bluetooth control node, and
+#      BLUETOOTH_FALLBACK_TO_HCITOOL is equal to 'yes', attempts to toggle
+#      on/off any USB bluetooth adapter found
+#  - handle_camera_toggle
+#      Toggles internal camera on/off
+#  - NONE
+#      Ignore the key
+#  - custom function name
+#      For example you can write a shell function in this file and use its name
+#      as an action. It will be called when the button is pressed
+SOFTBTN1_ACTION='NONE'
+SOFTBTN2_ACTION='NONE'
+SOFTBTN3_ACTION='handle_camera_toggle'
+SOFTBTN4_ACTION='handle_bluetooth_toggle'

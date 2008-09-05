@@ -74,6 +74,15 @@ show_bluetooth() {
     fi
 }
 
+handle_bluetooth_toggle() {
+    if [ -e $BT_CTL ] || [ "$BLUETOOTH_FALLBACK_TO_HCITOOL" = "yes" ]; then
+	toggle_bluetooth
+	show_bluetooth
+    else
+	notify Bluetooth unavailable
+    fi
+}
+
 show_camera() {
     if camera_is_on; then
 	notify Camera Enabled
@@ -137,7 +146,6 @@ case $code in
 	;;
     0000001d)
 	# soft-buton 4 -- toggle bluetooth
-	toggle_bluetooth
-	show_bluetooth
+	handle_bluetooth_toggle
 	;;
 esac

@@ -47,7 +47,11 @@ bluetooth_is_on()
     if [ -e $BT_CTL ]; then
         [ $( cat $BT_CTL ) = "1" ]
     else
-        hcitool dev | grep -q hci0
+        if [ "$BLUETOOTH_FALLBACK_TO_HCITOOL" = "yes" ]; then
+            hcitool dev | grep -q hci0
+        else
+            false
+        fi
     fi
 }
 
@@ -57,7 +61,7 @@ toggle_bluetooth()
         if [ -e $BT_CTL ]; then
             echo 0 > $BT_CTL
             # udev should unload the module now
-        else
+        elif [ "$BLUETOOTH_FALLBACK_TO_HCITOOL" = "yes" ]; then
             hciconfig hci0 down
             rmmod hci_usb
         fi
@@ -65,7 +69,7 @@ toggle_bluetooth()
         if [ -e $BT_CTL ]; then
             echo 1 > $BT_CTL
             # udev should load the module now
-        else
+        elif [ "$BLUETOOTH_FALLBACK_TO_HCITOOL" = "yes" ]; then
             modprobe hci_usb
         fi
     fi

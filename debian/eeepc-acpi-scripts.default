@@ -21,6 +21,9 @@ BLUETOOTH_FALLBACK_TO_HCITOOL='yes'
 
 # Configuration of "soft" keys found on models 900 and above
 # The possible actions are:
+#  - handle_blank_screen
+#      Turns the lid off. Does not activate any screen saver.
+#      Pressing a key turns the lid back on
 #  - handle_bluetooth_toggle
 #      Toggles internal bluetooth adapter on/off.
 #      When there is no bluetooth control node, and
@@ -33,7 +36,7 @@ BLUETOOTH_FALLBACK_TO_HCITOOL='yes'
 #  - custom function name
 #      For example you can write a shell function in this file and use its name
 #      as an action. It will be called when the button is pressed
-SOFTBTN1_ACTION='NONE'
+SOFTBTN1_ACTION='handle_blank_screen'
 SOFTBTN2_ACTION='NONE'
 SOFTBTN3_ACTION='handle_camera_toggle'
 SOFTBTN4_ACTION='handle_bluetooth_toggle'

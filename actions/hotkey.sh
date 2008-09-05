@@ -66,6 +66,16 @@ show_volume() {
     notify Volume $percent
 }
 
+handle_blank_screen() {
+    if [ -S /tmp/.X11-unix/X0 ]; then
+	detect_x_display
+
+	if [ -n "$XAUTHORITY" ]; then
+	    xset dpms force off
+	fi
+    fi
+}
+
 show_bluetooth() {
     if bluetooth_is_on; then
 	notify Bluetooth On
@@ -150,8 +160,8 @@ case $code in
 	;;
     0000001a)
 	# soft-buton 1
-	if [ "${SOFTBTN1_ACTION}" != 'NONE' ]; then
-	    ${SOFTBTN1_ACTION}
+	if [ "${SOFTBTN1_ACTION:-handle_blank_screen}" != 'NONE' ]; then
+	    ${SOFTBTN1_ACTION:-handle_blank_screen}
 	fi
 	;;
     0000001b)

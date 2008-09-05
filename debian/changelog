@@ -1,10 +1,11 @@
 eeepc-acpi-scripts (1.0.6) UNRELEASED; urgency=low
-    NOTE BEFORE UPLOADING: the binding of soft-button #3 needs to be decided
 
-  * hotkey.sh, functions.sh: support toggling of Bluetooth on model 901 via
-    soft-button #4
-  * add support for toggling the built-in camera and bind that to
-    soft-button #3
+  * support toggling of internal Bluetooth on models that have it. Bound to
+    soft-button #4 by default
+  * add support for toggling the built-in camera. Bound to soft-button #3 by
+    default
+  * support configurable soft-button actions
+  * add support for turning the lid off, bound to soft-button #1 by default
   * hotkey.sh, functions.sh: pass notifications to gnome-osd server if that is
     detected running. Add gnome-osd to Suggests.
 

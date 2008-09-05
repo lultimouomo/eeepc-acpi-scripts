@@ -13,3 +13,8 @@ COMBINED_DISPLAY_SWITCHES='--mode 640x480'
 
 # attempt to lock running xscreensaver or gnome-screensaver on suspend
 LOCK_SCREEN_ON_SUSPEND='yes'
+
+# try to load/unload the hci_usb module and use hcitool for checking
+# bluetooth state when the bluetooth control node in
+# /sys/devices/platform/bluetooth is not present
+BLUETOOTH_FALLBACK_TO_HCITOOL='yes'

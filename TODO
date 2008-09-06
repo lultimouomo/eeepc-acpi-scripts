@@ -12,3 +12,17 @@
 
 * suspend.sh should do nothing if it deetects a running power manager. See
   lid.sh for example.
+
+* support control node locations for bluetooth and camera for pre-2.6.26
+  kernels
+
+* move bluetooth/camera on/off parts into separate scripts under
+  /etc/acpi/actions, similarly to wireless.sh
+
+* test bluetooth toggling when both the internal adapter and an external
+  adapter are present.
+
+* add support for knotify as a notification service
+
+* make notify() accept two arguments, type and message. To be used to provide
+  icons to notification services that support it.

@@ -26,3 +26,6 @@
 
 * make notify() accept two arguments, type and message. To be used to provide
   icons to notification services that support it.
+
+* wireless.sh: for ra0, just echo 1/0 > $wlan_control and let the hotplugging
+  handle the rest

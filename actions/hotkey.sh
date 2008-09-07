@@ -103,6 +103,7 @@ show_camera() {
 }
 
 handle_camera_toggle() {
+    . /etc/acpi/lib/camera.sh
     if [ -e $CAM_CTL ]; then
 	toggle_camera
 	show_camera

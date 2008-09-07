@@ -8,7 +8,13 @@
 code=$3
 
 notify() {
-    echo "$@"  # for /var/log/acpid
+    CATEGORY=$1
+    MSG=$2
+    if [ -n "$3" ]; then
+	echo "usage: notify 'catgory' 'message text'" > /dev/stderr
+	return 1
+    fi
+    echo "$MSG"  # for /var/log/acpid
     if [ -S /tmp/.X11-unix/X0 ]; then
         detect_x_display
 
@@ -22,12 +28,12 @@ notify() {
     GOSDC=/usr/bin/gnome-osd-client
     if [ -x $GOSDC ]; then
 	if ps -u $user -o cmd= | grep -q '^/usr/bin/python /usr/bin/gnome-osd-event-bridge'; then
-	    if echo "$2" | grep -q '[0-9]'; then
+	    if echo "$MSG" | grep -q '[0-9]'; then
 		animations='off'
 	    else
 		animations='on'
 	    fi
-	    echo "<message id='eee-$1' osd_fake_translucent_bg='off' osd_vposition='bottom' animations='$animations' hide_timeout='1200' osd_halignment='center'>$@</message>" \
+	    echo "<message id='eee-$CATEGORY' osd_fake_translucent_bg='off' osd_vposition='bottom' animations='$animations' hide_timeout='1200' osd_halignment='center'>$MSG</message>" \
 		| sudo -u $user $GOSDC -s --dbus
 	    OSD_SHOWN=1
 	fi
@@ -35,14 +41,14 @@ notify() {
 
     if [ -z "$OSD_SHOWN" ]; then
 	killall -q aosd_cat
-	if [ -n "$2" -a -z "$(echo $2 | sed 's/[0-9]//g')" ]; then
-		echo "$@%" | aosd_cat -f 0 -u 100 -o 0 -n "$OSD_FONT" &
+	if [ -n "$MSG" -a -z "$(echo $MSG | sed 's/.*[0-9]\+//g')" ]; then
+		echo "$MSG%" | aosd_cat -f 0 -u 100 -o 0 -n "$OSD_FONT" &
 	else
-		echo "$@" | aosd_cat -n "$OSD_FONT" -f 100 -u 1000 -o 100 &
+		echo "$MSG" | aosd_cat -n "$OSD_FONT" -f 100 -u 1000 -o 100 &
 	fi
     fi
     else
-	echo "$@" > /dev/console
+	echo "$MSG" > /dev/console
     fi
 }
 
@@ -53,17 +59,17 @@ show_wireless() {
     else
 	status=Off
     fi
-    notify Wireless $status
+    notify wireless "Wireless $status"
 }
 
 show_muteness() {
     status=$(amixer get $VOLUME_LABEL | sed -n '/%/{s/.*\[\(on\|off\)\].*/\u\1/p;q}')
-    notify Audio $status
+    notify audio "Audio $status"
 }
 
 show_volume() {
     percent=$(amixer get $VOLUME_LABEL | sed -n '/%/{s/.*\[\(.*\)%\].*/\1/p;q}')
-    notify Volume $percent
+    notify audio "Volume $percent"
 }
 
 handle_blank_screen() {
@@ -78,9 +84,9 @@ handle_blank_screen() {
 
 show_bluetooth() {
     if bluetooth_is_on; then
-	notify Bluetooth On
+	notify bluetooth 'Bluetooth On'
     else
-	notify Bluetooth Off
+	notify bluetooth 'Bluetooth Off'
     fi
 }
 
@@ -90,15 +96,15 @@ handle_bluetooth_toggle() {
 	toggle_bluetooth
 	show_bluetooth
     else
-	notify Bluetooth unavailable
+	notify error 'Bluetooth unavailable'
     fi
 }
 
 show_camera() {
     if camera_is_on; then
-	notify Camera Enabled
+	notify camera 'Camera Enabled'
     else
-	notify Camera Disabled
+	notify camera 'Camera Disabled'
     fi
 }
 
@@ -108,7 +114,7 @@ handle_camera_toggle() {
 	toggle_camera
 	show_camera
     else
-	notify Camera unavailable
+	notify error 'Camera unavailable'
     fi
 }
 

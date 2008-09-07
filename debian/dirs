@@ -1,4 +1,5 @@
 etc/default
 etc/acpi/actions
 etc/acpi/events
+etc/acpi/lib
 usr/share/eeepc-acpi-scripts

@@ -85,6 +85,7 @@ show_bluetooth() {
 }
 
 handle_bluetooth_toggle() {
+    . /etc/acpi/lib/bluetooth.sh
     if [ -e $BT_CTL ] || [ "$BLUETOOTH_FALLBACK_TO_HCITOOL" = "yes" ]; then
 	toggle_bluetooth
 	show_bluetooth

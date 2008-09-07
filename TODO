@@ -10,9 +10,6 @@
   perhaps even the choice if two- or three-state dsplay configuration can
   be configured.
 
-* support control node locations for bluetooth and camera for pre-2.6.26
-  kernels
-
 * move bluetooth/camera on/off parts into separate scripts under
   /etc/acpi/actions, similarly to wireless.sh
 

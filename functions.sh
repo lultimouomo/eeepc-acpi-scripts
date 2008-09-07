@@ -37,6 +37,7 @@ detect_x_display()
 }
 
 BT_CTL=/sys/devices/platform/eeepc/bluetooth
+[ -e $BT_CTL ] || BT_CTL=/proc/acpi/asus/bluetooth # pre-2.6.26
 # check if bluetooth is switched on and return success (exit code 0 if it is
 # return failure (exit code 1) if it is not
 #
@@ -79,6 +80,7 @@ toggle_bluetooth()
 }
 
 CAM_CTL=/sys/devices/platform/eeepc/camera
+[ -e $CAM_CTL ] || CAM_CTL=/proc/acpi/asus/camera #pre-2.6.26
 # check if camera is enabled and return success (exit code 0 if it is
 # return failure (exit code 1) if it is not
 #

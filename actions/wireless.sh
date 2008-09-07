@@ -8,8 +8,6 @@ wlan_control=/sys/devices/platform/eeepc/wlan
 case $1 in
     on|enable)
 	if [ $(cat $wlan_control) = 0 ]; then
-	    modprobe -r pciehp
-	    modprobe pciehp pciehp_force=1
 	    echo 1 > $wlan_control
             detect_wlan
 	    modprobe $WLAN_MOD

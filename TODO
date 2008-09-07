@@ -10,9 +10,6 @@
   perhaps even the choice if two- or three-state dsplay configuration can
   be configured.
 
-* suspend.sh should do nothing if it deetects a running power manager. See
-  lid.sh for example.
-
 * support control node locations for bluetooth and camera for pre-2.6.26
   kernels
 

@@ -10,9 +10,6 @@
   perhaps even the choice if two- or three-state dsplay configuration can
   be configured.
 
-* move bluetooth/camera on/off parts into separate scripts under
-  /etc/acpi/actions, similarly to wireless.sh
-
 * test bluetooth toggling when both the internal adapter and an external
   adapter are present.
 

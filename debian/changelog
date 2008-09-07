@@ -5,9 +5,19 @@ eeepc-acpi-scripts (1.0.6) UNRELEASED; urgency=low
   * add support for toggling the built-in camera. Bound to soft-button #3 by
     default
   * support configurable soft-button actions
-  * add support for turning the lid off, bound to soft-button #1 by default
+  * add support for turning the screen off, bound to soft-button #1 by default
   * hotkey.sh, functions.sh: pass notifications to gnome-osd server if that is
     detected running. Add gnome-osd to Suggests.
+  * wireless.sh: drop unloading and reloading of pciehp module
+  * wireless.sh: unload/load wireless module only for madwifi. ralink dows this
+    via hot-plugging
+  * handle the sleep button in a separate script. makes it possible for the
+    sleep button handling not to interfere with a running power manager
+  * camera/bluetooth: support old control node locations. Now works with both
+    the eeepc-acpi and laptop-eeepc modules
+  * move camera/bluetooth functions in scriptlets in /etc/acpi/lib
+  * hotkey.sh: make notify() accept two arguments as preparation for supporting
+    further notification services that accept icons
 
  -- Damyan Ivanov <dmn@debian.org>  Sun, 31 Aug 2008 12:50:22 +0300
 

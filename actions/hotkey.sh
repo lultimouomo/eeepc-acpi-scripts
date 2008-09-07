@@ -152,7 +152,6 @@ case $code in
 	;;
 	# F+F5 -- toggle vga
 	0000003[012])
-	notify
 	/etc/acpi/actions/vga-toggle.sh
 	;;
     # Fn+F9 -- increase volume

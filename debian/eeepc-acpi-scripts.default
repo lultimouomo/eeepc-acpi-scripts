@@ -31,6 +31,11 @@ BLUETOOTH_FALLBACK_TO_HCITOOL='yes'
 #      on/off any USB bluetooth adapter found
 #  - handle_camera_toggle
 #      Toggles internal camera on/off
+#  - handle_mute_toggle
+#      Toggles audio on/off
+#  - handle_volume_up
+#  - handle_volume_down
+#      Adjust volume level
 #  - NONE
 #      Ignore the key
 #  - custom command
@@ -40,3 +45,6 @@ SOFTBTN1_ACTION='handle_blank_screen'
 SOFTBTN2_ACTION='NONE'
 SOFTBTN3_ACTION='handle_camera_toggle'
 SOFTBTN4_ACTION='handle_bluetooth_toggle'
+FnF7='handle_mute_toggle'
+FnF8='handle_volume_down'
+FnF9='handle_volume_up'

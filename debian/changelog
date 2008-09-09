@@ -1,4 +1,4 @@
-eeepc-acpi-scripts (1.0.6) UNRELEASED; urgency=low
+eeepc-acpi-scripts (1.0.6) unstable; urgency=low
 
   * support toggling of internal Bluetooth on models that have it. Bound to
     soft-button #4 by default
@@ -17,9 +17,9 @@ eeepc-acpi-scripts (1.0.6) UNRELEASED; urgency=low
     the eeepc-acpi and laptop-eeepc modules
   * move camera/bluetooth functions in scriptlets in /etc/acpi/lib
   * hotkey.sh: make notify() accept two arguments as preparation for supporting
-    further notification services that accept icons
+    further notification services that support icons
 
- -- Damyan Ivanov <dmn@debian.org>  Sun, 31 Aug 2008 12:50:22 +0300
+ -- Damyan Ivanov <dmn@debian.org>  Mon, 08 Sep 2008 17:48:56 +0300
 
 eeepc-acpi-scripts (1.0.5) unstable; urgency=low
 

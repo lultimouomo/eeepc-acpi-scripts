@@ -33,9 +33,9 @@ BLUETOOTH_FALLBACK_TO_HCITOOL='yes'
 #      Toggles internal camera on/off
 #  - NONE
 #      Ignore the key
-#  - custom function name
+#  - custom command
 #      For example you can write a shell function in this file and use its name
-#      as an action. It will be called when the button is pressed
+#      as an action, or call another internal or external command
 SOFTBTN1_ACTION='handle_blank_screen'
 SOFTBTN2_ACTION='NONE'
 SOFTBTN3_ACTION='handle_camera_toggle'

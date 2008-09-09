@@ -8,6 +8,18 @@
 . /etc/acpi/lib/notify.sh
 code=$3
 
+handle_mute_toggle() {
+    /etc/acpi/actions/volume.sh toggle
+}
+
+handle_volume_up() {
+    /etc/acpi/actions/volume.sh up
+}
+
+handle_volume_down() {
+    /etc/acpi/actions/volume.sh down
+}
+
 show_wireless() {
     detect_wlan
     if grep -q $WLAN_IF /proc/net/wireless; then
@@ -16,16 +28,6 @@ show_wireless() {
 	status=Off
     fi
     notify wireless "Wireless $status"
-}
-
-show_muteness() {
-    status=$(amixer get $VOLUME_LABEL | sed -n '/%/{s/.*\[\(on\|off\)\].*/\u\1/p;q}')
-    notify audio "Audio $status"
-}
-
-show_volume() {
-    percent=$(amixer get $VOLUME_LABEL | sed -n '/%/{s/.*\[\(.*\)%\].*/\1/p;q}')
-    notify audio "Volume $percent"
 }
 
 handle_blank_screen() {
@@ -94,27 +96,25 @@ case $code in
 	;;
     # Fn+F7 -- mute/unmute speakers
     00000013)
-	# muting $VOLUME_LABEL affects the headphone jack but not the speakers
-	amixer -q set $VOLUME_LABEL toggle
-	# muting $HEADPHONE_LABEL affects the speakers but not the headphone jack
-	amixer -q set $HEADPHONE_LABEL toggle
-	show_muteness
+	if [ "${FnF7:-handle_mute_toggle}" != 'NONE' ]; then
+	    ${FnF7:-handle_mute_toggle}
+	fi
 	;;
     # Fn+F8 -- decrease volume
     00000014)
-	amixer -q set $VOLUME_LABEL 2- unmute
-	amixer -q set $HEADPHONE_LABEL on
-	show_volume
+	if [ "${FnF8:-handle_volume_down}" != 'NONE' ]; then
+	    ${FnF8:-handle_volume_down}
+	fi
+	;;
+    # Fn+F9 -- increase volume
+    00000015)
+	if [ "${FnF9:-handle_volume_up}" != 'NONE' ]; then
+	    ${FnF9:-handle_volume_up}
+	fi
 	;;
 	# F+F5 -- toggle vga
 	0000003[012])
 	/etc/acpi/actions/vga-toggle.sh
-	;;
-    # Fn+F9 -- increase volume
-    00000015)
-	amixer -q set $VOLUME_LABEL 2+ unmute
-	amixer -q set $HEADPHONE_LABEL on
-	show_volume
 	;;
     # Fn+F3 -- decrease brightness
     # Fn+F4 -- increase brightness

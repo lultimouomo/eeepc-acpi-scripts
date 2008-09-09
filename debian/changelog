@@ -1,3 +1,13 @@
+eeepc-acpi-scripts (1.0.7) unstable; urgency=low
+
+  * move notify() to lib/notify.sh
+  * move audio hot key support in actions/volume.sh
+  * improve comments about hotkey customizations
+  * volume hotkeys are configurable now
+  * move alsa-utils from Depends to Recommends
+
+ -- Damyan Ivanov <dmn@debian.org>  Tue, 09 Sep 2008 10:42:44 +0300
+
 eeepc-acpi-scripts (1.0.6) unstable; urgency=low
 
   * support toggling of internal Bluetooth on models that have it. Bound to

@@ -1,3 +1,10 @@
+eeepc-acpi-scripts (1.0.8) UNRELEASED; urgency=low
+
+  * handle also Fn+F6 (no default binding)
+    Thanks to Jean-Christophe for the suggestion
+
+ -- Damyan Ivanov <dmn@debian.org>  Wed, 10 Sep 2008 13:19:47 +0300
+
 eeepc-acpi-scripts (1.0.7) unstable; urgency=low
 
   * move notify() to lib/notify.sh

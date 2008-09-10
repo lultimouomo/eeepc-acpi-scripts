@@ -94,6 +94,12 @@ case $code in
 	/etc/acpi/actions/wireless.sh off
 	show_wireless
 	;;
+    # Fn+F6
+    00000012)
+	if [ "${FnF6:-NONE}" != 'NONE' ]; then
+	    $FnF6
+	fi
+	;;
     # Fn+F7 -- mute/unmute speakers
     00000013)
 	if [ "${FnF7:-handle_mute_toggle}" != 'NONE' ]; then

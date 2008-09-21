@@ -12,17 +12,7 @@ fi
 . /usr/share/eeepc-acpi-scripts/functions.sh
 
 if [ "$LOCK_SCREEN_ON_SUSPEND" = "yes" ]; then
-    # activate screensaver if available
-    if [ -S /tmp/.X11-unix/X0 ]; then
-        detect_x_display
-        if [ -f $XAUTHORITY ]; then
-            for ss in xscreensaver gnome-screensaver; do
-                [ -x /usr/bin/$ss-command ] \
-                    && pidof /usr/bin/$ss > /dev/null \
-                    && $ss-command --lock
-            done
-        fi
-    fi
+    lock_x_screen
 fi
 
 brn_control=/sys/class/backlight/eeepc/brightness

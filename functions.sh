@@ -35,3 +35,18 @@ detect_x_display()
         home=$_home
     fi
 }
+
+lock_x_screen()
+{
+    # activate screensaver if available
+    if [ -S /tmp/.X11-unix/X0 ]; then
+        detect_x_display
+        if [ -f $XAUTHORITY ]; then
+            for ss in xscreensaver gnome-screensaver; do
+                [ -x /usr/bin/$ss-command ] \
+                    && pidof /usr/bin/$ss > /dev/null \
+                    && $ss-command --lock
+            done
+        fi
+    fi
+}

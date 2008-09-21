@@ -47,6 +47,10 @@ lock_x_screen()
                     && pidof /usr/bin/$ss > /dev/null \
                     && $ss-command --lock
             done
+            # try locking KDE
+            if [ -x /usr/bin/dcop ]; then
+                dcop kdesktop KScreensaverIface lock
+            fi
         fi
     fi
 }

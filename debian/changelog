@@ -1,9 +1,16 @@
-eeepc-acpi-scripts (1.0.8) UNRELEASED; urgency=low
+eeepc-acpi-scripts (1.0.8) unstable; urgency=low
 
   * handle also Fn+F6 (no default binding)
     Thanks to Jean-Christophe for the suggestion
+  * move screen locking from suspend.sh to a function in functions.sh
+  * lock_x_screen: try locking KDE via dcop; Closes: #499544
+  * vga-toggle.sh: run detect_x_display before xrandr xrandr needs a
+    proper X session available - DISPLAY, XAUTHORITY. Calling
+    display_x_display before xrandr invocation sets these up.
+    Closes: #500191 -- vga-toggle does nothing. Thanks to John Goerzen for
+    reporting.
 
- -- Damyan Ivanov <dmn@debian.org>  Wed, 10 Sep 2008 13:19:47 +0300
+ -- Damyan Ivanov <dmn@debian.org>  Fri, 26 Sep 2008 07:43:36 +0300
 
 eeepc-acpi-scripts (1.0.7) unstable; urgency=low
 

@@ -4,6 +4,7 @@
 [ -d /usr/share/doc/eeepc-acpi-scripts ] || exit 0
 
 . /etc/default/eeepc-acpi-scripts
+. /usr/share/eeepc-acpi-scripts/functions.sh
 
 # return: 0 on disconnect, 1 on connected vga, 2 else
 getvga_status(){
@@ -21,6 +22,7 @@ getvga_status(){
     esac
 }
 
+detect_x_display
 getvga_status;
 # handle return value
 case $? in

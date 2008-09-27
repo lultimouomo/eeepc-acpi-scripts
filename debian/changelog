@@ -1,3 +1,11 @@
+eeepc-acpi-scripts (1.0.9) UNRELEASED; urgency=low
+
+  * make package removal check depend on the functions.sh, not doc dir;
+    streamline loading of functions and default file
+    Closes: #499911 -- Don't test if /usr/share/doc/eeepc-acpi-scripts exist
+
+ -- Damyan Ivanov <dmn@debian.org>  Sat, 27 Sep 2008 09:08:50 +0300
+
 eeepc-acpi-scripts (1.0.8) unstable; urgency=low
 
   * handle also Fn+F6 (no default binding)

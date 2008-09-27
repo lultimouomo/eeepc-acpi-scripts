@@ -1,15 +1,15 @@
 #!/bin/sh
 
 # do nothing if package is removed
-[ -d /usr/share/doc/eeepc-acpi-scripts ] || exit 0
+FUNC_LIB=/usr/share/eeepc-acpi-scripts/functions.sh
+[ -e $FUNC_LIB ] || exit 0
+
+. /etc/default/eeepc-acpi-scripts
+. $FUNC_LIB
 
 if (runlevel | grep -q [06]) || (pidof '/sbin/shutdown' > /dev/null); then
     exit 0
 fi
-
-[ -r /etc/default/eeepc-acpi-scripts ] && . /etc/default/eeepc-acpi-scripts
-
-. /usr/share/eeepc-acpi-scripts/functions.sh
 
 if [ "$LOCK_SCREEN_ON_SUSPEND" = "yes" ]; then
     lock_x_screen

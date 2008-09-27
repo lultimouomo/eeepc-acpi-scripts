@@ -3,10 +3,13 @@
 # Volume controls
 
 # do nothing if package is removed
-[ -d /usr/share/doc/eeepc-acpi-scripts ] || exit 0
+PKG=eeepc-acpi-scripts
+FUNC_LIB=/usr/share/$PKG/functions.sh
+DEFAULT=/etc/default/$PKG
+[ -e $FUNC_LIB ] || exit 0
 
-. /etc/default/eeepc-acpi-scripts
-. /usr/share/eeepc-acpi-scripts/functions.sh
+if [ -e "$DEFAULT" ]; then . "$DEFAULT"; fi
+. $FUNC_LIB
 . /etc/acpi/lib/notify.sh
 action=$1
 

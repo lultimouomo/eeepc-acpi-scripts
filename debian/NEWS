@@ -1,0 +1,10 @@
+eeepc-acpi-scripts (1.0.9) unstable; urgency=low
+
+  * This version provides an /etc/modprobe.d/eeepc file containing the right
+    options for pciehp kernel module.
+    Since editing similar file in modprobe.d was recommended before, you may
+    want to review that and possibly remove any duplicates.
+    In the future /etc/modprobe.d/eeepc will contain any settings we think
+    would be useful for EeePC users.
+
+ -- Damyan Ivanov <dmn@debian.org>  Sat, 11 Oct 2008 18:31:51 +0300

@@ -2,4 +2,5 @@ etc/default
 etc/acpi/actions
 etc/acpi/events
 etc/acpi/lib
+etc/modprobe.d
 usr/share/eeepc-acpi-scripts

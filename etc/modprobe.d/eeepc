@@ -1,0 +1,3 @@
+# module options specific for Asus EeePC
+
+options pciehp pciehp_force=1 pciehp_slot_with_bus=1

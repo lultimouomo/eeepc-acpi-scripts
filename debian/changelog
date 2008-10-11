@@ -1,4 +1,4 @@
-eeepc-acpi-scripts (1.0.9) UNRELEASED; urgency=low
+eeepc-acpi-scripts (1.0.9) unstable; urgency=low
 
   * make package removal check depend on the functions.sh, not doc dir;
     streamline loading of functions and default file
@@ -8,7 +8,7 @@ eeepc-acpi-scripts (1.0.9) UNRELEASED; urgency=low
     Closes: #501498 -- Fn-F2 turns wireless off, but never back on
   * add a note in debian/NEWS about the new file in modprobe.d
 
- -- Damyan Ivanov <dmn@debian.org>  Sat, 11 Oct 2008 18:37:29 +0300
+ -- Damyan Ivanov <dmn@debian.org>  Sat, 11 Oct 2008 19:06:44 +0300
 
 eeepc-acpi-scripts (1.0.8) unstable; urgency=low
 

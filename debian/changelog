@@ -3,8 +3,12 @@ eeepc-acpi-scripts (1.0.9) UNRELEASED; urgency=low
   * make package removal check depend on the functions.sh, not doc dir;
     streamline loading of functions and default file
     Closes: #499911 -- Don't test if /usr/share/doc/eeepc-acpi-scripts exist
+  * source reorg.: move files for /etc/ in etc/
+  * add modprobe.d/eeepc file with pciehp options
+    Closes: #501498 -- Fn-F2 turns wireless off, but never back on
+  * add a note in debian/NEWS about the new file in modprobe.d
 
- -- Damyan Ivanov <dmn@debian.org>  Sat, 27 Sep 2008 09:08:50 +0300
+ -- Damyan Ivanov <dmn@debian.org>  Sat, 11 Oct 2008 18:37:29 +0300
 
 eeepc-acpi-scripts (1.0.8) unstable; urgency=low
 

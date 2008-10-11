@@ -29,9 +29,9 @@ install: build
 	dh_testroot
 	dh_clean -k
 	dh_installdirs
-	install actions/* $(TMP)/etc/acpi/actions
-	install -m 644 events/* $(TMP)/etc/acpi/events
-	install -m 644 lib/* $(TMP)/etc/acpi/lib
+	install -m 0755 etc/acpi/actions/* $(TMP)/etc/acpi/actions
+	install -m 0644 etc/acpi/events/* $(TMP)/etc/acpi/events
+	install -m 0644 etc/acpi/lib/* $(TMP)/etc/acpi/lib
 	install -m 0644 functions.sh $(TMP)/usr/share/$(PKG)/
 
 binary-indep: build install

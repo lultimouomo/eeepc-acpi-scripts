@@ -1,3 +1,10 @@
+eeepc-acpi-scripts (1.0.10) unstable; urgency=low
+
+  * add missing "--user $user" to dcop invocation.
+    really closes: #499544
+
+ -- Damyan Ivanov <dmn@debian.org>  Tue, 21 Oct 2008 22:44:32 +0300
+
 eeepc-acpi-scripts (1.0.9) unstable; urgency=low
 
   * make package removal check depend on the functions.sh, not doc dir;

@@ -49,7 +49,7 @@ lock_x_screen()
             done
             # try locking KDE
             if [ -x /usr/bin/dcop ]; then
-                dcop kdesktop KScreensaverIface lock
+                dcop --user $user kdesktop KScreensaverIface lock
             fi
         fi
     fi

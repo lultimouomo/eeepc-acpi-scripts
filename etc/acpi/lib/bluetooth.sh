@@ -31,9 +31,11 @@ toggle_bluetooth()
         elif [ "$BLUETOOTH_FALLBACK_TO_HCITOOL" = "yes" ]; then
             hciconfig hci0 down
             rmmod hci_usb
-            # TODO: enable autosuspend of the USB device
-            # that is, echo "auto" > /sys/bus/usb/devices/$DEV/power/level
-            # the problem is determining what the right $DEV is
+	    for f in /sys/bus/usb/devices/*; do
+		if [ -e "$f/product" ] && grep -q ^BT $f/product; then
+		    echo "auto" > $f/power/level
+		fi
+	    done
         fi
     else
         if [ -e $BT_CTL ]; then

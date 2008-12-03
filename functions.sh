@@ -24,7 +24,17 @@ detect_x_display()
         # try the first logged user without any filters
         # useful for users starting X via 'startx' after logging
         # on the console
-        _user=$( who | head -n 1 | cut -d' ' -f1 )
+        #_user=$( who | head -n 1 | cut -d' ' -f1 )
+        _user=$(ps -o pid= -t tty$(fgconsole) | sed -e 's/^\s\+//g' | cut -d' ' -f1)
+        if [ "${_user}" != '' ]; then
+            eval $(sed -e 's/\x00/\n/g' /proc/${_user}/environ | grep '^\(DISPLAY\|XAUTHORITY\)=' | sed -e "s/'/'\\\\''/g; s/=/='/; s/$/'/")
+            DISPLAY="${DISPLAY:-:0}"
+            export XAUTHORITY
+            export DISPLAY
+            user=root
+            home=$(getent passwd $_user | cut -d: -f6)
+        fi
+        return
     fi
     _home=$(getent passwd $_user | cut -d: -f6)
     XAUTHORITY=$_home/.Xauthority

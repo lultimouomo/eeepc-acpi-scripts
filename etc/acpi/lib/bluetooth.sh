@@ -2,7 +2,9 @@
 #
 # to be sourced
 
-BT_CTL=/sys/devices/platform/eeepc/bluetooth
+rfkill_detect eeepc-bluetooth
+BT_CTL="$RFKILL"
+[ -e $BT_CTL ] || BT_CTL=/sys/devices/platform/eeepc/bluetooth # pre-2.6.28
 [ -e $BT_CTL ] || BT_CTL=/proc/acpi/asus/bluetooth # pre-2.6.26
 # check if bluetooth is switched on and return success (exit code 0 if it is
 # return failure (exit code 1) if it is not

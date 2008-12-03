@@ -2,7 +2,9 @@
 
 . /usr/share/eeepc-acpi-scripts/functions.sh
 
-wlan_control=/sys/devices/platform/eeepc/wlan
+detect_rfkill eeepc-wlan
+wlan_control="$RFKILL"
+[ -e $wlan_control ] || wlan_control=/sys/devices/platform/eeepc/wlan # pre-2.6.28
 [ -e $wlan_control ] || wlan_control=/proc/acpi/asus/wlan # pre-2.6.26
 
 case $1 in

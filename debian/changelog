@@ -4,6 +4,7 @@ eeepc-acpi-scripts (1.0.12) UNRELEASED; urgency=low
     with DISPLAY set in its environment.
     This has a useful side effect: status changes can be displayed even when
     the controlling process is a login manager.
+  * Try to use rfkill when toggling wireless & bluetooth.
 
  -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Mon, 02 Feb 2009 16:55:55 +0000
 

@@ -14,6 +14,20 @@ detect_wlan()
     echo "Detected WLAN module $WLAN_MOD on $WLAN_IF" >&2
 }
 
+# detect which rfkill has name=$1
+detect_rfkill()
+{
+    local _rfkill
+    for _rfkill in /sys/class/rfkill/*; do
+        if [ "$(cat "$_rfkill/name")" = "$1" ]; then
+            echo "Detected $1 as rfkill $_rfkill" >&2
+            RFKILL="$_rfkill/state"
+            return
+        fi
+    done
+    RFKILL=''
+}
+
 detect_x_display()
 {
     local _user

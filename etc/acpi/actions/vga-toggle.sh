@@ -33,6 +33,6 @@ case $? in
         xrandr --output VGA --off --output LVDS --auto
         ;;
     *)
-        xrandr --output VGA $VGA_ON --output LVDS $LVDS_OFF
+        xrandr --output VGA ${VGA_ON:---auto} --output LVDS ${LVDS_OFF:---off}
 esac
 

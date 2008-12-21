@@ -1,3 +1,12 @@
+eeepc-acpi-scripts (1.0.11) UNRELEASED; urgency=low
+
+  * VGA_ON and LVDS_OFF replace COMBINED_DISPLAY_SWITCHES to provide
+    better default behaviour for VGA toggle.  See comments in
+    /etc/default/eeepc-acpi-scripts for common variations (specify
+    mode or use xinerama-style display).
+
+ -- Ben Armstrong <synrg@sanctuary.nslug.ns.ca>  Sun, 21 Dec 2008 10:08:27 -0400
+
 eeepc-acpi-scripts (1.0.10) unstable; urgency=low
 
   * add missing "--user $user" to dcop invocation.

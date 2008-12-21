@@ -7,9 +7,17 @@ OSD_FONT='DejaVuSans 36'
 VOLUME_LABEL='LineOut'
 HEADPHONE_LABEL='iSpeaker'
 
-# these are the switches for xrandr --output VGA when Fn-F5 is used to
-# select LCD+VGA mode
-COMBINED_DISPLAY_SWITCHES='--mode 640x480'
+# These are the switches for xrandr --output VGA and --output LVDS
+# respectively when Fn-F5 is used to select VGA mode.
+# * If --auto doesn't give good results for your monitor, specify a
+#   mode, e.g.
+#     VGA_ON='--mode 1024x768'
+#     LVDS_OFF='--off'
+# * For xinerama-style (desktop is split across both displays) try:
+#     VGA_ON='--auto --above LVDS'
+#     LVDS_OFF='--auto'
+VGA_ON='--auto'
+LVDS_OFF='--off'
 
 # attempt to lock running xscreensaver or gnome-screensaver on suspend
 LOCK_SCREEN_ON_SUSPEND='yes'

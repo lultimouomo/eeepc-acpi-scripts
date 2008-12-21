@@ -30,9 +30,9 @@ getvga_status;
 # handle return value
 case $? in
     2)
-        xrandr --output VGA --off
+        xrandr --output VGA --off --output LVDS --auto
         ;;
     *)
-        xrandr --output VGA $COMBINED_DISPLAY_SWITCHES
+        xrandr --output VGA $VGA_ON --output LVDS $LVDS_OFF
 esac
 

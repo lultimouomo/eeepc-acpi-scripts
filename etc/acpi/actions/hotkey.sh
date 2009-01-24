@@ -6,6 +6,12 @@ FUNC_LIB=/usr/share/$PKG/functions.sh
 DEFAULT=/etc/default/$PKG
 [ -e $FUNC_LIB ] || exit 0
 
+case $(runlevel) in
+    *0|*6)
+	exit 0
+	;;
+esac
+
 if [ -e "$DEFAULT" ]; then . "$DEFAULT"; fi
 . $FUNC_LIB
 

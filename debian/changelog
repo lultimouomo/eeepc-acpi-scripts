@@ -6,6 +6,7 @@ eeepc-acpi-scripts (1.0.12) UNRELEASED; urgency=low
     the controlling process is a login manager.
   * Try to use rfkill when toggling wireless & bluetooth.
   * Ignore events when shutting down or rebooting.
+  * Give immediate indication of pressing of Fn-F2.
 
  -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Mon, 02 Feb 2009 16:55:55 +0000
 

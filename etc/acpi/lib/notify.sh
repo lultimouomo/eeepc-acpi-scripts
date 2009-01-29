@@ -6,7 +6,7 @@ notify() {
     CATEGORY=$1
     MSG=$2
     if [ -n "$3" ]; then
-	echo "usage: notify 'catgory' 'message text'" > /dev/stderr
+	echo "usage: notify 'category' 'message text'" > /dev/stderr
 	return 1
     fi
     echo "$MSG"  # for /var/log/acpid

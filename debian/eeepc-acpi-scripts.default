@@ -19,7 +19,21 @@ HEADPHONE_LABEL='iSpeaker'
 VGA_ON='--auto'
 LVDS_OFF='--off'
 
-# attempt to lock running xscreensaver or gnome-screensaver on suspend
+# Use the specified suspend method, where the method is actually the name
+# of a command.
+# Common methods:
+#   pm-suspend (default), pm-hibernate, pm-suspend-hybrid
+#   hibernate-ram, hibernate-disk
+#
+# s2ram and friends can also be specified but it is usually better to run them
+# via a wrapper.
+# SUSPEND_OPTIONS is passed as-is to the command.
+SUSPEND_METHOD=pm-suspend
+SUSPEND_OPTIONS=--quirck-s3-bios
+
+# attempt to lock running xscreensaver or gnome-screensaver on suspend.
+# if you use hibernate(1) make sure you only indicate in one place to lock the
+# screen.
 LOCK_SCREEN_ON_SUSPEND='yes'
 
 # try to load/unload the hci_usb module and use hcitool for checking

@@ -19,5 +19,15 @@ brn_control=/sys/class/backlight/eeepc/brightness
 [ -e $brn_control ] || brn_control=/proc/acpi/asus/brn # pre-2.6.26
 
 brightness=$(cat $brn_control)
-pm-suspend --quirk-s3-bios
+
+# Setting defaults in case /etc/default/eeepc-acpi-scripts was not updated
+if [ -z "$SUSPEND_METHOD" ]; then
+    SUSPEND_OPTIONS=--quirk-s3-bios
+fi
+if [ -z "$(which "$SUSPEND_METHOD")" ]; then
+    SUSPEND_METHOD=pm-suspend
+fi
+
+$SUSPEND_METHOD $SUSPEND_OPTIONS
+
 echo $brightness > $brn_control

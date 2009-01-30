@@ -11,6 +11,7 @@ DEFAULT=/etc/default/$PKG
 if [ -e "$DEFAULT" ]; then . "$DEFAULT"; fi
 . $FUNC_LIB
 . /etc/acpi/lib/notify.sh
+. /etc/acpi/lib/sound.sh
 action=$1
 
 usage() {
@@ -27,32 +28,58 @@ if ! [ -x $AMIXER ]; then
     exit 1
 fi
 
+configureSound
+
 show_muteness() {
-    status=$($AMIXER get $VOLUME_LABEL | sed -n '/%/{s/.*\[\(on\|off\)\].*/\u\1/p;q}')
-    notify audio "Audio $status"
+    local label msg status all_equal=1 current
+    for label in $SOUND_SWITCH; do
+	current=$($AMIXER get $label |
+		    sed -n 's/.*\[\(on\|off\)\].*/\1/;ta;d;:a;p;q')
+	[ "$status" ] || status="$current"
+	[ "$status" = "$current" ] || all_equal=
+	msg="$msg $current ($label)"
+    done
+    if [ "$all_equal" ]; then
+	msg="$status"
+    fi
+    notify audio "Audio $msg"
 }
 
 show_volume() {
-    percent=$($AMIXER get $VOLUME_LABEL | sed -n '/%/{s/.*\[\(.*\)%\].*/\1/p;q}')
-    notify audio "Volume $percent"
+    local label msg percent all_equal=1 current
+    for label in $SOUND_LABEL; do
+	current=$($AMIXER get $label |
+		    sed -n '/%/{s/.*\[\(.*\)%\].*/\1/p;q}')
+	[ "$percent" ] || percent="$current"
+	[ "$percent" = "$current" ] || all_equal=
+	msg="$msg $current% ($label)"
+	if [ "$DETAILED_SOUND_INFO" != 'yes' ]; then
+	    break
+	fi
+    done
+    if [ "$all_equal" ]; then
+	msg="$percent%"
+    fi
+    notify audio "Volume $msg"
 }
 
 case "$action" in
     toggle)
-        # muting $VOLUME_LABEL affects the headphone jack but not the speakers
-        $AMIXER -q set $VOLUME_LABEL toggle
-        # muting $HEADPHONE_LABEL affects the speakers but not the headphone jack
-        $AMIXER -q set $HEADPHONE_LABEL toggle
+        for label in $SOUND_SWITCH; do
+            $AMIXER -q set $label toggle
+        done
         show_muteness
         ;;
     down)
-        amixer -q set $VOLUME_LABEL 2- unmute
-        amixer -q set $HEADPHONE_LABEL unmute
+        for label in $SOUND_LABEL; do
+            $AMIXER -q set $label 2%- unmute
+        done
         show_volume
         ;;
     up)
-        amixer -q set $VOLUME_LABEL 2+ unmute
-        amixer -q set $HEADPHONE_LABEL unmute
+        for label in $SOUND_LABEL; do
+            $AMIXER -q set $label 2%+ unmute
+        done
         show_volume
         ;;
     *)

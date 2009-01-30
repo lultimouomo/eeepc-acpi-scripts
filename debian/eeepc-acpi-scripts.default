@@ -3,9 +3,15 @@
 ENABLE_OSD='no'
 OSD_FONT='DejaVuSans 36'
 
-# lookup the following values by using amixer if they don't work for you
-VOLUME_LABEL='LineOut'
-HEADPHONE_LABEL='iSpeaker'
+# Leave these empty to attempt to autoconfigure. If they don't work for you
+# lookup the following values by using amixer
+SOUND_LABEL=
+SOUND_SWITCH=
+
+# Set to 'yes' to display detailed information when the volup and voldown
+# hotkeys are pressed but the volume percentage of all the playback devices
+# is not the same
+DETAILED_SOUND_INFO=no
 
 # These are the switches for xrandr --output VGA and --output LVDS
 # respectively when Fn-F5 is used to select VGA mode.

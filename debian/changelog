@@ -1,5 +1,6 @@
 eeepc-acpi-scripts (1.0.12) UNRELEASED; urgency=low
 
+  [ Darren Salt ]
   * Detect who's running an X session by looking for a controlling process
     with DISPLAY set in its environment.
     This has a useful side effect: status changes can be displayed even when
@@ -8,6 +9,10 @@ eeepc-acpi-scripts (1.0.12) UNRELEASED; urgency=low
   * Ignore events when shutting down or rebooting.
   * Give immediate indication of pressing of Fn-F2.
   * The same ACPI key code may be used for wireless on as well as wireless off.
+
+  [ Raphael Geissert ]
+  * Auto detect the playback devices and the playback switches
+    Closes: #513552 -- Please auto detect the sound devices
 
  -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Mon, 02 Feb 2009 16:55:55 +0000
 

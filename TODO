@@ -12,5 +12,3 @@
 
 * test bluetooth toggling when both the internal adapter and an external
   adapter are present.
-
-* add support for knotify as a notification service

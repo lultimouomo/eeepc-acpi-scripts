@@ -6,7 +6,7 @@ notify() {
     CATEGORY=$1
     MSG=$2
     if [ -n "$3" ]; then
-	echo "usage: notify 'catgory' 'message text'" > /dev/stderr
+	echo "usage: notify 'category' 'message text'" > /dev/stderr
 	return 1
     fi
     echo "$MSG"  # for /var/log/acpid
@@ -21,7 +21,7 @@ notify() {
 
     # try to show a nice OSD notification via GNOME OSD service
     GOSDC=/usr/bin/gnome-osd-client
-    if [ -x $GOSDC ]; then
+    if [ -z "$OSD_SHOWN" ] && [ -x $GOSDC ]; then
 	if ps -u $user -o cmd= | grep -q '^/usr/bin/python /usr/bin/gnome-osd-event-bridge'; then
 	    if echo "$MSG" | grep -q '[0-9]'; then
 		animations='off'
@@ -34,14 +34,20 @@ notify() {
 	fi
     fi
 
-    if [ -z "$OSD_SHOWN" ]; then
+    if [ -z "$OSD_SHOWN" ] && [ -x /usr/bin/aosd_cat ]; then
 	killall -q aosd_cat
 	if [ -n "$MSG" -a -z "$(echo $MSG | sed 's/.*[0-9]\+//g')" ]; then
 		echo "$MSG%" | aosd_cat -f 0 -u 100 -o 0 -n "$OSD_FONT" &
 	else
 		echo "$MSG" | aosd_cat -n "$OSD_FONT" -f 100 -u 1000 -o 100 &
 	fi
+	OSD_SHOWN=1
     fi
+
+    if [ -z "$OSD_SHOWN" ] && [ -x /usr/bin/dcop ]; then
+	dcop --user "$user" knotify Notify notify "notification" "knotify" "$MSG" "" "" 16 2
+    fi
+
     else
 	echo "$MSG" > /dev/console
     fi

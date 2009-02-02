@@ -1,10 +1,19 @@
 eeepc-acpi-scripts (1.0.11) UNRELEASED; urgency=low
 
+  [ Ben Armstrong ]
   * VGA_ON and LVDS_OFF replace COMBINED_DISPLAY_SWITCHES to provide
     better default behaviour for VGA toggle.  See comments in
     /etc/default/eeepc-acpi-scripts for common variations (specify
     mode or use xinerama-style display).
   * Blacklist useless pcspkr module.
+
+  [ Damyan Ivanov ]
+  * when "soft-disabling" bluetooth, power down the USB port
+
+  [ Raphael Geissert ]
+  * test for OSD_SHOWN before checking for gnome-osd for consistency
+  * add support for knotify but only use it if aosd_cat is not installed
+  * fix typo in notify()'s usage message
 
  -- Ben Armstrong <synrg@sanctuary.nslug.ns.ca>  Mon, 05 Jan 2009 18:07:44 -0400
 

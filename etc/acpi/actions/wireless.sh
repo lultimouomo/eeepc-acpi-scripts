@@ -7,8 +7,13 @@ wlan_control="$RFKILL"
 [ -e $wlan_control ] || wlan_control=/sys/devices/platform/eeepc/wlan # pre-2.6.28
 [ -e $wlan_control ] || wlan_control=/proc/acpi/asus/wlan # pre-2.6.26
 
-case $1 in
-    on|enable)
+cmd="$1"
+if [ "$cmd" = toggle ]; then
+    cmd=$((1-$(cat $wlan_control)))
+fi
+
+case "$cmd" in
+    on|enable|1)
 	if [ $(cat $wlan_control) = 0 ]; then
 	    echo 1 > $wlan_control
             detect_wlan
@@ -22,7 +27,7 @@ case $1 in
 	    fi
 	fi
 	;;
-    off|disable)
+    off|disable|0)
 	if [ $(cat $wlan_control) = 1 ]; then
             detect_wlan
 	    if [ "$WLAN_MOD" = 'ath_pci' ]; then

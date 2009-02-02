@@ -98,7 +98,7 @@ case $code in
     # Fn+F2 -- toggle wireless
     00000010)
 	notify wireless 'Wireless ...'
-	/etc/acpi/actions/wireless.sh on
+	/etc/acpi/actions/wireless.sh toggle
 	show_wireless
 	;;
     00000011)

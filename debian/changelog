@@ -7,6 +7,7 @@ eeepc-acpi-scripts (1.0.12) UNRELEASED; urgency=low
   * Try to use rfkill when toggling wireless & bluetooth.
   * Ignore events when shutting down or rebooting.
   * Give immediate indication of pressing of Fn-F2.
+  * The same ACPI key code may be used for wireless on as well as wireless off.
 
  -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Mon, 02 Feb 2009 16:55:55 +0000
 

@@ -29,7 +29,7 @@ LVDS_OFF='--off'
 # via a wrapper.
 # SUSPEND_OPTIONS is passed as-is to the command.
 SUSPEND_METHOD=pm-suspend
-SUSPEND_OPTIONS=--quirck-s3-bios
+SUSPEND_OPTIONS=--quirk-s3-bios
 
 # attempt to lock running xscreensaver or gnome-screensaver on suspend.
 # if you use hibernate(1) make sure you only indicate in one place to lock the

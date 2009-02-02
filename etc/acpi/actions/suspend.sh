@@ -21,7 +21,7 @@ brn_control=/sys/class/backlight/eeepc/brightness
 brightness=$(cat $brn_control)
 
 # Setting defaults in case /etc/default/eeepc-acpi-scripts was not updated
-if [ -z "$SUSPEND_METHOD" ]; then
+if [ -z "$SUSPEND_OPTIONS" ]; then
     SUSPEND_OPTIONS=--quirk-s3-bios
 fi
 if [ -z "$(which "$SUSPEND_METHOD")" ]; then

@@ -15,6 +15,7 @@ eeepc-acpi-scripts (1.0.11) UNRELEASED; urgency=low
   [ Raphael Geissert ]
   * test for OSD_SHOWN before checking for gnome-osd for consistency
   * add support for knotify but only use it if aosd_cat is not installed
+    Closes: #513551 -- please add support for knotify
   * fix typo in notify()'s usage message
 
  -- Ben Armstrong <synrg@sanctuary.nslug.ns.ca>  Mon, 02 Feb 2009 09:58:34 -0400

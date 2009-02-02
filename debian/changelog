@@ -6,6 +6,8 @@ eeepc-acpi-scripts (1.0.11) UNRELEASED; urgency=low
     /etc/default/eeepc-acpi-scripts for common variations (specify
     mode or use xinerama-style display).
   * Blacklist useless pcspkr module.
+  * Fix VGA toggle: default to enable LVDS / disable VGA so that
+    it will work when the external monitor is disconnected.
 
   [ Damyan Ivanov ]
   * when "soft-disabling" bluetooth, power down the USB port
@@ -15,7 +17,7 @@ eeepc-acpi-scripts (1.0.11) UNRELEASED; urgency=low
   * add support for knotify but only use it if aosd_cat is not installed
   * fix typo in notify()'s usage message
 
- -- Ben Armstrong <synrg@sanctuary.nslug.ns.ca>  Mon, 05 Jan 2009 18:07:44 -0400
+ -- Ben Armstrong <synrg@sanctuary.nslug.ns.ca>  Mon, 02 Feb 2009 09:58:34 -0400
 
 eeepc-acpi-scripts (1.0.10) unstable; urgency=low
 

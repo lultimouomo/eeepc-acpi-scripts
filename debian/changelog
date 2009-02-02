@@ -1,4 +1,4 @@
-eeepc-acpi-scripts (1.0.11) UNRELEASED; urgency=low
+eeepc-acpi-scripts (1.0.11) unstable; urgency=low
 
   [ Ben Armstrong ]
   * VGA_ON and LVDS_OFF replace COMBINED_DISPLAY_SWITCHES to provide
@@ -22,7 +22,7 @@ eeepc-acpi-scripts (1.0.11) UNRELEASED; urgency=low
     default.
     Closes: #499545 -- Configurable FnF1 key - suspend to ram or hibernate
 
- -- Ben Armstrong <synrg@sanctuary.nslug.ns.ca>  Mon, 02 Feb 2009 09:58:34 -0400
+ -- Damyan Ivanov <dmn@debian.org>  Mon, 02 Feb 2009 17:39:10 +0200
 
 eeepc-acpi-scripts (1.0.10) unstable; urgency=low
 

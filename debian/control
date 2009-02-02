@@ -18,5 +18,7 @@ Suggests: aosd-cat, ttf-dejavu | ttf-bitstream-vera | ttf-freefont
  | gsfonts-x11 | ttf-mscorefonts-installer | ttf-liberation,
  gnome-osd
 Description: Scripts to support suspend and hotkeys on the Asus Eee PC laptop
- Sleep (suspend) and hotkeys such as wireless, brightness, mute and volume are
- all supported by the ACPI scripts in this package on the Asus Eee PC laptop.
+ This package adds support to the special features of Asus Eee PC series of
+ laptops. These include sleep (suspend) and hotkeys such as wireless,
+ brightness, mute, volume, video output toggle and the 'soft' keys available in
+ some models.

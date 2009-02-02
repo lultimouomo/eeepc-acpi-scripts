@@ -11,6 +11,7 @@ eeepc-acpi-scripts (1.0.11) UNRELEASED; urgency=low
 
   [ Damyan Ivanov ]
   * when "soft-disabling" bluetooth, power down the USB port
+  * improve long description a bit
 
   [ Raphael Geissert ]
   * test for OSD_SHOWN before checking for gnome-osd for consistency

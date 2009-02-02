@@ -4,7 +4,9 @@
 
 detect_rfkill eeepc-wlan
 wlan_control="$RFKILL"
-[ -e $wlan_control ] || wlan_control=/sys/devices/platform/eeepc/wlan # pre-2.6.28
+
+[ -n "$wlan_control" -a -e $wlan_control ] \
+    || wlan_control=/sys/devices/platform/eeepc/wlan # pre-2.6.28
 [ -e $wlan_control ] || wlan_control=/proc/acpi/asus/wlan # pre-2.6.26
 
 cmd="$1"

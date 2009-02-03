@@ -7,8 +7,13 @@ detect_wlan()
         WLAN_IF=ra0
         WLAN_MOD=rt2860sta
     elif lspci|grep -i 'atheros'|grep -q -i 'wireless'; then
-        WLAN_IF=ath0
-        WLAN_MOD=ath_pci
+        if lspci -v|grep -q -i 'ath_pci'; then
+            WLAN_IF=ath0
+            WLAN_MOD=ath_pci
+        else
+            WLAN_IF=wlan0
+            WLAN_MOD=ath5k
+        fi
     fi
 
     echo "Detected WLAN module $WLAN_MOD on $WLAN_IF" >&2

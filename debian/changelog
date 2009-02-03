@@ -14,7 +14,10 @@ eeepc-acpi-scripts (1.0.12) UNRELEASED; urgency=low
   * Auto detect the playback devices and the playback switches
     Closes: #513552 -- Please auto detect the sound devices
 
- -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Mon, 02 Feb 2009 16:55:55 +0000
+  [ Ben Armstrong ]
+  * Support ath5k wifi toggling and default to using it if ath_pci is not present.
+
+ -- Ben Armstrong <synrg@sanctuary.nslug.ns.ca>  Tue, 03 Feb 2009 17:14:46 -0400
 
 eeepc-acpi-scripts (1.0.11) unstable; urgency=low
 

@@ -24,7 +24,7 @@ detect_rfkill()
 {
     local _rfkill
     for _rfkill in /sys/class/rfkill/*; do
-        if [ "$(cat "$_rfkill/name")" = "$1" ]; then
+        if [ -f "$_rfkill/name" ] && [ "$(cat "$_rfkill/name")" = "$1" ]; then
             echo "Detected $1 as rfkill $_rfkill" >&2
             RFKILL="$_rfkill/state"
             return

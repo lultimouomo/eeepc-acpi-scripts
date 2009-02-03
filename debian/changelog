@@ -16,8 +16,9 @@ eeepc-acpi-scripts (1.0.12) UNRELEASED; urgency=low
 
   [ Ben Armstrong ]
   * Support ath5k wifi toggling and default to using it if ath_pci is not present.
+  * Fix detection of rfkill on systems that don't have it.
 
- -- Ben Armstrong <synrg@sanctuary.nslug.ns.ca>  Tue, 03 Feb 2009 17:14:46 -0400
+ -- Ben Armstrong <synrg@sanctuary.nslug.ns.ca>  Tue, 03 Feb 2009 19:44:50 -0400
 
 eeepc-acpi-scripts (1.0.11) unstable; urgency=low
 

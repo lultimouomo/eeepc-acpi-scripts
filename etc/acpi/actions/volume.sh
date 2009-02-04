@@ -34,7 +34,13 @@ show_muteness() {
     local label msg status all_equal=1 current
     for label in $SOUND_SWITCH; do
 	current=$($AMIXER get $label |
-		    sed -n 's/.*\[\(on\|off\)\].*/\1/;ta;d;:a;p;q')
+		    sed -n 's/.*\[\(on\|off\)\].*/\1/;ta;d;:a;p')
+	case "$(echo "$current")" in
+	    on*off*) current='on[L]'; ;;
+	    off*on*) current='on[R]'; ;;
+	    on*)     current='on'; ;;
+	    off*)    current='off'; ;;
+	esac
 	[ "$status" ] || status="$current"
 	[ "$status" = "$current" ] || all_equal=
 	msg="$msg $current ($label)"

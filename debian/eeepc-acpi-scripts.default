@@ -20,6 +20,14 @@ SOUND_SWITCH=
 # pswitch capabilities only:
 SOUND_SWITCH_EXCLUSIVE=
 
+# Default volume level change.
+# You can specify the change in all ways supported by amixer, e.g.
+# raw value ('5'), percentage ('1.5625%') or decibels ('0.8dB').
+# The different representations are probably not equivalent. Check amixer
+# output to determine what's right for your hardware.
+# Leave empty if you want to allow for auto-configuration.
+SOUND_VOLUME_STEP=
+
 # Set to 'yes' to display detailed information when the volup and voldown
 # hotkeys are pressed but the volume percentage of all the playback devices
 # is not the same

@@ -82,13 +82,13 @@ case "$action" in
         ;;
     down)
         for label in $SOUND_LABEL $SOUND_SWITCH_EXCLUSIVE; do
-            $AMIXER -q set $label 2%- unmute
+            $AMIXER -q set $label "$SOUND_VOLUME_STEP"- unmute
         done
         show_volume
         ;;
     up)
         for label in $SOUND_LABEL $SOUND_SWITCH_EXCLUSIVE; do
-            $AMIXER -q set $label 2%+ unmute
+            $AMIXER -q set $label "$SOUND_VOLUME_STEP"+ unmute
         done
         show_volume
         ;;

@@ -1,0 +1,8 @@
+.#*
+*~
+DEADJOE
+build-stamp
+configure-stamp
+debian/*.debhelper.log
+debian/eeepc-acpi-scripts/
+debian/files

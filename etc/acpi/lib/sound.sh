@@ -11,4 +11,9 @@ configureSound() {
 			sed -r "s/^(.*'([^']+)'.*|[^']+())$/\\2/")"
     }
 
+    [ "$SOUND_SWITCH_EXCLUSIVE" ] || {
+	 SOUND_SWITCH_EXCLUSIVE="$($AMIXER | grep -B1 ': pswitch$' |
+				sed -r "s/^(.*'([^']+)'.*|[^']+())$/\\2/")"
+    }
+
 }

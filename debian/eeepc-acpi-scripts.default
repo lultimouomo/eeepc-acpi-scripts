@@ -8,9 +8,14 @@ OSD_FONT='DejaVuSans 36'
 ENABLE_OSD_BRIGHTNESS='no'
 
 # Leave these empty to attempt to autoconfigure. If they don't work for you
-# lookup the following values by using amixer
+# lookup the following values by using amixer; separate multiple values with a
+# blank space and enclose all the values with quotation marks:
+# devices with pvolume capabilities:
 SOUND_LABEL=
+# pswitch capabilities:
 SOUND_SWITCH=
+# pswitch capabilities only:
+SOUND_SWITCH_EXCLUSIVE=
 
 # Set to 'yes' to display detailed information when the volup and voldown
 # hotkeys are pressed but the volume percentage of all the playback devices

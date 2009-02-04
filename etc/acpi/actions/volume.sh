@@ -71,13 +71,13 @@ case "$action" in
         show_muteness
         ;;
     down)
-        for label in $SOUND_LABEL; do
+        for label in $SOUND_LABEL $SOUND_SWITCH_EXCLUSIVE; do
             $AMIXER -q set $label 2%- unmute
         done
         show_volume
         ;;
     up)
-        for label in $SOUND_LABEL; do
+        for label in $SOUND_LABEL $SOUND_SWITCH_EXCLUSIVE; do
             $AMIXER -q set $label 2%+ unmute
         done
         show_volume

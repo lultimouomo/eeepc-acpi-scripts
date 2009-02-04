@@ -60,7 +60,7 @@ show_volume() {
     if [ "$all_equal" ]; then
 	msg="$percent%"
     fi
-    notify audio "Volume $msg"
+    notify audio "Volume $msg" fast
 }
 
 case "$action" in

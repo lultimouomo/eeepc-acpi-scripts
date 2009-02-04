@@ -91,7 +91,7 @@ show_brightness() {
     level=$((0x$code & 0xF))
     # convert hex digit to percent
     percent=$(((100 * $level + 8) / 15))
-    notify Brightness $percent
+    notify Brightness $percent% fast
 }
 
 case $code in

@@ -5,8 +5,8 @@
 notify() {
     CATEGORY=$1
     MSG=$2
-    if [ -n "$3" ]; then
-	echo "usage: notify 'category' 'message text'" > /dev/stderr
+    if [ -n "$4" -o \( -n "$3" -a "$3" != 'fast' \) ]; then
+	echo "usage: notify 'category' 'message text' [fast]" > /dev/stderr
 	return 1
     fi
     echo "$MSG"  # for /var/log/acpid
@@ -28,7 +28,12 @@ notify() {
 	    else
 		animations='on'
 	    fi
-	    echo "<message id='eee-$CATEGORY' osd_fake_translucent_bg='off' osd_vposition='bottom' animations='$animations' hide_timeout='1200' osd_halignment='center'>$MSG</message>" \
+	    if [ "$3" = 'fast' ]; then
+		timeout = 150
+	    else
+		timeout = 1200
+	    fi
+	    echo "<message id='eee-$CATEGORY' osd_fake_translucent_bg='off' osd_vposition='bottom' animations='$animations' hide_timeout='$timeout' osd_halignment='center'>$MSG</message>" \
 		| sudo -u $user $GOSDC -s --dbus
 	    OSD_SHOWN=1
 	fi
@@ -36,8 +41,8 @@ notify() {
 
     if [ -z "$OSD_SHOWN" ] && [ -x /usr/bin/aosd_cat ]; then
 	killall -q aosd_cat
-	if [ -n "$MSG" -a -z "$(echo $MSG | sed 's/.*[0-9]\+//g')" ]; then
-		echo "$MSG%" | aosd_cat -f 0 -u 100 -o 0 -n "$OSD_FONT" &
+	if [ "$3" = 'fast' ]; then
+		echo "$MSG" | aosd_cat -n "$OSD_FONT" -f 0 -u 150 -o 0 &
 	else
 		echo "$MSG" | aosd_cat -n "$OSD_FONT" -f 100 -u 1000 -o 100 &
 	fi

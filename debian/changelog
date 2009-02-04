@@ -10,6 +10,10 @@ eeepc-acpi-scripts (1.0.12) UNRELEASED; urgency=low
   * Give immediate indication of pressing of Fn-F2.
   * The same ACPI key code may be used for wireless on as well as wireless off.
   * Allow reporting via OSD of brightness changes.
+  * Tweaked notifications a bit:
+    - Replaced the heuristic for determining which should be fast
+      notifications with an extra parameter.
+    - Fast notifications stay around for a bit longer.
 
   [ Raphael Geissert ]
   * Auto detect the playback devices and the playback switches

@@ -96,14 +96,9 @@ show_brightness() {
 
 case $code in
     # Fn+F2 -- toggle wireless
-    00000010)
+    0000001[01])
 	notify wireless 'Wireless ...'
 	/etc/acpi/actions/wireless.sh toggle
-	show_wireless
-	;;
-    00000011)
-	notify wireless 'Wireless ...'
-	/etc/acpi/actions/wireless.sh off
 	show_wireless
 	;;
     # Fn+F6

@@ -8,7 +8,7 @@ eeepc-acpi-scripts (1.0.12) UNRELEASED; urgency=low
   * Try to use rfkill when toggling wireless & bluetooth.
   * Ignore events when shutting down or rebooting.
   * Give immediate indication of pressing of Fn-F2.
-  * The same ACPI key code may be used for wireless on as well as wireless off.
+  * The same ACPI key codes may be used for wireless on as well as off.
   * Allow reporting via OSD of brightness changes. (Closes: #501577)
   * Tweaked notifications a bit:
     - Replaced the heuristic for determining which should be fast

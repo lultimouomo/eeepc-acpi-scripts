@@ -86,13 +86,13 @@ handle_camera_toggle() {
     fi
 }
 
-#show_brightness() {
-#    # final digit of ACPI code is brightness level in hex
-#    level=0x${code:${#code}-1}
-#    # convert hex digit to percent
-#    percent=$(((100 * $level + 8) / 15))
-#    notify Brightness $percent
-#}
+show_brightness() {
+    # final digit of ACPI code is brightness level in hex
+    level=$((0x$code & 0xF))
+    # convert hex digit to percent
+    percent=$(((100 * $level + 8) / 15))
+    notify Brightness $percent
+}
 
 case $code in
     # Fn+F2 -- toggle wireless
@@ -138,6 +138,9 @@ case $code in
     # Fn+F4 -- increase brightness
     0000002?)
 	# actual brightness change is handled in hardware
+	if [ "x$ENABLE_OSD_BRIGHTNESS" != "xno" ]; then
+	  show_brightness
+	fi
 	;;
     0000001a)
 	# soft-buton 1

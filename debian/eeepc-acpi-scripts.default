@@ -3,6 +3,10 @@
 ENABLE_OSD='no'
 OSD_FONT='DejaVuSans 36'
 
+# set this and ENABLE_OSD to yes if you want brightness changes via Fn-Fx to
+# be reported
+ENABLE_OSD_BRIGHTNESS='no'
+
 # Leave these empty to attempt to autoconfigure. If they don't work for you
 # lookup the following values by using amixer
 SOUND_LABEL=

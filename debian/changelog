@@ -9,6 +9,7 @@ eeepc-acpi-scripts (1.0.12) UNRELEASED; urgency=low
   * Ignore events when shutting down or rebooting.
   * Give immediate indication of pressing of Fn-F2.
   * The same ACPI key code may be used for wireless on as well as wireless off.
+  * Allow reporting via OSD of brightness changes.
 
   [ Raphael Geissert ]
   * Auto detect the playback devices and the playback switches

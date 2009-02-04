@@ -8,9 +8,12 @@ OSD_FONT='DejaVuSans 36'
 ENABLE_OSD_BRIGHTNESS='no'
 
 # Leave these empty to attempt to autoconfigure. If they don't work for you
-# lookup the following values by using amixer; separate multiple values with a
-# blank space and enclose all the values with quotation marks:
-# devices with pvolume capabilities:
+# lookup the following values by using amixer; one control name per line,
+# and enclose them all in *one* pair of single quotation marks, e.g.
+# SOUND_LABEL='PCM
+# LineOut'
+#
+# controls with pvolume capabilities:
 SOUND_LABEL=
 # pswitch capabilities:
 SOUND_SWITCH=

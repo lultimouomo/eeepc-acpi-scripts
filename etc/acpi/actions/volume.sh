@@ -69,6 +69,10 @@ show_volume() {
     notify audio "Volume $msg" fast
 }
 
+# cope with control names which contain spaces
+IFS='
+'
+
 case "$action" in
     toggle)
         for label in $SOUND_SWITCH; do

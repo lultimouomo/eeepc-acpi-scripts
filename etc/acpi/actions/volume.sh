@@ -40,9 +40,9 @@ show_muteness() {
 	msg="$msg $current ($label)"
     done
     if [ "$all_equal" ]; then
-	msg="$status"
+	msg=" $status"
     fi
-    notify audio "Audio $msg"
+    notify audio "Audio$msg"
 }
 
 show_volume() {

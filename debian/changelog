@@ -17,6 +17,7 @@ eeepc-acpi-scripts (1.0.12) UNRELEASED; urgency=low
   * Made the volume stepping configurable, with the default being hw-dependent
     (the test being of the entry for device 00-00 in /proc/asound/pcm):
     ALC269, which my 901 has, is recognised.
+  * When locking the display, if all else fails, try xtrlock.
 
   [ Raphael Geissert ]
   * Auto detect the playback devices and the playback switches

@@ -80,6 +80,7 @@ lock_x_screen()
             if [ -x /usr/bin/dcop ]; then
                 dcop --user $user kdesktop KScreensaverIface lock
             fi
+            [ -x /usr/bin/xtrlock ] && su "$user" -s /usr/bin/xtrlock &
         fi
     fi
 }

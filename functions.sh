@@ -65,6 +65,11 @@ detect_x_display()
     fi
 }
 
+shell_quote()
+{
+  echo "$1" | sed -e 's/'\''/'\''\\'\'''\''/g; s/^/'\''/; s/$/'\''/; $! s/$/\\/'
+}
+
 lock_x_screen()
 {
     # activate screensaver if available
@@ -80,7 +85,7 @@ lock_x_screen()
             if [ -x /usr/bin/dcop ]; then
                 dcop --user $user kdesktop KScreensaverIface lock
             fi
-            [ -x /usr/bin/xtrlock ] && su "$user" -s /usr/bin/xtrlock &
+            [ -x /usr/bin/xtrlock ] && su - "$user" -c "DISPLAY=$(shell_quote "$DISPLAY") XAUTHORITY=$(shell_quote "$XAUTHORITY") /usr/bin/xtrlock" &
         fi
     fi
 }

@@ -1,19 +1,21 @@
+configureSoundFilter() {
+  $AMIXER |
+  grep -B1 "$1" |
+  sed -r "s/^(.*'([^']+)'.*|[^']+())$/\\2/; /^$/ d"
+}
 
 configureSound() {
 
     [ "$SOUND_LABEL" ] || {
-	 SOUND_LABEL="$($AMIXER | grep -B1 pvolume |
-			sed -r "s/^(.*'([^']+)'.*|[^']+())$/\\2/")"
+	 SOUND_LABEL="$(configureSoundFilter pvolume)"
     }
 
     [ "$SOUND_SWITCH" ] || {
-	 SOUND_SWITCH="$($AMIXER | grep -B1 pswitch |
-			sed -r "s/^(.*'([^']+)'.*|[^']+())$/\\2/")"
+	 SOUND_SWITCH="$(configureSoundFilter pswitch)"
     }
 
     [ "$SOUND_SWITCH_EXCLUSIVE" ] || {
-	 SOUND_SWITCH_EXCLUSIVE="$($AMIXER | grep -B1 ': pswitch$' |
-				sed -r "s/^(.*'([^']+)'.*|[^']+())$/\\2/")"
+	 SOUND_SWITCH_EXCLUSIVE="$(configureSoundFilter ': pswitch$')"
     }
 
     [ "$SOUND_VOLUME_STEP" ] || {

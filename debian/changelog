@@ -14,9 +14,8 @@ eeepc-acpi-scripts (1.0.12) UNRELEASED; urgency=low
     - Replaced the heuristic for determining which should be fast
       notifications with an extra parameter.
     - Fast notifications stay around for a bit longer.
-  * Made the volume stepping configurable, with the default being hw-dependent
-    (the test being of the entry for device 00-00 in /proc/asound/pcm):
-    ALC269, which my 901 has, is recognised.
+  * Made the volume stepping configurable, and set the default to 3.125%
+    (which is 2dB for LineOut on at least ALC269 and ALC662).
   * When locking the display, if all else fails, try xtrlock.
 
   [ Raphael Geissert ]

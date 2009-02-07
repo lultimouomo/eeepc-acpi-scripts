@@ -23,10 +23,11 @@ eeepc-acpi-scripts (1.0.12) UNRELEASED; urgency=low
     Closes: #513552 -- Please auto detect the sound devices
 
   [ Ben Armstrong ]
-  * Support ath5k wifi toggling and default to using it if ath_pci is not present.
+  * Support ath5k wifi toggling and default to using it if ath_pci is not
+    present.
   * Fix detection of rfkill on systems that don't have it.
 
- -- Ben Armstrong <synrg@sanctuary.nslug.ns.ca>  Tue, 03 Feb 2009 19:44:50 -0400
+ -- Ben Armstrong <synrg@sanctuary.nslug.ns.ca>  Sat, 07 Feb 2009 14:47:15 -0400
 
 eeepc-acpi-scripts (1.0.11) unstable; urgency=low
 

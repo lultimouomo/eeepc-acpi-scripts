@@ -16,6 +16,8 @@ eeepc-acpi-scripts (1.0.12) UNRELEASED; urgency=low
     - Fast notifications stay around for a bit longer.
   * Made the volume stepping configurable, and set the default to 3.125%
     (which is 2dB for LineOut on at least ALC269 and ALC662).
+  * Blacklist some ALSA volume controls; we want to alter only one of them.
+    (Tested on ALC269 (901) and ALC662 (701).)
   * When locking the display, if all else fails, try xtrlock.
 
   [ Raphael Geissert ]

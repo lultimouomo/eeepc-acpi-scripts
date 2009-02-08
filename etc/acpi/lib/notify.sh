@@ -29,9 +29,9 @@ notify() {
 		animations='on'
 	    fi
 	    if [ "$3" = 'fast' ]; then
-		timeout = 150
+		timeout=150
 	    else
-		timeout = 1200
+		timeout=1200
 	    fi
 	    echo "<message id='eee-$CATEGORY' osd_fake_translucent_bg='off' osd_vposition='bottom' animations='$animations' hide_timeout='$timeout' osd_halignment='center'>$MSG</message>" \
 		| sudo -u $user $GOSDC -s --dbus

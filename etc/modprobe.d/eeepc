@@ -1,3 +1,4 @@
 # module options specific for Asus EeePC
 blacklist pcspkr
 options pciehp pciehp_force=1 pciehp_slot_with_bus=1
+options snd_hda_intel power_save=5

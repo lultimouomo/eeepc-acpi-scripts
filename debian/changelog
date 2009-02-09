@@ -18,6 +18,8 @@ eeepc-acpi-scripts (1.0.12) UNRELEASED; urgency=low
     (which is 2dB for LineOut on at least ALC269 and ALC662).
   * Blacklist some ALSA volume controls; we want to alter only one of them.
     (Tested on ALC269 (901) and ALC662 (701).)
+  * Enable audio power saving, defaulting to a 5-second delay before
+    powering down. (snd_hda_intel power_save in /etc/modprobe.d/eeepc)
   * When locking the display, if all else fails, try xtrlock.
 
   [ Raphael Geissert ]

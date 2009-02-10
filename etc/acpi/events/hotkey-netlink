@@ -1,0 +1,2 @@
+event=hotkey ASUS010:00
+action=/etc/acpi/actions/hotkey.sh %e

@@ -21,6 +21,8 @@ eeepc-acpi-scripts (1.0.12) UNRELEASED; urgency=low
   * Enable audio power saving, defaulting to a 5-second delay before
     powering down. (snd_hda_intel power_save in /etc/modprobe.d/eeepc)
   * When locking the display, if all else fails, try xtrlock.
+  * Prepare for netlink-enabled acpid: ignore lid-open events and handle
+    differently-reported hotkey events.
 
   [ Raphael Geissert ]
   * Auto detect the playback devices and the playback switches

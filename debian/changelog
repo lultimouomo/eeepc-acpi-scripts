@@ -23,6 +23,8 @@ eeepc-acpi-scripts (1.0.12) UNRELEASED; urgency=low
   * When locking the display, if all else fails, try xtrlock.
   * Prepare for netlink-enabled acpid: ignore lid-open events and handle
     differently-reported hotkey events.
+  * Modify /etc/modprobe.d/eeepc for Linux 2.6.28, in which the pciehp
+    module doesn't have the pciehp_slot_with_bus option.
 
   [ Raphael Geissert ]
   * Auto detect the playback devices and the playback switches

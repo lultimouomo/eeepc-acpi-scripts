@@ -23,6 +23,7 @@ eeepc-acpi-scripts (1.0.12) UNRELEASED; urgency=low
   * When locking the display, if all else fails, try xtrlock.
   * Prepare for netlink-enabled acpid: ignore lid-open events and handle
     differently-reported hotkey events.
+  * Blacklist pciehp, which isn't needed on Eee hw with Linux 2.6.29.
 
   [ Raphael Geissert ]
   * Auto detect the playback devices and the playback switches

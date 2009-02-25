@@ -8,7 +8,6 @@ FUNC_LIB=/usr/share/$PKG/functions.sh
 DEFAULT=/etc/default/$PKG
 [ -e $FUNC_LIB ] || exit 0
 
-if [ -e "$DEFAULT" ]; then . "$DEFAULT"; fi
 . $FUNC_LIB
 . /etc/acpi/lib/notify.sh
 . /etc/acpi/lib/sound.sh
@@ -20,13 +19,6 @@ Usage: $0 up|down|toggle
 EOF
     exit 1
 }
-
-AMIXER=/usr/bin/amixer
-
-if ! [ -x $AMIXER ]; then
-    echo "$AMIXER not available" >&2
-    exit 1
-fi
 
 configureSound
 

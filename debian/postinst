@@ -5,6 +5,9 @@ set -e
 case "$1" in
     configure)
         invoke-rc.d acpid restart>/dev/null
+        if [ -x /etc/alsa/modprobe-post-install.d/eeepc-acpi-scripts ]; then
+          /etc/alsa/modprobe-post-install.d/eeepc-acpi-scripts
+        fi
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)

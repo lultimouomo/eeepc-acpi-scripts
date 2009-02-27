@@ -2,7 +2,7 @@
 #
 # to be sourced
 
-rfkill_detect eeepc-bluetooth
+detect_rfkill eeepc-bluetooth
 BT_CTL="$RFKILL"
 [ -e $BT_CTL ] || BT_CTL=/sys/devices/platform/eeepc/bluetooth # pre-2.6.28
 [ -e $BT_CTL ] || BT_CTL=/proc/acpi/asus/bluetooth # pre-2.6.26

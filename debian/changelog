@@ -35,6 +35,9 @@ eeepc-acpi-scripts (1.0.12) UNRELEASED; urgency=low
     present.
   * Fix detection of rfkill on systems that don't have it.
 
+  [ Damyan Ivanov ]
+  * rename etc/modprobe.d/eeepc to eeepc.conf, adapting to modprobe requirement
+
  -- Ben Armstrong <synrg@sanctuary.nslug.ns.ca>  Sat, 07 Feb 2009 14:47:15 -0400
 
 eeepc-acpi-scripts (1.0.11) unstable; urgency=low

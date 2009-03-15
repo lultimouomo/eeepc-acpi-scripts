@@ -34,7 +34,7 @@ install: build
 	install -m 0644 etc/acpi/lib/* $(TMP)/etc/acpi/lib
 	install -m 0755 etc/alsa/modprobe-post-install.d/* $(TMP)/etc/alsa/modprobe-post-install.d
 	install -m 0644 etc/modprobe.d/* $(TMP)/etc/modprobe.d
-	install -m 0644 functions.sh $(TMP)/usr/share/$(PKG)/
+	install -m 0644 functions.sh pciehp.sh $(TMP)/usr/share/$(PKG)/
 
 binary-indep: build install
 	dh_testdir

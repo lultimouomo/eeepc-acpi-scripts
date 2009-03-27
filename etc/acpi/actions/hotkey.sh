@@ -31,11 +31,10 @@ handle_volume_down() {
 }
 
 show_wireless() {
-    detect_wlan
-    if grep -q $WLAN_IF /proc/net/wireless; then
-	status=On
-    else
+    if /etc/acpi/actions/wireless.sh detect; then
 	status=Off
+    else
+	status=On
     fi
     notify wireless "Wireless $status"
 }

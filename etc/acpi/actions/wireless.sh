@@ -17,6 +17,9 @@ if [ "$cmd" = toggle ]; then
 fi
 
 case "$cmd" in
+    detect)
+	exit "$STATE"
+	;;
     on|enable|1)
 	if [ "$STATE" = 0 ]; then
 	    echo 1 > $wlan_control

@@ -78,8 +78,12 @@ case "$1" in
 
     # Load rfkill-input if possible, i.e. kernel is 2.6.28 or newer.
     # This results in faster WLAN hw toggling.
-    if [ "$KERNEL" -ge 28 ] && ! grep -q '^H.*\brfkill\b' /proc/bus/input/devices; then
-      load_module rfkill-input
+    if [ "$KERNEL" -ge 28 ]; then
+      if grep -q '^H.*\brfkill\b' /proc/bus/input/devices; then
+	:
+      else
+        load_module rfkill-input
+      fi
     fi
 
     # Done.

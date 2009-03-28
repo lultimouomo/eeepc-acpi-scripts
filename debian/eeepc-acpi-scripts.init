@@ -12,7 +12,7 @@
 test -f /usr/share/eeepc-acpi-scripts/functions.sh || exit 0
 
 # exit if eeepc-laptop isn't loaded (should be loaded by udev)
-test -d /sys/bus/platforn/devices/eeepc || exit 0
+test -d /sys/bus/platform/devices/eeepc || exit 0
 
 PATH="/sbin:/bin"
 

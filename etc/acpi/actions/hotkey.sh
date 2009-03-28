@@ -97,7 +97,12 @@ case $code in
     # Fn+F2 -- toggle wireless
     0000001[01])
 	notify wireless 'Wireless ...'
-	/etc/acpi/actions/wireless.sh toggle
+	KERNEL="`echo $KERNEL | sed -re 's/^([0-9]+\.){2}([0-9]+).*$/\2/'`"
+	if [ "$KERNEL" -lt 29 ]; then
+	  /etc/acpi/actions/wireless.sh toggle
+	else
+	  sleep 2
+	fi
 	show_wireless
 	;;
     # Fn+F6

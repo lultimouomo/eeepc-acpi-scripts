@@ -1,0 +1,101 @@
+#! /bin/sh -e
+### BEGIN INIT INFO
+# Provides:          eeepc-acpi-scripts
+# Required-Start:    udev mountkernfs
+# Required-Stop:     
+# Default-Start:     S
+# Default-Stop:
+# Short-Description: Load modules which are useful on EeePCs and similar hardware
+### END INIT INFO
+
+# exit if package not installed
+test -f /usr/share/eeepc-acpi-scripts/functions.sh || exit 0
+
+# exit if eeepc-laptop isn't loaded (should be loaded by udev)
+test -d /sys/module/eeepc_laptop || exit 0
+
+PATH="/sbin:/bin"
+
+. /lib/lsb/init-functions
+
+load_module ()
+{
+  log_action_cont_msg "$1"
+  maybe_warn modprobe $@
+}
+
+maybe_warn ()
+{
+  local WARN
+  WARN="$($@ 2>&1 || :)"
+  if [ -n "$WARN" ]; then
+    echo "$WARN"
+    log_warning_msg "$WARN"
+  fi
+}
+
+case "$1" in
+  start|restart|reload|force-reload)
+
+    # First, get the kernel version.
+
+    KERNEL="`uname -r`"
+    case "$KERNEL" in
+      2.6.*)
+	KERNEL="`echo $KERNEL | sed -re 's/^([0-9]+\.){2}([0-9]+).*$/\2/'`"
+	;;
+      *)
+	KERNEL=0
+        ;;
+    esac
+
+    # Now load the modules. We ignore failure since it's possible that
+    # they're built into the running kernel.
+
+    log_action_begin_msg 'Loading EeePC support modules'
+
+    # Load pciehp if required.
+    # There are three recognised cases:
+    # - kernel 2.6.26 & older: two parameters required
+    # - kernel 2.6.27 & .28  : one of those parameters has been removed
+    # - kernel 2.6.29 & newer: hotplugging is handled in eeepc-laptop
+    if [ -d /sys/module/pciehp ]; then
+      # Hmm, already present
+      if [ "$KERNEL" -ge 29 ]; then
+        # 2.6.29 and newer (problem)
+        log_warning_msg 'Module "pciehp" is loaded; trying to unload'
+        maybe_warn modprobe -r pciehp
+      fi
+    else
+      # Load it if needed
+      if [ "$KERNEL" -lt 27 ]; then
+        # 2.6.26 and older
+        load_module pciehp pciehp_force=1 pciehp_slot_with_bus=1
+      elif [ "$KERNEL" -lt 29 ]; then
+        # 2.6.27 and 2.6.28
+        load_module pciehp pciehp_force=1
+      fi
+    fi
+
+    # Load rfkill-input if possible, i.e. kernel is 2.6.28 or newer.
+    # This results in faster WLAN hw toggling.
+    if [ "$KERNEL" -ge 28 ] && ! grep -q '^H.*\brfkill\b' /proc/bus/input/devices; then
+      load_module rfkill-input
+    fi
+
+    # Done.
+
+    log_action_end_msg 0
+    ;;
+
+  stop)
+    # Nothing to do.
+    ;;
+
+  *)
+    echo "Usage: /etc/init.d/eeepc-acpi-scripts {start|stop|restart|reload|force-reload}"
+    exit 1
+    ;;
+esac
+
+exit 0

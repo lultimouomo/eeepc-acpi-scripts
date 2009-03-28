@@ -12,7 +12,7 @@
 test -f /usr/share/eeepc-acpi-scripts/functions.sh || exit 0
 
 # exit if eeepc-laptop isn't loaded (should be loaded by udev)
-test -d /sys/module/eeepc_laptop || exit 0
+test -d /sys/bus/platforn/devices/eeepc || exit 0
 
 PATH="/sbin:/bin"
 
@@ -29,7 +29,6 @@ maybe_warn ()
   local WARN
   WARN="$($@ 2>&1 || :)"
   if [ -n "$WARN" ]; then
-    echo "$WARN"
     log_warning_msg "$WARN"
   fi
 }

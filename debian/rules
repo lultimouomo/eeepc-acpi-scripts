@@ -33,7 +33,7 @@ install: build
 	install -m 0644 etc/acpi/events/* $(TMP)/etc/acpi/events
 	install -m 0644 etc/acpi/lib/* $(TMP)/etc/acpi/lib
 	install -m 0644 etc/modprobe.d/* $(TMP)/etc/modprobe.d
-	install -m 0644 etc/udev/rules.d/* $(TMP)/etc/udev/rules.d
+	install -m 0644 etc/udev/* $(TMP)/etc/udev
 	install -m 0755 lib/udev/* $(TMP)/lib/udev
 	install -m 0644 functions.sh $(TMP)/usr/share/$(PKG)/
 

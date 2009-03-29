@@ -1,4 +1,7 @@
 #! /bin/sh
+(
+#. /lib/udev/hotplug.functions
+#wait_for_file ... something which will indicate /var being r/w?
 . /etc/acpi/lib/sound.sh
 
 SOUND_LABEL=
@@ -16,6 +19,7 @@ echo DEF_SOUND_SWITCH=\'"$(echo "$SOUND_SWITCH" | sed -e "s/'/'\\''/g")"\'
 echo DEF_SOUND_SWITCH_EXCLUSIVE=\'"$(echo "$SOUND_SWITCH_EXCLUSIVE" | sed -e "s/'/'\\''/g")"\'
 echo DEF_SOUND_VOLUME_STEP=\'"$(echo "$SOUND_VOLUME_STEP" | sed -e "s/'/'\\''/g")"\'
 )"
-echo "$SOUND_VARS" | {
-  test -f "$SOUND_FILE" && cmp -s - "$SOUND_FILE" || echo "$SOUND_VARS" >"$SOUND_FILE"
-}
+OLD_SOUND_VARS="$(cat "$SOUND_FILE" 2>/dev/null)"
+test "$SOUND_VARS" = "$OLD_SOUND_VARS" || echo "$SOUND_VARS" >"$SOUND_FILE"
+) &
+test "$1" = '' || wait %1

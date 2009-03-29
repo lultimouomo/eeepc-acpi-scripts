@@ -48,6 +48,15 @@ case "$1" in
         ;;
     esac
 
+    # Run our udev action now.
+    # Running it when udev is started is too early; if we can avoid running
+    # that too early (we wait on something which indicates when /var is
+    # writable) then we can remove this.
+
+    log_action_begin_msg 'Initialising eeepc-acpi-scripts'
+    /lib/udev/eeepc-acpi-scripts - || log_failure_msg
+    log_action_end_msg 0
+
     # Now load the modules. We ignore failure since it's possible that
     # they're built into the running kernel.
 

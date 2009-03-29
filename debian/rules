@@ -32,8 +32,9 @@ install: build
 	install -m 0755 etc/acpi/actions/* $(TMP)/etc/acpi/actions
 	install -m 0644 etc/acpi/events/* $(TMP)/etc/acpi/events
 	install -m 0644 etc/acpi/lib/* $(TMP)/etc/acpi/lib
-	install -m 0755 etc/alsa/modprobe-post-install.d/* $(TMP)/etc/alsa/modprobe-post-install.d
 	install -m 0644 etc/modprobe.d/* $(TMP)/etc/modprobe.d
+	install -m 0644 etc/udev/rules.d/* $(TMP)/etc/udev/rules.d
+	install -m 0755 lib/udev/* $(TMP)/lib/udev
 	install -m 0644 functions.sh $(TMP)/usr/share/$(PKG)/
 
 binary-indep: build install

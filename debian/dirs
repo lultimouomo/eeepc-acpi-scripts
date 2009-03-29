@@ -3,6 +3,7 @@ etc/acpi/actions
 etc/acpi/events
 etc/acpi/lib
 etc/modprobe.d
-etc/alsa/modprobe-post-install.d
+etc/udev/rules.d
+lib/udev
 usr/share/eeepc-acpi-scripts
 var/cache/eeepc-acpi-scripts

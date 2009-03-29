@@ -6,4 +6,3 @@ etc/modprobe.d
 etc/udev/rules.d
 lib/udev
 usr/share/eeepc-acpi-scripts
-var/cache/eeepc-acpi-scripts

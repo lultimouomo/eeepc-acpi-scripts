@@ -4,7 +4,7 @@
 
 PKG=eeepc-acpi-scripts
 DEFAULT=/etc/default/$PKG
-SOUND_FILE=/var/cache/$PKG/sound
+SOUND_FILE=/lib/init/rw/$PKG.sound
 AMIXER=/usr/bin/amixer
 
 [ -e "$SOUND_FILE" ] && . "$SOUND_FILE"

@@ -1,14 +1,12 @@
 #!/bin/sh
 
 PKG=eeepc-acpi-scripts
-SOUND_FILE=/var/cache/$PKG/sound
 
 set -e
 
 case "$1" in
     purge)
         invoke-rc.d acpid restart>/dev/null
-        rm -f "$SOUND_FILE"
     ;;
     remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
         invoke-rc.d acpid restart>/dev/null

@@ -1,4 +1,4 @@
-eeepc-acpi-scripts (1.0.12) UNRELEASED; urgency=low
+eeepc-acpi-scripts (1.1.0) UNRELEASED; urgency=low
 
   [ Darren Salt ]
   * Detect who's running an X session by looking for a controlling process

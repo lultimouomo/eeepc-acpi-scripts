@@ -1,3 +1,45 @@
+eeepc-acpi-scripts (1.1.0) unstable; urgency=low
+
+  * There is no longer any need for pciehp to be listed in /etc/modules.
+    With a new-enough kernel, it is no longer required; there is a script,
+    run during startup, which will load it if an older kernel is in use.
+
+  * If you leave LOCK_SCREEN_ON_SUSPEND='yes' in
+    /etc/default/eeepc-acpi-scripts then, with some login managers, you may
+    have to use the root password when resuming after suspend-to-RAM.
+
+    To avoid this, you will need to check that your X session is appearing
+    in 'who' output:
+
+        $ who | grep ' :0'
+
+    If that shows your user name, you need do nothing about this.
+
+    Otherwise, you will need to modify your login manager's configuration so
+    that the session is properly registered and deregistered.
+
+    As far as we are aware, only slim has this problem. If you use slim,
+    you'll need to edit etc/slim.conf. There are two lines, initially
+    commented out, containing "sessionstart_cmd" and "sessionstop_cmd". They
+    need to be modified such that they contain sessreg commands and are not
+    commented out, like this:
+
+        sessionstart_cmd  	exec sessreg -a -l :0 %user
+        sessionstop_cmd  	exec sessreg -d -l :0 %user
+
+    (Specifically, the problem is known to occur with xtrlock when your X
+    session wasn't registered and you have no X terminals open.)
+
+    See also http://bugs.debian.org/522468
+
+  * If you normally compile your own kernel, you must make sure that
+    rfkill-input is available else you may have problems toggling wireless
+    networking with 2.6.28 and later (the kernel will do the toggling
+    itself and the hotkey script will be racing against the kernel, quite
+    likely switching wireless networking off again).
+
+ -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Fri, 03 Apr 2009 23:04:22 +0100
+
 eeepc-acpi-scripts (1.0.9) unstable; urgency=low
 
   * This version provides an /etc/modprobe.d/eeepc file containing the right

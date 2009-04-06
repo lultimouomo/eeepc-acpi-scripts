@@ -3,6 +3,5 @@ etc/acpi/actions
 etc/acpi/events
 etc/acpi/lib
 etc/modprobe.d
-etc/udev/rules.d
-lib/udev
+lib/udev/rules.d
 usr/share/eeepc-acpi-scripts

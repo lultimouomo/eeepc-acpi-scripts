@@ -1,4 +1,4 @@
-eeepc-acpi-scripts (1.1.0) UNRELEASED; urgency=low
+eeepc-acpi-scripts (1.1.0) unstable; urgency=low
 
   [ Darren Salt ]
   * Detect who's running an X session by looking for a controlling process
@@ -43,7 +43,7 @@ eeepc-acpi-scripts (1.1.0) UNRELEASED; urgency=low
   * Standards-Version: 3.8.1 (no changes needed)
   * stop saving/restoring brightness on suspend
 
- -- Ben Armstrong <synrg@sanctuary.nslug.ns.ca>  Sat, 07 Feb 2009 14:47:15 -0400
+ -- Damyan Ivanov <dmn@debian.org>  Thu, 09 Apr 2009 12:03:27 +0300
 
 eeepc-acpi-scripts (1.0.11) unstable; urgency=low
 

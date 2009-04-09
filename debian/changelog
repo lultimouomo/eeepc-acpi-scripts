@@ -41,6 +41,7 @@ eeepc-acpi-scripts (1.1.0) UNRELEASED; urgency=low
   * rename etc/modprobe.d/eeepc to eeepc.conf, adapting to modprobe requirement
     Closes: #518573
   * Standards-Version: 3.8.1 (no changes needed)
+  * stop saving/restoring brightness on suspend
 
  -- Ben Armstrong <synrg@sanctuary.nslug.ns.ca>  Sat, 07 Feb 2009 14:47:15 -0400
 

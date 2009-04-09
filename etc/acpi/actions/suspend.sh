@@ -15,11 +15,6 @@ if [ "$LOCK_SCREEN_ON_SUSPEND" = "yes" ]; then
     lock_x_screen
 fi
 
-brn_control=/sys/class/backlight/eeepc/brightness
-[ -e $brn_control ] || brn_control=/proc/acpi/asus/brn # pre-2.6.26
-
-brightness=$(cat $brn_control)
-
 # Setting defaults in case /etc/default/eeepc-acpi-scripts was not updated
 # Only set SUSPEND_OPTIONS if SUSPEND_METHOD is empty, because some methods
 # don't need/take any option.
@@ -31,5 +26,3 @@ if [ -z "$(which "$SUSPEND_METHOD")" ]; then
 fi
 
 $SUSPEND_METHOD $SUSPEND_OPTIONS
-
-echo $brightness > $brn_control

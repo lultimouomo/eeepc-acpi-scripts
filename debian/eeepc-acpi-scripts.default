@@ -67,7 +67,7 @@ LOCK_SCREEN_ON_SUSPEND='yes'
 # /sys/devices/platform/bluetooth is not present
 BLUETOOTH_FALLBACK_TO_HCITOOL='yes'
 
-# Configuration of "soft" keys found on models 900 and above
+# Configuration of "soft" keys
 # The possible actions are:
 #  - handle_blank_screen
 #      Turns the lid off. Does not activate any screen saver.
@@ -89,11 +89,24 @@ BLUETOOTH_FALLBACK_TO_HCITOOL='yes'
 #  - custom command
 #      For example you can write a shell function in this file and use its name
 #      as an action, or call another internal or external command
+
+# The silver keys, found on models 900 and above
 SOFTBTN1_ACTION='handle_blank_screen'
 SOFTBTN2_ACTION='NONE'
 SOFTBTN3_ACTION='handle_camera_toggle'
 SOFTBTN4_ACTION='handle_bluetooth_toggle'
-FnF6='NONE'
-FnF7='handle_mute_toggle'
-FnF8='handle_volume_down'
-FnF9='handle_volume_up'
+
+# Various Fn + key, not all of which are found on all models (or all BIOSes)
+# Labelling is "<700/900-series key>/<1000-series key> - function"
+# "--" = not available
+# --/F7 - backlight off
+FnF_BACKLIGHTOFF='handle_blank_screen'
+# F6/F9 - 'task manager' key
+FnF_TASKMGR='NONE'
+# F7/F10 - mute/unmute speakers
+FnF_MUTE='handle_mute_toggle'
+# F8/F11 - decrease volume
+FnF_VOLUMEDOWN='handle_volume_down'
+# F9/F12 - increase volume
+FnF_VOLUMEUP='handle_volume_up'
+

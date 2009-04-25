@@ -94,7 +94,14 @@ show_brightness() {
 }
 
 case $code in
-    # Fn+F2 -- toggle wireless
+    # Fn + key:
+    # <700/900-series key>/<1000-series key> - function
+    # "--" = not available
+
+    # F1/F1 - suspend
+    # (not a hotkey, not handled here)
+
+    # F2/F2 - toggle wireless
     0000001[01])
 	notify wireless 'Wireless ...'
 	if grep -q '^H.*\brfkill\b' /proc/bus/input/devices; then
@@ -104,62 +111,90 @@ case $code in
 	fi
 	show_wireless
 	;;
-    # Fn+F6
-    00000012)
-	if [ "${FnF6:-NONE}" != 'NONE' ]; then
-	    $FnF6
-	fi
-	;;
-    # Fn+F7 -- mute/unmute speakers
-    00000013)
-	if [ "${FnF7:-handle_mute_toggle}" != 'NONE' ]; then
-	    ${FnF7:-handle_mute_toggle}
-	fi
-	;;
-    # Fn+F8 -- decrease volume
-    00000014)
-	if [ "${FnF8:-handle_volume_down}" != 'NONE' ]; then
-	    ${FnF8:-handle_volume_down}
-	fi
-	;;
-    # Fn+F9 -- increase volume
-    00000015)
-	if [ "${FnF9:-handle_volume_up}" != 'NONE' ]; then
-	    ${FnF9:-handle_volume_up}
-	fi
-	;;
-	# F+F5 -- toggle vga
-	0000003[012])
-	/etc/acpi/actions/vga-toggle.sh
-	;;
-    # Fn+F3 -- decrease brightness
-    # Fn+F4 -- increase brightness
+
+    # --/F3 - touchpad toggle
+    # (ACPI event code not known)
+
+    # --/F4 - resolution change
+    # (ACPI event code not known)
+
+    # F3/F5 - decrease brightness
+    # F4/F6 - increase brightness
     0000002?)
 	# actual brightness change is handled in hardware
 	if [ "x$ENABLE_OSD_BRIGHTNESS" != "xno" ]; then
 	  show_brightness
 	fi
 	;;
+
+    # --/F7 - backlight off
+    00000016)
+	if [ "${FnF_BACKLIGHTOFF:-handle_blank_screen}" != 'NONE' ]; then
+	    ${FnF_BACKLIGHTOFF:-handle_blank_screen}
+	fi
+	;;
+
+    # F5/F8 - toggle VGA
+    0000003[012])
+	/etc/acpi/actions/vga-toggle.sh
+	;;
+
+    # F6/F9 - 'task manager' key
+    00000012)
+	if [ "${FnF_TASKMGR:-NONE}" != 'NONE' ]; then
+	    $FnF_TASKMGR
+	fi
+	;;
+
+    # F7/F10 - mute/unmute speakers
+    00000013)
+	if [ "${FnF_MUTE:-handle_mute_toggle}" != 'NONE' ]; then
+	    ${FnF_MUTE:-handle_mute_toggle}
+	fi
+	;;
+
+    # F8/F11 - decrease volume
+    00000014)
+	if [ "${FnF_VOLUMEDOWN:-handle_volume_down}" != 'NONE' ]; then
+	    ${FnF_VOLUMEDOWN:-handle_volume_down}
+	fi
+	;;
+
+    # F9/F12 - increase volume
+    00000015)
+	if [ "${FnF_VOLUMEUP:-handle_volume_up}" != 'NONE' ]; then
+	    ${FnF_VOLUMEUP:-handle_volume_up}
+	fi
+	;;
+
+    # --/Space - SHE management
+    # (ACPI event code not known)
+
+    # Silver keys, left to right
+
+    # Soft button 1
     0000001a)
-	# soft-buton 1
 	if [ "${SOFTBTN1_ACTION:-handle_blank_screen}" != 'NONE' ]; then
 	    ${SOFTBTN1_ACTION:-handle_blank_screen}
 	fi
 	;;
+
+    # Soft button 2
     0000001b)
-	# soft-buton 2
 	if [ "${SOFTBTN2_ACTION}" != 'NONE' ]; then
 	    ${SOFTBTN2_ACTION}
 	fi
 	;;
+
+    # Soft button 3
     0000001c)
-	# soft-buton 3
 	if [ "${SOFTBTN3_ACTION:-handle_camera_toggle}" != 'NONE' ]; then
 	    ${SOFTBTN3_ACTION:-handle_camera_toggle}
 	fi
 	;;
+
+    # Soft button 4
     0000001d)
-	# soft-buton 4
 	if [ "${SOFTBTN4_ACTION:-handle_bluetooth_toggle}" != 'NONE' ]; then
 	    ${SOFTBTN4_ACTION:-handle_bluetooth_toggle}
 	fi

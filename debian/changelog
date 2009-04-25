@@ -1,3 +1,15 @@
+eeepc-acpi-scripts (1.1.1) unstable; urgency=low
+
+  * Add support for Fn-F7 (on 10xx models). Default is screen blanking.
+  * Rearrange hotkey handling a bit (no functional changes), fix comments
+    and document keys for which we don't yet have event codes.
+  * Configuration settings FnF6, FnF7, FnF8 and FnF9 are renamed to reflect
+    function rather than location.
+    (We've had one instance of renaming to reflect location on a 1000-series
+    without corresponding fixes in the hotkey handler script.)
+
+ -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Sat, 25 Apr 2009 16:07:32 +0100
+
 eeepc-acpi-scripts (1.1.0) unstable; urgency=low
 
   [ Darren Salt ]

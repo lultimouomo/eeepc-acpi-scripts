@@ -7,6 +7,8 @@ eeepc-acpi-scripts (1.1.1) unstable; urgency=low
     function rather than location.
     (We've had one instance of renaming to reflect location on a 1000-series
     without corresponding fixes in the hotkey handler script.)
+  * Alter the audio control blacklisting to allow for controls for which
+    (for example) muting only should be allowed.
 
  -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Sat, 25 Apr 2009 16:07:32 +0100
 

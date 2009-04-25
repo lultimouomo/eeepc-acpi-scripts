@@ -20,22 +20,22 @@ configureSoundFilter() {
   $AMIXER |
   grep -B1 "$1" |
   sed -r "s/^(.*'([^']+)'.*|[^']+())$/\\2/; /^$/ d" |
-  grep -ivFf /etc/acpi/lib/eeepc-amixer-blacklist
+  grep -ivF "$(sed -nre "/^#/ d; /!/! {p; d}; /!(.*,)?\b$2\b/ d; s/\s*!.*//; p" /etc/acpi/lib/eeepc-amixer-blacklist)"
 }
 
 # Defaults
 configureSound() {
 
     [ "$SOUND_LABEL" ] || {
-	 SOUND_LABEL="$(configureSoundFilter pvolume)"
+	 SOUND_LABEL="$(configureSoundFilter pvolume volume)"
     }
 
     [ "$SOUND_SWITCH" ] || {
-	 SOUND_SWITCH="$(configureSoundFilter pswitch)"
+	 SOUND_SWITCH="$(configureSoundFilter pswitch mute)"
     }
 
     [ "$SOUND_SWITCH_EXCLUSIVE" ] || {
-	 SOUND_SWITCH_EXCLUSIVE="$(configureSoundFilter ': pswitch$')"
+	 SOUND_SWITCH_EXCLUSIVE="$(configureSoundFilter ': pswitch$' mute)"
     }
 
     [ "$SOUND_VOLUME_STEP" ] || {

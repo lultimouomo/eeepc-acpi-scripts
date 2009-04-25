@@ -9,8 +9,9 @@ eeepc-acpi-scripts (1.1.1) unstable; urgency=low
     without corresponding fixes in the hotkey handler script.)
   * Alter the audio control blacklisting to allow for controls for which
     (for example) muting only should be allowed.
+  * Add "Beep" to the audio control blacklist, but only for volume control.
 
- -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Sat, 25 Apr 2009 16:07:32 +0100
+ -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Sat, 25 Apr 2009 16:47:17 +0100
 
 eeepc-acpi-scripts (1.1.0) unstable; urgency=low
 

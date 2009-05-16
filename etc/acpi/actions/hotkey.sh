@@ -113,10 +113,12 @@ case $code in
 	;;
 
     # --/F3 - touchpad toggle
-    # (ACPI event code not known)
+    00000037)
+	;;
 
     # --/F4 - resolution change
-    # (ACPI event code not known)
+    00000038)
+	;;
 
     # F3/F5 - decrease brightness
     # F4/F6 - increase brightness

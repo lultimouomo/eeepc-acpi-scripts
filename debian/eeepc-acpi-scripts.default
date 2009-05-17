@@ -84,6 +84,8 @@ BLUETOOTH_FALLBACK_TO_HCITOOL='yes'
 #  - handle_volume_up
 #  - handle_volume_down
 #      Adjust volume level
+#  - handle_shengine
+#      Change 'super hybrid engine' setting
 #  - NONE
 #      Ignore the key
 #  - custom command

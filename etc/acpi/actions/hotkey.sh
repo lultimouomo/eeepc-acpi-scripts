@@ -114,6 +114,10 @@ case $code in
 
     # --/F3 - touchpad toggle
     00000037)
+	. /etc/acpi/lib/touchpad.sh
+	toggle_touchpad &&
+	    notify touchpad 'Touchpad on' ||
+	    notify touchpad 'Touchpad off'
 	;;
 
     # --/F4 - resolution change

@@ -1,6 +1,8 @@
 eeepc-acpi-scripts (1.1.1) unstable; urgency=low
 
   * Add support for Fn-F7 (on 10xx models). Default is screen blanking.
+    Add support for Fn-F3 (touchpad toggle on 10xx models).
+    (Closes: #528759)
   * Rearrange hotkey handling a bit (no functional changes), fix comments
     and document keys for which we don't yet have event codes.
   * Configuration settings FnF6, FnF7, FnF8 and FnF9 are renamed to reflect

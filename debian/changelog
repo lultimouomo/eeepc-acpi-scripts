@@ -10,6 +10,7 @@ eeepc-acpi-scripts (1.1.1) unstable; urgency=low
   * Alter the audio control blacklisting to allow for controls for which
     (for example) muting only should be allowed.
   * Add "Beep" to the audio control blacklist, but only for volume control.
+  * Allow fine-grained control over the lid-closing action.
 
  -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Sat, 25 Apr 2009 16:47:17 +0100
 

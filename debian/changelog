@@ -1,5 +1,6 @@
 eeepc-acpi-scripts (1.1.1) unstable; urgency=low
 
+  [ Darren Salt ]
   * Add support for Fn-F7 (on 10xx models). Default is screen blanking.
   * Rearrange hotkey handling a bit (no functional changes), fix comments
     and document keys for which we don't yet have event codes.
@@ -10,9 +11,11 @@ eeepc-acpi-scripts (1.1.1) unstable; urgency=low
   * Alter the audio control blacklisting to allow for controls for which
     (for example) muting only should be allowed.
   * Add "Beep" to the audio control blacklist, but only for volume control.
+
+  [ Raphael Geissert ]
   * Allow fine-grained control over the lid-closing action.
 
- -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Sat, 25 Apr 2009 16:47:17 +0100
+ -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Mon, 25 May 2009 11:25:50 +0100
 
 eeepc-acpi-scripts (1.1.0) unstable; urgency=low
 

@@ -10,8 +10,9 @@ eeepc-acpi-scripts (1.1.1) unstable; urgency=low
   * Alter the audio control blacklisting to allow for controls for which
     (for example) muting only should be allowed.
   * Add "Beep" to the audio control blacklist, but only for volume control.
-  * Add support for the 'super hybrid engine', ready for when the kernel
-    gets this support.
+  * Add support for the 'super hybrid engine', which is accessible in kernel
+    2.6.30-rc7 and later, and allow for automatic upclocking when on AC and
+    downclocking when on battery (default is not to do so).
 
  -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Sat, 25 Apr 2009 16:47:17 +0100
 

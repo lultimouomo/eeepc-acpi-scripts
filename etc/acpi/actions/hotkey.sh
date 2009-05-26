@@ -70,11 +70,17 @@ handle_bluetooth_toggle() {
 handle_shengine() {
     . /etc/acpi/lib/shengine.sh
     if [ -e "$SHENGINE_CTL" ]; then
-	cycle_shengine
-	case $? in
+	if [ "$1" = '' ]; then
+	    cycle_shengine
+	else
+	    set_shengine "$1"
+	fi
+	if [ "$2" != '' ]; then return; fi
+	case $(get_shengine) in
 	    0) notify super_hybrid_engine 'S. H. Engine: Performance'; ;;
 	    1) notify super_hybrid_engine 'S. H. Engine: Standard'; ;;
 	    2) notify super_hybrid_engine 'S. H. Engine: Power-saving'; ;;
+	    255) notify super_hybrid_engine 'S. H. Engine: Automatic'; ;;
 	    *) notify error 'S. H. Engine unavailable'
 	esac
     else
@@ -216,4 +222,27 @@ case $code in
 	    ${SOFTBTN4_ACTION:-handle_bluetooth_toggle}
 	fi
 	;;
+
+    # Other "hotkey" events
+
+    # AC adapter present
+    00000050)
+	. /etc/acpi/lib/shengine.sh
+	if [ "$SHENGINE_SETTING" = auto ]; then
+	    if [ "$PWR_CLOCK_AC" -a $(get_shengine -) -gt "$PWR_CLOCK_AC" ]; then
+		handle_shengine "$PWR_CLOCK_AC" -
+	    fi
+	fi
+	;;
+
+    # AC adapter not present
+    00000051)
+	. /etc/acpi/lib/shengine.sh
+	if [ "$SHENGINE_SETTING" = auto ]; then
+	    if [ "$PWR_CLOCK_BATTERY" -a $(get_shengine -) -lt "$PWR_CLOCK_BATTERY" ]; then
+		handle_shengine "$PWR_CLOCK_BATTERY" -
+	    fi
+	fi
+	;;
+
 esac

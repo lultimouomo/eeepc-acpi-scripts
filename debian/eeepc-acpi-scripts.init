@@ -89,6 +89,22 @@ case "$1" in
     # Done.
 
     log_action_end_msg 0
+
+    if [ -f /etc/default/eeepc-acpi-scripts -a -f /etc/acpi/lib/shengine.sh ]; then
+	log_action_begin_msg 'Setting super hybrid engine according to configuration'
+	. /etc/default/eeepc-acpi-scripts
+	. /etc/acpi/lib/shengine.sh
+	if [ "$SHENGINE_SETTING" != auto ]; then
+	    log_action_cont_msg '(manual)'
+	elif [ "$(cat /sys/class/power_supply/AC0/online 2>/dev/null)" = 0 ]; then
+	    log_action_cont_msg '(battery)'
+	    [ "${PWR_CLOCK_BATTERY:+x}" ] && set_shengine "$PWR_CLOCK_BATTERY" || :
+	else
+	    log_action_cont_msg '(AC)'
+	    [ "${PWR_CLOCK_AC:+x}" ] && set_shengine "$PWR_CLOCK_AC" || :
+	fi
+	log_action_end_msg $?
+    fi
     ;;
 
   stop)

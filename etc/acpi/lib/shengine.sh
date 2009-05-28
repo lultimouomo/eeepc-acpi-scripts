@@ -3,6 +3,8 @@
 # to be sourced
 
 SHENGINE_CTL=/sys/devices/platform/eeepc/cpufv
+SHENGINE_LIMIT="$(cat "$SHENGINE_CTL" 2>/dev/null)"
+SHENGINE_LIMIT=$(( ${SHENGINE_LIMIT:-768} >> 8 ))
 
 get_shengine()
 {
@@ -16,7 +18,7 @@ cycle_shengine()
 {
     if [ -e "$SHENGINE_CTL" ]; then
 	get_shengine
-	echo $(( ($? + 1) % 3)) > "$SHENGINE_CTL"
+	echo $(( ($? + 1) % $SHENGINE_LIMIT)) > "$SHENGINE_CTL"
     fi
     get_shengine
 }

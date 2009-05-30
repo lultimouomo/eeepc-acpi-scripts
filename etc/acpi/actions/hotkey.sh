@@ -223,26 +223,4 @@ case $code in
 	fi
 	;;
 
-    # Other "hotkey" events
-
-    # AC adapter present
-    00000050)
-	. /etc/acpi/lib/shengine.sh
-	if [ "$SHENGINE_SETTING" = auto ]; then
-	    if [ "$PWR_CLOCK_AC" -a $(get_shengine -) -gt "$PWR_CLOCK_AC" ]; then
-		handle_shengine "$PWR_CLOCK_AC" -
-	    fi
-	fi
-	;;
-
-    # AC adapter not present
-    00000051)
-	. /etc/acpi/lib/shengine.sh
-	if [ "$SHENGINE_SETTING" = auto ]; then
-	    if [ "$PWR_CLOCK_BATTERY" -a $(get_shengine -) -lt "$PWR_CLOCK_BATTERY" ]; then
-		handle_shengine "$PWR_CLOCK_BATTERY" -
-	    fi
-	fi
-	;;
-
 esac

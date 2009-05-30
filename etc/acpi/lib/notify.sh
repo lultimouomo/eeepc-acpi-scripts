@@ -51,6 +51,7 @@ notify() {
 
     if [ -z "$OSD_SHOWN" ] && [ -x /usr/bin/dcop ]; then
 	dcop --user "$user" knotify Notify notify "notification" "knotify" "$MSG" "" "" 16 2
+	OSD_SHOWN=1
     fi
 
     else

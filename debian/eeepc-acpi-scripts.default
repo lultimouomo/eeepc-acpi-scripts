@@ -62,6 +62,14 @@ SUSPEND_OPTIONS=--quirk-s3-bios
 # screen.
 LOCK_SCREEN_ON_SUSPEND='yes'
 
+# Action to perform when the lid is closed.
+# If left empty, or by specifying "suspend", it will suspend via the
+# SUSPEND_METHOD, as specified above.
+# To do nothing, set it to "nothing".
+#
+# Setting it to anything else will result in it being treated as a command.
+LID_CLOSE_ACTION=
+
 # try to load/unload the hci_usb module and use hcitool for checking
 # bluetooth state when the bluetooth control node in
 # /sys/devices/platform/bluetooth is not present

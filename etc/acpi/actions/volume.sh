@@ -76,11 +76,19 @@ case "$action" in
         for label in $SOUND_LABEL $SOUND_SWITCH_EXCLUSIVE; do
             $AMIXER -q set $label "$SOUND_VOLUME_STEP"- unmute
         done
+        # in case something was unmuted, make sure everything else is
+        for label in $SOUND_SWITCH; do
+            $AMIXER -q set $label unmute
+        done
         show_volume
         ;;
     up)
         for label in $SOUND_LABEL $SOUND_SWITCH_EXCLUSIVE; do
             $AMIXER -q set $label "$SOUND_VOLUME_STEP"+ unmute
+        done
+        # in case something was unmuted, make sure everything else is
+        for label in $SOUND_SWITCH; do
+            $AMIXER -q set $label unmute
         done
         show_volume
         ;;

@@ -135,6 +135,10 @@ case $code in
 
     # --/F3 - touchpad toggle
     00000037)
+	. /etc/acpi/lib/touchpad.sh
+	toggle_touchpad &&
+	    notify touchpad 'Touchpad on' ||
+	    notify touchpad 'Touchpad off'
 	;;
 
     # --/F4 - resolution change
@@ -152,7 +156,7 @@ case $code in
 
     # --/F7 - backlight off
     00000016)
-	if [ "${FnF_BACKLIGHTOFF:-handle_blank_screen}" != 'NONE' ]; then
+	if [ "${FnF_BACKLIGHTOFF}" != 'NONE' ]; then
 	    ${FnF_BACKLIGHTOFF:-handle_blank_screen}
 	fi
 	;;
@@ -171,21 +175,21 @@ case $code in
 
     # F7/F10 - mute/unmute speakers
     00000013)
-	if [ "${FnF_MUTE:-handle_mute_toggle}" != 'NONE' ]; then
+	if [ "${FnF_MUTE}" != 'NONE' ]; then
 	    ${FnF_MUTE:-handle_mute_toggle}
 	fi
 	;;
 
     # F8/F11 - decrease volume
     00000014)
-	if [ "${FnF_VOLUMEDOWN:-handle_volume_down}" != 'NONE' ]; then
+	if [ "${FnF_VOLUMEDOWN}" != 'NONE' ]; then
 	    ${FnF_VOLUMEDOWN:-handle_volume_down}
 	fi
 	;;
 
     # F9/F12 - increase volume
     00000015)
-	if [ "${FnF_VOLUMEUP:-handle_volume_up}" != 'NONE' ]; then
+	if [ "${FnF_VOLUMEUP}" != 'NONE' ]; then
 	    ${FnF_VOLUMEUP:-handle_volume_up}
 	fi
 	;;
@@ -197,7 +201,7 @@ case $code in
 
     # Soft button 1
     0000001a)
-	if [ "${SOFTBTN1_ACTION:-handle_blank_screen}" != 'NONE' ]; then
+	if [ "${SOFTBTN1_ACTION}" != 'NONE' ]; then
 	    ${SOFTBTN1_ACTION:-handle_blank_screen}
 	fi
 	;;
@@ -211,14 +215,14 @@ case $code in
 
     # Soft button 3
     0000001c)
-	if [ "${SOFTBTN3_ACTION:-handle_camera_toggle}" != 'NONE' ]; then
+	if [ "${SOFTBTN3_ACTION}" != 'NONE' ]; then
 	    ${SOFTBTN3_ACTION:-handle_camera_toggle}
 	fi
 	;;
 
     # Soft button 4
     0000001d)
-	if [ "${SOFTBTN4_ACTION:-handle_bluetooth_toggle}" != 'NONE' ]; then
+	if [ "${SOFTBTN4_ACTION}" != 'NONE' ]; then
 	    ${SOFTBTN4_ACTION:-handle_bluetooth_toggle}
 	fi
 	;;

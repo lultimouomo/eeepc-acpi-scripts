@@ -1,6 +1,9 @@
 eeepc-acpi-scripts (1.1.1) unstable; urgency=low
 
+  [ Darren Salt ]
   * Add support for Fn-F7 (on 10xx models). Default is screen blanking.
+    Add support for Fn-F3 (touchpad toggle on 10xx models).
+    (Closes: #528759)
   * Rearrange hotkey handling a bit (no functional changes), fix comments
     and document keys for which we don't yet have event codes.
   * Configuration settings FnF6, FnF7, FnF8 and FnF9 are renamed to reflect
@@ -10,11 +13,17 @@ eeepc-acpi-scripts (1.1.1) unstable; urgency=low
   * Alter the audio control blacklisting to allow for controls for which
     (for example) muting only should be allowed.
   * Add "Beep" to the audio control blacklist, but only for volume control.
+  * Make sure that, if some controls is unmuted due to volume level change,
+    all other relevant controls are unmuted.
+  * Fix a bashism in debian/rules.
   * Add support for the 'super hybrid engine', which is accessible in kernel
     2.6.30-rc7 and later, and allow for automatic upclocking when on AC and
     downclocking when on battery (default is not to do so).
 
- -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Sat, 25 Apr 2009 16:47:17 +0100
+  [ Raphael Geissert ]
+  * Allow fine-grained control over the lid-closing action.
+
+ -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Mon, 25 May 2009 11:25:50 +0100
 
 eeepc-acpi-scripts (1.1.0) unstable; urgency=low
 

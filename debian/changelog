@@ -15,6 +15,7 @@ eeepc-acpi-scripts (1.1.1) unstable; urgency=low
   * Add "Beep" to the audio control blacklist, but only for volume control.
   * Make sure that, if some controls is unmuted due to volume level change,
     all other relevant controls are unmuted.
+  * Fix a bashism in debian/rules.
 
   [ Raphael Geissert ]
   * Allow fine-grained control over the lid-closing action.

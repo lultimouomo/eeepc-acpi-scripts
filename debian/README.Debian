@@ -1,21 +1,27 @@
 eeepc-acpi-scripts for Debian
 -----------------------------
 
-The Eee PC support for Debian is under constant improvement,
-please also check our wiki[0] and contribute.
+The Eee PC support for Debian is under constant improvement. Please also
+check our wiki and contribute.
 
-You may want to adapt the VOLUME_LABEL and HEADPHONE_LABEL
-in /etc/default/eeepc-acpi-scripts if you experience problems with your
-sound-fn-keys.
-Your mixer settings might differ from the ones shipped in the
-package, we still search a sane solution for this. To get the correct values
-for these labels check the output of "amixer". On some Eee PC's the correct
-values are 'Front' and 'Headphone'.
+  http://wiki.debian.org/DebianEeePC
+
+You may want to change the values of VOLUME_LABEL and HEADPHONE_LABEL in
+/etc/default/eeepc-acpi-scripts if you experience problems with your sound
+function keys; however, we expect that auto-detection will work. Should it
+fail, you will need to get the correct values for these labels – check the
+output of "amixer" and set the configuration items accordingly; tell us what
+you've done or ask if you need help, since it's likely to be something which
+we'll need to fix anyway.
 
 To get nifty osd overlays on changing the volume, switching on wireless
-etc. change ENABLE_OSD to yes in /etc/default/eeepc-acpi-scripts. Make sure you
-have aosd-cat installed then.
+etc., change ENABLE_OSD to yes in /etc/default/eeepc-acpi-scripts (and make
+sure you have aosd-cat installed).
 
-[0] http://wiki.debian.org/DebianEeePC
+/etc/default/eeepc-acpi-scripts contains several other configuration items,
+ranging from what to do when the lid is closed to what effect various
+function keys have. It also contains documentation on what to alter and how
+to alter it if you want to change things.
 
  -- Ben Armstrong <synrg@sanctuary.nslug.ns.ca>  Sun, 17 Feb 2008 12:49:45 -0400
+ -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Wed, 10 Jun 2009 22:30:55 +0100

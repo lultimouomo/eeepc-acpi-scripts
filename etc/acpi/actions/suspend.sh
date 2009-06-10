@@ -2,7 +2,7 @@
 
 # do nothing if package is removed
 FUNC_LIB=/usr/share/eeepc-acpi-scripts/functions.sh
-[ -e $FUNC_LIB ] || exit 0
+[ -e "$FUNC_LIB" ] || exit 0
 
 . /etc/default/eeepc-acpi-scripts
 . $FUNC_LIB

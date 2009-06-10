@@ -57,7 +57,7 @@ detect_x_display()
     fi
     _home=$(getent passwd $_user | cut -d: -f6)
     XAUTHORITY=$_home/.Xauthority
-    if [ -f $XAUTHORITY ]; then
+    if [ -f "$XAUTHORITY" ]; then
         export XAUTHORITY
         export DISPLAY=:0
         user=$_user
@@ -75,7 +75,7 @@ lock_x_screen()
     # activate screensaver if available
     if [ -S /tmp/.X11-unix/X0 ]; then
         detect_x_display
-        if [ -f $XAUTHORITY ]; then
+        if [ -f "$XAUTHORITY" ]; then
             for ss in xscreensaver gnome-screensaver; do
                 [ -x /usr/bin/$ss-command ] \
                     && pidof /usr/bin/$ss > /dev/null \

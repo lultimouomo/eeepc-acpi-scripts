@@ -7,7 +7,7 @@ wlan_control="$RFKILL"
 
 [ -n "$wlan_control" -a -e $wlan_control ] \
     || wlan_control=/sys/devices/platform/eeepc/wlan # pre-2.6.28
-[ -e $wlan_control ] || wlan_control=/proc/acpi/asus/wlan # pre-2.6.26
+[ -e "$wlan_control" ] || wlan_control=/proc/acpi/asus/wlan # pre-2.6.26
 
 STATE="$(cat $wlan_control)"
 

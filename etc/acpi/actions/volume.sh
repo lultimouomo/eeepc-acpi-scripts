@@ -6,7 +6,7 @@
 PKG=eeepc-acpi-scripts
 FUNC_LIB=/usr/share/$PKG/functions.sh
 DEFAULT=/etc/default/$PKG
-[ -e $FUNC_LIB ] || exit 0
+[ -e "$FUNC_LIB" ] || exit 0
 
 . $FUNC_LIB
 . /etc/acpi/lib/notify.sh

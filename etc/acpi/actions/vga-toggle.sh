@@ -4,7 +4,7 @@
 PKG=eeepc-acpi-scripts
 FUNC_LIB=/usr/share/$PKG/functions.sh
 DEFAULT=/etc/default/$PKG
-[ -e $FUNC_LIB ] || exit 0
+[ -e "$FUNC_LIB" ] || exit 0
 
 if [ -e "$DEFAULT" ]; then . "$DEFAULT"; fi
 . $FUNC_LIB

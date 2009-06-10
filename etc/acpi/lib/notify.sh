@@ -21,7 +21,7 @@ notify() {
 
     # try to show a nice OSD notification via GNOME OSD service
     GOSDC=/usr/bin/gnome-osd-client
-    if [ -z "$OSD_SHOWN" ] && [ -x $GOSDC ]; then
+    if [ -z "$OSD_SHOWN" ] && [ -x "$GOSDC" ]; then
 	if ps -u $user -o cmd= | grep -q '^/usr/bin/python /usr/bin/gnome-osd-event-bridge'; then
 	    if echo "$MSG" | grep -q '[0-9]'; then
 		animations='off'

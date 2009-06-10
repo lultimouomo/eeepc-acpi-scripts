@@ -4,7 +4,7 @@
 PKG=eeepc-acpi-scripts
 FUNC_LIB=/usr/share/$PKG/functions.sh
 DEFAULT=/etc/default/$PKG
-[ -e $FUNC_LIB ] || exit 0
+[ -e "$FUNC_LIB" ] || exit 0
 
 case $(runlevel) in
     *0|*6)
@@ -59,7 +59,7 @@ show_bluetooth() {
 
 handle_bluetooth_toggle() {
     . /etc/acpi/lib/bluetooth.sh
-    if [ -e $BT_CTL ] || [ "$BLUETOOTH_FALLBACK_TO_HCITOOL" = "yes" ]; then
+    if [ -e "$BT_CTL" ] || [ "$BLUETOOTH_FALLBACK_TO_HCITOOL" = "yes" ]; then
 	toggle_bluetooth
 	show_bluetooth
     else
@@ -77,7 +77,7 @@ show_camera() {
 
 handle_camera_toggle() {
     . /etc/acpi/lib/camera.sh
-    if [ -e $CAM_CTL ]; then
+    if [ -e "$CAM_CTL" ]; then
 	toggle_camera
 	show_camera
     else

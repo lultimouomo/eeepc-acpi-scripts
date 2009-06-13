@@ -20,6 +20,7 @@ eeepc-acpi-scripts (1.1.1) unstable; urgency=low
 
   [ Raphael Geissert ]
   * Allow fine-grained control over the lid-closing action.
+  * Make init script depend on $remote_fs, we use /usr
 
  -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Mon, 25 May 2009 11:25:50 +0100
 

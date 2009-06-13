@@ -24,6 +24,10 @@ eeepc-acpi-scripts (1.1.1) unstable; urgency=low
   [ Tanguy Ortolo ]
   * Fix "[ -e $foo ]" where foo may be empty. (Closes: #532631)
 
+  [ Santi Béjar]
+  * Add support for KMS in vga-toggle: when KMS (kernel mode setting) is
+    used the output names have a number in the end (VGA1 and LVDS1).
+
  -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Mon, 25 May 2009 11:25:50 +0100
 
 eeepc-acpi-scripts (1.1.0) unstable; urgency=low

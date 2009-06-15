@@ -12,12 +12,11 @@ if [ -e "$DEFAULT" ]; then . "$DEFAULT"; fi
 # return: 0 on disconnect, 1 on connected vga, 2 else
 # set VGA (and LVDS) to the output name, VGA or VGA1 (LVDS or LVDS1)
 getvga_status(){
-    STATUSLINE=$( xrandr -q | grep VGA)
-    STATUS=$( echo $STATUSLINE | cut -d ' ' -f 2,3 )
-    VGA=$( echo $STATUSLINE | cut -d ' ' -f 1 )
-    # To not call xrandr again
-    NUM=${VGA##VGA}
-    LVDS=LVDS$NUM
+    STATUSTEXT="$( xrandr -q )"
+    STATUSLINE=$( echo "$STATUSTEXT" | grep ^VGA | head -n1 )
+    STATUS=$( echo "$STATUSLINE" | cut -d ' ' -f 2,3 )
+    VGA=$( echo "$STATUSLINE" | cut -d ' ' -f 1 )
+    LVDS=$( echo "$STATUSTEXT" | grep ^LVDS | head -n1 | cut -d ' ' -f 1 )
     case "$STATUS" in
     disconnected*)
         return 0

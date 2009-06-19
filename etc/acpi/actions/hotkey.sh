@@ -93,6 +93,11 @@ show_brightness() {
     notify brightness "Brightness $percent%" fast
 }
 
+handle_shengine() {
+    . /etc/acpi/lib/shengine.sh
+    handle_shengine "$@"
+}
+
 case $code in
     # Fn + key:
     # <700/900-series key>/<1000-series key> - function

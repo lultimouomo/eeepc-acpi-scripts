@@ -52,3 +52,23 @@ cycle_shengine()
 	echo "${SHENGINE_CLOCKING:-0}" > "$SHENGINE_CTL"
     fi
 }
+
+handle_shengine() {
+    if [ -e "$SHENGINE_CTL" ]; then
+	if [ "$1" = '' ]; then
+	    cycle_shengine
+	else
+	    set_shengine "$1"
+	fi
+	if [ "$2" != '' ]; then return; fi
+	case $(get_shengine) in
+	    0) notify super_hybrid_engine 'S. H. Engine: Performance'; ;;
+	    1) notify super_hybrid_engine 'S. H. Engine: Standard'; ;;
+	    2) notify super_hybrid_engine 'S. H. Engine: Power-saving'; ;;
+	    255) notify super_hybrid_engine 'S. H. Engine: Automatic'; ;;
+	    *) notify error 'S. H. Engine unavailable'
+	esac
+    else
+	notify error 'S. H. Engine unavailable'
+    fi
+}

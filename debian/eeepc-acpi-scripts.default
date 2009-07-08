@@ -20,6 +20,10 @@ SOUND_SWITCH=
 # pswitch capabilities only:
 SOUND_SWITCH_EXCLUSIVE=
 
+# If auto-configuring, whether to prefer the Master control over others.
+# Set to 'yes' to enable this. Normally takes effect on reboot.
+SOUND_PREFER_MASTER=no
+
 # Default volume level change.
 # You can specify the change in all ways supported by amixer, e.g.
 # raw value ('5'), percentage ('1.5625%') or decibels ('0.8dB').

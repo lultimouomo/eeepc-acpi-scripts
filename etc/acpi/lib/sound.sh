@@ -17,25 +17,44 @@ AMIXER=/usr/bin/amixer
 [ "$SOUND_VOLUME_STEP" = '' ] && SOUND_VOLUME_STEP="$DEF_SOUND_VOLUME_STEP"
 
 configureSoundFilter() {
-  $AMIXER |
   grep -B1 "$1" |
   sed -r "s/^(.*'([^']+)'.*|[^']+())$/\\2/; /^$/ d" |
-  grep -ivF "$(sed -nre "/^#/ d; /!/! {p; d}; /!(.*,)?\b$2\b/ d; s/\s*!.*//; p" /etc/acpi/lib/eeepc-amixer-blacklist)"
+  if [ "$2" = '' ]; then
+    grep ^Master
+  else
+    grep -ivF "$(sed -nre "/^#/ d; /!/! {p; d}; /!(.*,)?\b$2\b/ d; s/\s*!.*//; p" /etc/acpi/lib/eeepc-amixer-blacklist)"
+  fi
 }
 
 # Defaults
 configureSound() {
+    local amixer
+    amixer="$($AMIXER)"
+
+    [ "$SOUND_PREFER_MASTER" != "yes" ] || {
+	[ "$SOUND_LABEL" ] || {
+	    SOUND_LABEL="$(echo "$amixer" | configureSoundFilter pvolume)"
+	}
+
+	[ "$SOUND_SWITCH" ] || {
+	    SOUND_SWITCH="$(echo "$amixer" | configureSoundFilter pswitch)"
+	}
+
+	[ "$SOUND_SWITCH_EXCLUSIVE" ] || {
+	    SOUND_SWITCH_EXCLUSIVE="$(echo "$amixer" | configureSoundFilter ': pswitch$')"
+	}
+    }
 
     [ "$SOUND_LABEL" ] || {
-	 SOUND_LABEL="$(configureSoundFilter pvolume volume)"
+	 SOUND_LABEL="$(echo "$amixer" | configureSoundFilter pvolume volume)"
     }
 
     [ "$SOUND_SWITCH" ] || {
-	 SOUND_SWITCH="$(configureSoundFilter pswitch mute)"
+	 SOUND_SWITCH="$(echo "$amixer" | configureSoundFilter pswitch mute +)"
     }
 
     [ "$SOUND_SWITCH_EXCLUSIVE" ] || {
-	 SOUND_SWITCH_EXCLUSIVE="$(configureSoundFilter ': pswitch$' mute)"
+	 SOUND_SWITCH_EXCLUSIVE="$(echo "$amixer" | configureSoundFilter ': pswitch$' mute)"
     }
 
     [ "$SOUND_VOLUME_STEP" ] || {

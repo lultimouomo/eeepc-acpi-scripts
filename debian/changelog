@@ -1,5 +1,9 @@
 eeepc-acpi-scripts (1.1.2) UNRELEASED; urgency=low
 
+  [ Darren Salt ]
+  * Add an option for preferring to use the 'Master' control for volume
+    control & muting. Off by default; normally takes effect while booting.
+
  -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Thu, 09 Jul 2009 22:56:19 +0100
 
 eeepc-acpi-scripts (1.1.1) unstable; urgency=low

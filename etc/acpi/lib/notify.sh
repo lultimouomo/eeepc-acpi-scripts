@@ -59,5 +59,10 @@ notify() {
 	OSD_SHOWN=1
     fi
 
+    if [ -z "$OSD_SHOWN" ] && [ -x /usr/bin/kdialog ]; then
+	su "$user" -c "kdialog --passivepopup '$MSG' 2 --title 'Eee PC'" &
+	OSD_SHOWN=1
+    fi
+
 }
 

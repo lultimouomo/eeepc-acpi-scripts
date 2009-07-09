@@ -34,7 +34,7 @@ eeepc-acpi-scripts (1.1.1) unstable; urgency=low
   * Add support for KMS in vga-toggle: when KMS (kernel mode setting) is
     used the output names have a number in the end (VGA1 and LVDS1).
 
- -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Mon, 25 May 2009 11:25:50 +0100
+ -- Raphael Geissert <geissert@debian.org>  Thu, 09 Jul 2009 14:19:45 -0500
 
 eeepc-acpi-scripts (1.1.0) unstable; urgency=low
 

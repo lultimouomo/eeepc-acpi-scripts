@@ -25,6 +25,7 @@ eeepc-acpi-scripts (1.1.1) unstable; urgency=low
   * Bump standards-version, no change needed
   * Simplify rules file
   * Use su instead of sudo to avoid another dependency
+  * Add myself to uploaders
 
   [ Tanguy Ortolo ]
   * Fix "[ -e $foo ]" where foo may be empty. (Closes: #532631)

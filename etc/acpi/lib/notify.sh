@@ -10,12 +10,17 @@ notify() {
 	return 1
     fi
     echo "$MSG"  # for /var/log/acpid
-    if [ -S /tmp/.X11-unix/X0 ]; then
-        detect_x_display
+
+    if [ ! -S /tmp/.X11-unix/X0 ]; then
+	echo "$MSG" > /dev/console
+	return
+    fi
 
     if [ "x$ENABLE_OSD" = "xno" ]; then
         return
     fi
+
+    detect_x_display
 
     OSD_SHOWN=
 
@@ -54,8 +59,5 @@ notify() {
 	OSD_SHOWN=1
     fi
 
-    else
-	echo "$MSG" > /dev/console
-    fi
 }
 

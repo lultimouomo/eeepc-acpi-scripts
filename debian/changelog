@@ -24,6 +24,7 @@ eeepc-acpi-scripts (1.1.1) unstable; urgency=low
     - Thanks to Gernot Pansy <pansyg@gmx.at> for the patch
   * Bump standards-version, no change needed
   * Simplify rules file
+  * Use su instead of sudo to avoid another dependency
 
   [ Tanguy Ortolo ]
   * Fix "[ -e $foo ]" where foo may be empty. (Closes: #532631)

@@ -39,7 +39,7 @@ notify() {
 		timeout=1200
 	    fi
 	    echo "<message id='eee-$CATEGORY' osd_fake_translucent_bg='off' osd_vposition='bottom' animations='$animations' hide_timeout='$timeout' osd_halignment='center'>$MSG</message>" \
-		| sudo -u $user $GOSDC -s --dbus
+		| su "$user" -c "$GOSDC -s --dbus"
 	    OSD_SHOWN=1
 	fi
     fi

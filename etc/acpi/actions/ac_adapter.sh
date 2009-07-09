@@ -23,7 +23,8 @@ case "$code" in
     0000008[01]\ 00000001)
 	. /etc/acpi/lib/shengine.sh
 	if [ "$SHENGINE_SETTING" = auto ]; then
-	    if [ "$PWR_CLOCK_AC" -a $(get_shengine -) -gt "$PWR_CLOCK_AC" ]; then
+	    PWR_CLOCK_AC="${PWR_CLOCK_AC:-0}"
+	    if [ $(get_shengine -) -gt "$PWR_CLOCK_AC" ]; then
 		handle_shengine "$PWR_CLOCK_AC" -
 	    fi
 	fi
@@ -33,7 +34,8 @@ case "$code" in
     0000008[01]\ 00000000)
 	. /etc/acpi/lib/shengine.sh
 	if [ "$SHENGINE_SETTING" = auto ]; then
-	    if [ "$PWR_CLOCK_BATTERY" -a $(get_shengine -) -lt "$PWR_CLOCK_BATTERY" ]; then
+	    PWR_CLOCK_BATTERY="${PWR_CLOCK_BATTERY:-$(($SHENGINE_LIMIT - 1))}"
+	    if [ $(get_shengine -) -lt "$PWR_CLOCK_BATTERY" ]; then
 		handle_shengine "$PWR_CLOCK_BATTERY" -
 	    fi
 	fi

@@ -40,8 +40,10 @@ cycle_shengine()
 	    if [ "$SHENGINE_CLOCKING" = 0 ]; then
 		if [ "$(cat /sys/class/power_supply/AC0/online 2>/dev/null || echo 1)" != 0 ]; then
 		    SHENGINE_CLOCKING="$PWR_CLOCK_AC"
+		    SHENGINE_DEFAULT=0
 		else
 		    SHENGINE_CLOCKING="$PWR_CLOCK_BATTERY"
+		    SHENGINE_DEFAULT=$(($SHENGINE_LIMIT - 1))
 		fi
 		if [ "$SHENGINE_CLOCKING:+1" ]; then
 		    SHENGINE_SETTING=auto
@@ -49,7 +51,7 @@ cycle_shengine()
 		fi
 	    fi
 	fi
-	echo "${SHENGINE_CLOCKING:-0}" > "$SHENGINE_CTL"
+	echo "${SHENGINE_CLOCKING:-$SHENGINE_DEFAULT}" > "$SHENGINE_CTL"
     fi
 }
 

@@ -121,12 +121,10 @@ FnF_VOLUMEDOWN='handle_volume_down'
 FnF_VOLUMEUP='handle_volume_up'
 
 # Clocking options when on AC or battery
-# 0 = overclocked
-# 1 = standard
-# 2 = underclocked
-# '' = leave as is
-# PWR_CLOCK_AC      should be '0', '1', or ''
-# PWR_CLOCK_BATTERY should be '1', '2', or ''
-# If one is '', so should the other else the state will only be changed one way
+# '0' = overclocked
+# '1' = standard
+# '2' = underclocked
+# (etc. as available)
+# '' = fastest (AC) or slowest (battery)
 PWR_CLOCK_AC=
 PWR_CLOCK_BATTERY=

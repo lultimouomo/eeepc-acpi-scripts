@@ -22,6 +22,7 @@ eeepc-acpi-scripts (1.1.1) unstable; urgency=low
   * Make init script depend on $remote_fs, we use /usr
   * Add support for OSD notifications via kdialog (Closes: #519671)
     - Thanks to Gernot Pansy <pansyg@gmx.at> for the patch
+  * Bump standards-version, no change needed
 
   [ Tanguy Ortolo ]
   * Fix "[ -e $foo ]" where foo may be empty. (Closes: #532631)

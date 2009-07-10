@@ -96,6 +96,8 @@ BLUETOOTH_FALLBACK_TO_HCITOOL='yes'
 #  - handle_volume_up
 #  - handle_volume_down
 #      Adjust volume level
+#  - handle_shengine
+#      Change 'super hybrid engine' setting
 #  - NONE
 #      Ignore the key
 #  - custom command
@@ -122,3 +124,11 @@ FnF_VOLUMEDOWN='handle_volume_down'
 # F9/F12 - increase volume
 FnF_VOLUMEUP='handle_volume_up'
 
+# Clocking options when on AC or battery
+# '0' = overclocked
+# '1' = standard
+# '2' = underclocked
+# (etc. as available)
+# '' = fastest (AC) or slowest (battery)
+PWR_CLOCK_AC=
+PWR_CLOCK_BATTERY=

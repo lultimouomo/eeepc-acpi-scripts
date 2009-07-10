@@ -5,8 +5,13 @@ PKG=eeepc-acpi-scripts
 set -e
 
 case "$1" in
-    purge|remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+    upgrade|failed-upgrade|abort-install|abort-upgrade|remove|disappear)
         invoke-rc.d acpid restart>/dev/null
+    ;;
+
+    purge)
+        invoke-rc.d acpid restart>/dev/null
+        rm -f /var/lib/eeepc-acpi-scripts/cpufv
     ;;
 
     *)

@@ -5,3 +5,4 @@ etc/acpi/lib
 etc/modprobe.d
 lib/udev/rules.d
 usr/share/eeepc-acpi-scripts
+var/lib/eeepc-acpi-scripts

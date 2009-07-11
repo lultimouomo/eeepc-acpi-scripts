@@ -33,6 +33,21 @@ detect_rfkill()
     RFKILL=''
 }
 
+have_dev_rfkill()
+{
+  [ -c /dev/rfkill ]
+}
+
+get_rfkill()
+{
+    cat "$1"
+}
+
+set_rfkill()
+{
+    echo "$2" > "$1"
+}
+
 detect_x_display()
 {
     local _user

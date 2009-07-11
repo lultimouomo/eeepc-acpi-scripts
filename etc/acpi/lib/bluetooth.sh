@@ -4,8 +4,10 @@
 
 detect_rfkill eeepc-bluetooth
 BT_CTL="$RFKILL"
-[ -e "$BT_CTL" ] || BT_CTL=/sys/devices/platform/eeepc/bluetooth # pre-2.6.28
-[ -e "$BT_CTL" ] || BT_CTL=/proc/acpi/asus/bluetooth # pre-2.6.26
+if ! have_dev_rfkill; then
+  [ -e "$BT_CTL" ] || BT_CTL=/sys/devices/platform/eeepc/bluetooth # pre-2.6.28
+  [ -e "$BT_CTL" ] || BT_CTL=/proc/acpi/asus/bluetooth # pre-2.6.26
+fi
 # check if bluetooth is switched on and return success (exit code 0 if it is
 # return failure (exit code 1) if it is not
 #
@@ -14,7 +16,7 @@ BT_CTL="$RFKILL"
 bluetooth_is_on()
 {
     if [ -e "$BT_CTL" ]; then
-        [ $( cat $BT_CTL ) = "1" ]
+        [ $( get_rfkill "$BT_CTL" ) = "1" ]
     else
         if [ "$BLUETOOTH_FALLBACK_TO_HCITOOL" = "yes" ]; then
             hcitool dev | grep -q hci0
@@ -28,7 +30,7 @@ toggle_bluetooth()
 {
     if bluetooth_is_on; then
         if [ -e "$BT_CTL" ]; then
-            echo 0 > $BT_CTL
+            set_rfkill "$BT_CTL" 0
             # udev should unload the module now
         elif [ "$BLUETOOTH_FALLBACK_TO_HCITOOL" = "yes" ]; then
             hciconfig hci0 down
@@ -41,7 +43,7 @@ toggle_bluetooth()
         fi
     else
         if [ -e "$BT_CTL" ]; then
-            echo 1 > $BT_CTL
+            set_rfkill "$BT_CTL" 1
             # udev should load the module now
         elif [ "$BLUETOOTH_FALLBACK_TO_HCITOOL" = "yes" ]; then
             modprobe hci_usb

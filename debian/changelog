@@ -6,6 +6,8 @@ eeepc-acpi-scripts (1.1.2) UNRELEASED; urgency=low
     downclocking when on battery (default is fastest/slowest).
   * Add an option for preferring to use the 'Master' control for volume
     control & muting. Off by default; normally takes effect while booting.
+  * Abstract out rfkill setting & getting, ready for eventual use of
+    /dev/rfkill.
 
   [ Thiemo Nagel ]
   * spelling fix in the default file

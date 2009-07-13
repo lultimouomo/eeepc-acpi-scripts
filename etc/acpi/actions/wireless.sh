@@ -45,7 +45,7 @@ case "$cmd" in
 	fi
 	;;
     *)
-	echo "Usage: $0 [on|off]"
+	echo "Usage: $0 [on|off|detect]"
 	exit 1
 	;;
 esac

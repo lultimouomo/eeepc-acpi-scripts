@@ -1,6 +1,9 @@
 eeepc-acpi-scripts (1.1.2) UNRELEASED; urgency=low
 
   [ Darren Salt ]
+  * Add support for the 'super hybrid engine', which is accessible in kernel
+    2.6.30-rc7 and later, and allow for automatic upclocking when on AC and
+    downclocking when on battery (default is fastest/slowest).
   * Add an option for preferring to use the 'Master' control for volume
     control & muting. Off by default; normally takes effect while booting.
 
@@ -24,9 +27,6 @@ eeepc-acpi-scripts (1.1.1) unstable; urgency=low
   * Make sure that, if some controls is unmuted due to volume level change,
     all other relevant controls are unmuted.
   * Fix a bashism in debian/rules.
-  * Add support for the 'super hybrid engine', which is accessible in kernel
-    2.6.30-rc7 and later, and allow for automatic upclocking when on AC and
-    downclocking when on battery (default is fastest/slowest).
 
   [ Raphael Geissert ]
   * Allow fine-grained control over the lid-closing action.

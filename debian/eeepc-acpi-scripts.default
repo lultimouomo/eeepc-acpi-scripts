@@ -1,5 +1,5 @@
 # by default OSD output of function keys is disabled because it's too slow
-# set to yes if you want fancy osd overlayS
+# set to yes if you want fancy osd overlays
 ENABLE_OSD='no'
 OSD_FONT='DejaVuSans 36'
 

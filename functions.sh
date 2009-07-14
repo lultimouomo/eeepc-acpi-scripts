@@ -79,7 +79,7 @@ lock_x_screen()
             for ss in xscreensaver gnome-screensaver; do
                 [ -x /usr/bin/$ss-command ] \
                     && pidof /usr/bin/$ss > /dev/null \
-                    && $ss-command --lock
+                    && su - "$user" -c "DISPLAY=$(shell_quote "$DISPLAY") XAUTHORITY=$(shell_quote "$XAUTHORITY") $ss-command --lock"
             done
             # try locking KDE
             if [ -x /usr/bin/dcop ]; then

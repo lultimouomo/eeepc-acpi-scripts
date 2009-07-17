@@ -98,10 +98,10 @@ case "$1" in
 	    log_action_cont_msg '(manual)'
 	elif [ "$(cat /sys/class/power_supply/AC0/online 2>/dev/null)" = 0 ]; then
 	    log_action_cont_msg '(battery)'
-	    [ "${PWR_CLOCK_BATTERY:+x}" ] && set_shengine "$PWR_CLOCK_BATTERY" || :
+	    set_shengine "${PWR_CLOCK_BATTERY:-$(($SHENGINE_LIMIT - 1))}" || :
 	else
 	    log_action_cont_msg '(AC)'
-	    [ "${PWR_CLOCK_AC:+x}" ] && set_shengine "$PWR_CLOCK_AC" || :
+	    set_shengine "${PWR_CLOCK_AC:-0}" || :
 	fi
 	log_action_end_msg $?
     fi

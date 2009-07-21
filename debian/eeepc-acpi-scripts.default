@@ -91,6 +91,8 @@ BLUETOOTH_FALLBACK_TO_HCITOOL='yes'
 #      on/off any USB bluetooth adapter found
 #  - handle_camera_toggle
 #      Toggles internal camera on/off
+#  - handle_gsm_toggle
+#      Toggles internal GSM modem (HUAWEI) on/off
 #  - handle_mute_toggle
 #      Toggles audio on/off
 #  - handle_volume_up

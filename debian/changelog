@@ -12,6 +12,8 @@ eeepc-acpi-scripts (1.1.2) UNRELEASED; urgency=low
   * Blacklist i2c_i801 (not needed, causes a long boot delay).
 
   [ Thiemo Nagel ]
+  * Add support for GSM (3G) toggling, automatically chosing between rfkill
+    and USB methods.
   * spelling fix in the default file
   * fix actions/wireless.sh usage message
 

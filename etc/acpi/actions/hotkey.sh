@@ -105,6 +105,16 @@ handle_touchpad_toggle() {
 	notify touchpad 'Touchpad off'
 }
 
+handle_gsm_toggle() {
+    /etc/acpi/actions/gsm.sh toggle
+    if /etc/acpi/actions/gsm.sh detect; then
+        notify gsm "GSM off"
+    else
+        notify gsm "GSM on"
+    fi
+}
+
+
 case $code in
     # Fn + key:
     # <700/900-series key>/<1000-series key> - function

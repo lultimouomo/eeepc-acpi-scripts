@@ -38,15 +38,33 @@ have_dev_rfkill()
   [ -c /dev/rfkill ]
 }
 
-get_rfkill()
-{
-    cat "$1"
-}
+if have_dev_rfkill; then
+    get_rfkill()
+    {
+	# simple yes/no, so...
+	expr length "$(rfkill list | sed -e '/bluetooth:/! d; N; s/.*://')" - 2
+    }
 
-set_rfkill()
-{
-    echo "$2" > "$1"
-}
+    set_rfkill()
+    {
+	if [ "$2" = 0 ]; then
+	    rfkill block bluetooth
+	else
+	    rfkill unblock bluetooth
+	fi
+    }
+else
+    # we have no /dev/rfkill
+    get_rfkill()
+    {
+	cat "$1"
+    }
+
+    set_rfkill()
+    {
+	echo "$2" > "$1"
+    }
+fi
 
 detect_x_display()
 {

@@ -19,26 +19,21 @@ detect_wlan()
     echo "Detected WLAN module $WLAN_MOD on $WLAN_IF" >&2
 }
 
-# detect which rfkill has name=$1
-detect_rfkill()
-{
-    local _rfkill
-    for _rfkill in /sys/class/rfkill/*; do
-        if [ -f "$_rfkill/name" ] && [ "$(cat "$_rfkill/name")" = "$1" ]; then
-            echo "Detected $1 as rfkill $_rfkill" >&2
-            RFKILL="$_rfkill/state"
-            return
-        fi
-    done
-    RFKILL=''
-}
-
 have_dev_rfkill()
 {
   [ -c /dev/rfkill ]
 }
 
 if have_dev_rfkill; then
+    # detect which rfkill has name=$1
+    detect_rfkill()
+    {
+	RFKILL=''
+	if rfkill list | grep -q "$1:"; then
+	    RFKILL="${2:-1}"
+	fi
+    }
+
     get_rfkill()
     {
 	# simple yes/no, so...
@@ -48,13 +43,27 @@ if have_dev_rfkill; then
     set_rfkill()
     {
 	if [ "$2" = 0 ]; then
-	    rfkill block bluetooth
+	    rfkill block "$1"
 	else
-	    rfkill unblock bluetooth
+	    rfkill unblock "$1"
 	fi
     }
-else
-    # we have no /dev/rfkill
+else # we have no /dev/rfkill
+
+    # detect which rfkill has name=$1
+    detect_rfkill()
+    {
+	local _rfkill
+	for _rfkill in /sys/class/rfkill/*; do
+	    if [ -f "$_rfkill/name" ] && [ "$(cat "$_rfkill/name")" = "$1" ]; then
+		echo "Detected $1 as rfkill $_rfkill" >&2
+		RFKILL="$_rfkill/state"
+		return
+	    fi
+	done
+	RFKILL=''
+    }
+
     get_rfkill()
     {
 	cat "$1"

@@ -2,7 +2,7 @@
 #
 # to be sourced
 
-detect_rfkill eeepc-bluetooth
+detect_rfkill eeepc-bluetooth bluetooth
 BT_CTL="$RFKILL"
 if ! have_dev_rfkill; then
   [ -e "$BT_CTL" ] || BT_CTL=/sys/devices/platform/eeepc/bluetooth # pre-2.6.28
@@ -15,7 +15,7 @@ fi
 # if not, uses hcitool to see if there is a hci0 device
 bluetooth_is_on()
 {
-    if [ -e "$BT_CTL" ]; then
+    if have_dev_rfkill || [ -e "$BT_CTL" ]; then
         [ $( get_rfkill "$BT_CTL" ) = "1" ]
     else
         if [ "$BLUETOOTH_FALLBACK_TO_HCITOOL" = "yes" ]; then
@@ -29,7 +29,7 @@ bluetooth_is_on()
 toggle_bluetooth()
 {
     if bluetooth_is_on; then
-        if [ -e "$BT_CTL" ]; then
+        if have_dev_rfkill || [ -e "$BT_CTL" ]; then
             set_rfkill "$BT_CTL" 0
             # udev should unload the module now
         elif [ "$BLUETOOTH_FALLBACK_TO_HCITOOL" = "yes" ]; then
@@ -42,7 +42,7 @@ toggle_bluetooth()
 	    done
         fi
     else
-        if [ -e "$BT_CTL" ]; then
+        if have_dev_rfkill || [ -e "$BT_CTL" ]; then
             set_rfkill "$BT_CTL" 1
             # udev should load the module now
         elif [ "$BLUETOOTH_FALLBACK_TO_HCITOOL" = "yes" ]; then

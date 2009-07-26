@@ -98,6 +98,13 @@ handle_shengine() {
     handle_shengine "$@"
 }
 
+handle_touchpad_toggle() {
+    . /etc/acpi/lib/touchpad.sh
+    toggle_touchpad &&
+	notify touchpad 'Touchpad on' ||
+	notify touchpad 'Touchpad off'
+}
+
 case $code in
     # Fn + key:
     # <700/900-series key>/<1000-series key> - function
@@ -119,10 +126,9 @@ case $code in
 
     # --/F3 - touchpad toggle
     00000037)
-	. /etc/acpi/lib/touchpad.sh
-	toggle_touchpad &&
-	    notify touchpad 'Touchpad on' ||
-	    notify touchpad 'Touchpad off'
+	if [ "${FnF_TOUCHPAD}" != 'NONE' ]; then
+	    ${FnF_BACKLIGHTOFF:-handle_touchpad_toggle}
+	fi
 	;;
 
     # --/F4 - resolution change

@@ -8,6 +8,7 @@ eeepc-acpi-scripts (1.1.2) UNRELEASED; urgency=low
     control & muting. Off by default; normally takes effect while booting.
   * Don't run the init script on installation or upgrade; just while
     booting. This avoids altering current settings.
+  * Make touchpad toggling into a bindable function.
 
   [ Thiemo Nagel ]
   * spelling fix in the default file

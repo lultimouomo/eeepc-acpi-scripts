@@ -98,6 +98,8 @@ BLUETOOTH_FALLBACK_TO_HCITOOL='yes'
 #      Adjust volume level
 #  - handle_shengine
 #      Change 'super hybrid engine' setting
+#  - handle_touchpad_toggle
+#      Toggles the touchpad on/off
 #  - NONE
 #      Ignore the key
 #  - custom command
@@ -113,6 +115,8 @@ SOFTBTN4_ACTION='handle_bluetooth_toggle'
 # Various Fn + key, not all of which are found on all models (or all BIOSes)
 # Labelling is "<700/900-series key>/<1000-series key> - function"
 # "--" = not available
+# --/F3 - touchpad toggle
+FnF_TOUCHPAD='handle_touchpad_toggle'
 # --/F7 - backlight off
 FnF_BACKLIGHTOFF='handle_blank_screen'
 # F6/F9 - 'task manager' key

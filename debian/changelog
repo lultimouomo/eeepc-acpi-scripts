@@ -20,6 +20,11 @@ eeepc-acpi-scripts (1.1.2) UNRELEASED; urgency=low
   [ Damyan Ivanov ]
   * functions.sh: run screensaver-command as the logged in user
 
+  [ Alan Jenkins ]
+  * Remove old hacks for wireless toggle key
+    There is no need to load/unload modules and ifconfig up/down the wireless
+    interface. PCI hotplug takes care of it.
+
  -- Damyan Ivanov <dmn@debian.org>  Tue, 14 Jul 2009 22:39:42 +0300
 
 eeepc-acpi-scripts (1.1.1) unstable; urgency=low

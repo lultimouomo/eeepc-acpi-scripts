@@ -22,7 +22,7 @@ case "$code" in
     # AC adapter present
     0000008[01]\ 00000001)
 	. /etc/acpi/lib/shengine.sh
-	if [ "$SHENGINE_SETTING" = auto ]; then
+	if [ "${SHENGINE_SETTING:-auto}" = auto ]; then
 	    PWR_CLOCK_AC="${PWR_CLOCK_AC:-0}"
 	    if [ $(get_shengine -) -gt "$PWR_CLOCK_AC" ]; then
 		handle_shengine "$PWR_CLOCK_AC" -
@@ -33,7 +33,7 @@ case "$code" in
     # AC adapter not present
     0000008[01]\ 00000000)
 	. /etc/acpi/lib/shengine.sh
-	if [ "$SHENGINE_SETTING" = auto ]; then
+	if [ "${SHENGINE_SETTING:-auto}" = auto ]; then
 	    PWR_CLOCK_BATTERY="${PWR_CLOCK_BATTERY:-$(($SHENGINE_LIMIT - 1))}"
 	    if [ $(get_shengine -) -lt "$PWR_CLOCK_BATTERY" ]; then
 		handle_shengine "$PWR_CLOCK_BATTERY" -

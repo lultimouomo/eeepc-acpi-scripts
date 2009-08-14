@@ -11,7 +11,7 @@ SHENGINE_SETTING="$(cat "$SHENGINE_CONFIG" 2>/dev/null || :)"
 
 get_shengine()
 {
-    if [ "$SHENGINE_SETTING" = auto -a "$1" = '' ]; then
+    if [ "${SHENGINE_SETTING:-auto}" = auto -a "$1" = '' ]; then
 	echo 255
     elif [ -e "$SHENGINE_CTL" ]; then
         echo $(( $(cat "$SHENGINE_CTL") & 0xFF ))
@@ -22,7 +22,7 @@ get_shengine()
 
 set_shengine()
 {
-    if [ -e "$SHENGINE_CTL" -a "$SHENGINE_SETTING" = auto ]; then
+    if [ -e "$SHENGINE_CTL" -a "${SHENGINE_SETTING:-auto}" = auto ]; then
 	echo "$1" > "$SHENGINE_CTL"
     fi
 }
@@ -31,7 +31,7 @@ cycle_shengine()
 {
     if [ -e "$SHENGINE_CTL" ]; then
 	SHENGINE_CLOCKING=$(get_shengine)
-	if [ "$SHENGINE_SETTING" = auto ]; then
+	if [ "${SHENGINE_SETTING:-auto}" = auto ]; then
 	    SHENGINE_CLOCKING=0
 	    SHENGINE_SETTING=manual
 	    echo manual >"$SHENGINE_CONFIG"

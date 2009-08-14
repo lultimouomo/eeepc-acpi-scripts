@@ -90,11 +90,13 @@ case "$1" in
 
     log_action_end_msg 0
 
-    if [ -f /etc/default/eeepc-acpi-scripts -a -f /etc/acpi/lib/shengine.sh ]; then
+    if [ -f /etc/acpi/lib/shengine.sh ]; then
 	log_action_begin_msg 'Setting super hybrid engine according to configuration'
-	. /etc/default/eeepc-acpi-scripts
+	if [ -f /etc/default/eeepc-acpi-scripts ]; then
+	    . /etc/default/eeepc-acpi-scripts
+	fi
 	. /etc/acpi/lib/shengine.sh
-	if [ "$SHENGINE_SETTING" != auto ]; then
+	if [ "${SHENGINE_SETTING:-auto}" != auto ]; then
 	    log_action_cont_msg '(manual)'
 	elif [ "$(cat /sys/class/power_supply/AC0/online 2>/dev/null)" = 0 ]; then
 	    log_action_cont_msg '(battery)'

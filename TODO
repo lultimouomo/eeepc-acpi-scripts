@@ -12,3 +12,18 @@
 
 * test bluetooth toggling when both the internal adapter and an external
   adapter are present.
+
+* investigate co-existence with acpi-support
+  10:16 dam anyone remembers why do we conflct with acpi-support?
+  11:58 SynrG> dam: acpi-support triggers for the wrong keys, starting scripts for the eee that shouldn't be
+  11:58 SynrG> dam: and vice versa
+  11:58 SynrG> because asus decided to map the keys differently
+  11:58 SynrG> from all of its other stuff
+  12:26 dam> so how can we co-exist with acpi-support? perhaps split acpi-support-asus and conflict only with it?
+  12:28 SynrG> or file a bug on acpi-support to not respond when the system is an eee
+  12:29 SynrG> start with looking over acpi-support to make sure this is still the case
+  12:29 dam> hm, then it would be reasonable for us to respond only if the systemm is an eee too
+  12:29 SynrG> yes
+
+  the goal is for eeepc-acpi-scripts to be able to be installed by the installer if eee is detected
+  for this, we shall not conflict with acpi-support, which is installed by default

@@ -8,9 +8,10 @@ eeepc-acpi-scripts (1.1.3) UNRELEASED; urgency=low
   * rules: call dh_installinit with -u'start 20 2 3 4 5 .' to prevent
     installing stop init.d symlinks as eeepc-acpi-scripts init.d script
     doesn't need to be run during system shutdown
-  * postinst: remove stray init.d stop symlinks from runlevels 0 1 and 6,
+  * postinst: remove and re-install rc.d configuration
     fixing insserv warning about discrepancy between LSB init.d headers and
-    real situation. Thanks to Paul Menzel.
+    the real situation. Thanks to Paul Menzel for reporting and Raphael
+    Geissert for the fix.
 
  -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Fri, 14 Aug 2009 13:10:21 +0100
 

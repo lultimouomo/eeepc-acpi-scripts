@@ -57,11 +57,17 @@ case "$1" in
     # There are three recognised cases:
     # - kernel 2.6.26 & older: two parameters required
     # - kernel 2.6.27 & .28  : one of those parameters has been removed
-    # - kernel 2.6.29 & newer: hotplugging is handled in eeepc-laptop
+    # - kernel 2.6.29 & newer: hotplugging is handled in eeepc-laptop except on the
+    #                          EeePC 900A model
+    # - kernel 2.6.32 & newer: eeepc-laptop also works on the EeePC 900A
     if [ -d /sys/module/pciehp ]; then
       # Hmm, already present
-      if [ "$KERNEL" -ge 29 ]; then
-        # 2.6.29 and newer (problem)
+      if [ "$KERNEL" -ge 29 -a "`cat /sys/class/dmi/id/product_name`" != "900A" ]; then
+        # 2.6.29 and newer on all but the EeePC 900A - unload pciehp if loaded
+        log_warning_msg 'Module "pciehp" is loaded; trying to unload'
+        maybe_warn modprobe -r pciehp
+      elif [ "$KERNEL" -ge 32 ]; then
+        # 2.6.32 and newer on all EeePC models - unload pciehp if loaded
         log_warning_msg 'Module "pciehp" is loaded; trying to unload'
         maybe_warn modprobe -r pciehp
       fi
@@ -72,6 +78,9 @@ case "$1" in
         load_module pciehp pciehp_force=1 pciehp_slot_with_bus=1
       elif [ "$KERNEL" -lt 29 ]; then
         # 2.6.27 and 2.6.28
+        load_module pciehp pciehp_force=1
+      elif [ "$KERNEL" -lt 32 -a "`cat /sys/class/dmi/id/product_name`" = "900A" ]; then
+        # 2.6.29 to 2.6.31 on the EeePC 900A
         load_module pciehp pciehp_force=1
       fi
     fi

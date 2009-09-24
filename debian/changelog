@@ -13,6 +13,12 @@ eeepc-acpi-scripts (1.1.3) UNRELEASED; urgency=low
     the real situation. Thanks to Paul Menzel for reporting and Raphael
     Geissert for the fix.
 
+  [ Andreas Schreiner ]
+  * Fix WLAN toggle using fn-F2 on EeePC 900A. This EeePC model needs to
+    load the pciehp kernel module with the pciehp_force=1 option up to kernel
+    version 2.6.32. /etc/init.d/eeepc-acpi-script now checks if it is running
+    on a 900A and loads the module accordingly.
+
  -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Fri, 14 Aug 2009 13:10:21 +0100
 
 eeepc-acpi-scripts (1.1.2) unstable; urgency=low

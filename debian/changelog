@@ -3,6 +3,7 @@ eeepc-acpi-scripts (1.1.3) UNRELEASED; urgency=low
   [ Darren Salt ]
   * Init script fixups for when /etc/default/eeepc-acpi-scripts is missing;
     ensure that we default to "automatic" for our S.H.E. handling. 
+  * Belatedly bump acpid version requirement. (Closes: #550119)
 
   [ Damyan Ivanov ]
   * rules: call dh_installinit with -u'start 20 2 3 4 5 .' to prevent

@@ -13,7 +13,7 @@ Vcs-Browser: http://git.debian.org/?p=debian-eeepc/eeepc-acpi-scripts.git
 Package: eeepc-acpi-scripts
 Architecture: all
 Conflicts: acpi-support
-Depends: acpid (>= 1.0.4), acpi-support-base, pm-utils
+Depends: acpid (>= 1.0.8-6), acpi-support-base, pm-utils
 Recommends: alsa-utils
 Suggests: aosd-cat, ttf-dejavu | ttf-bitstream-vera | ttf-freefont
  | gsfonts-x11 | ttf-mscorefonts-installer | ttf-liberation,

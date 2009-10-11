@@ -50,7 +50,7 @@ configureSound() {
     }
 
     [ "$SOUND_SWITCH" ] || {
-	 SOUND_SWITCH="$(echo "$amixer" | configureSoundFilter pswitch mute +)"
+	 SOUND_SWITCH="$(echo "$amixer" | configureSoundFilter pswitch mute)"
     }
 
     [ "$SOUND_SWITCH_EXCLUSIVE" ] || {

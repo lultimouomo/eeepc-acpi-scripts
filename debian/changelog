@@ -7,6 +7,8 @@ eeepc-acpi-scripts (1.1.3) UNRELEASED; urgency=low
   * Bring the copyright file up to date.
   * Allow setting of whether the super hybrid engine control defaults to
     manual or auto.
+  * Strip out comments from /etc/default/eeepc-acpi-scripts and store a
+    fully-commented copy in /usr/share/doc/eeepc-acpi-scripts/examples/.
 
   [ Damyan Ivanov ]
   * rules: call dh_installinit with -u'start 20 S .' to prevent

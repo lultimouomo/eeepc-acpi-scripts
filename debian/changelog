@@ -5,6 +5,8 @@ eeepc-acpi-scripts (1.1.3) UNRELEASED; urgency=low
     ensure that we default to "automatic" for our S.H.E. handling. 
   * Belatedly bump acpid version requirement. (Closes: #550119)
   * Bring the copyright file up to date.
+  * Allow setting of whether the super hybrid engine control defaults to
+    manual or auto.
 
   [ Damyan Ivanov ]
   * rules: call dh_installinit with -u'start 20 S .' to prevent

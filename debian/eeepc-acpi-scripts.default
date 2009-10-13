@@ -138,3 +138,9 @@ FnF_VOLUMEUP='handle_volume_up'
 # '' = fastest (AC) or slowest (battery)
 PWR_CLOCK_AC=
 PWR_CLOCK_BATTERY=
+# The current state is stored by the BIOS. However, we still have to handle
+# "auto" vs. "manual"; this is stored in /var/lib/eeepc-acpi-scripts/cpufv.
+# You can use DEFAULT_SHENGINE_CONFIG to provide a setting for when this
+# file is missing (which, initially, it will be); if you don't, "auto" mode
+# will be chosen for you.
+#DEFAULT_SHENGINE_CONFIG=manual

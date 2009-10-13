@@ -1,6 +1,7 @@
 # a shell library for handling Asus EeePC "Super Hybrid Engine"
 #
 # to be sourced
+# requires that the defaults file has been sourced
 
 SHENGINE_CTL=/sys/devices/platform/eeepc/cpufv
 SHENGINE_LIMIT="$(cat "$SHENGINE_CTL" 2>/dev/null || :)"
@@ -8,6 +9,7 @@ SHENGINE_LIMIT=$(( ${SHENGINE_LIMIT:-768} >> 8 ))
 
 SHENGINE_CONFIG=/var/lib/eeepc-acpi-scripts/cpufv
 SHENGINE_SETTING="$(cat "$SHENGINE_CONFIG" 2>/dev/null || :)"
+SHENGINE_SETTING=${SHENGINE_SETTING:-$DEFAULT_SHENGINE_CONFIG}
 
 get_shengine()
 {

@@ -105,6 +105,10 @@ handle_touchpad_toggle() {
 	notify touchpad 'Touchpad off'
 }
 
+handle_vga_toggle() {
+    /etc/acpi/actions/vga-toggle.sh
+}
+
 handle_gsm_toggle() {
     /etc/acpi/actions/gsm.sh toggle
     if /etc/acpi/actions/gsm.sh detect; then
@@ -166,7 +170,9 @@ case $code in
 
     # F5/F8 - toggle VGA
     0000003[012])
-	/etc/acpi/actions/vga-toggle.sh
+	if [ "${FnF_VGATOGGLE}" != 'NONE' ]; then
+	    ${FnF_VGATOGGLE:-handle_vga_toggle}
+	fi
 	;;
 
     # F6/F9 - 'task manager' key

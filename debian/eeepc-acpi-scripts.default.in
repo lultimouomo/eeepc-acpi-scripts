@@ -90,6 +90,8 @@ BLUETOOTH_FALLBACK_TO_HCITOOL='yes'
 #      on/off any USB bluetooth adapter found.
 #  - handle_camera_toggle
 #      Toggles internal camera on/off.
+#  - handle_vga_toggle
+#      Toggles between panel and VGA (as configured above).
 #  - handle_gsm_toggle
 #      Toggles internal GSM modem (HUAWEI) on/off.
 #  - handle_mute_toggle
@@ -122,6 +124,8 @@ FnF_TOUCHPAD='handle_touchpad_toggle'
 FnF_RESCHANGE='NONE'
 # --/F7 - backlight off
 FnF_BACKLIGHTOFF='handle_blank_screen'
+# F5/F8 - VGA toggle
+FnF_VGATOGGLE='handle_vga_toggle'
 # F6/F9 - 'task manager' key
 FnF_TASKMGR='NONE'
 # F7/F10 - mute/unmute speakers

@@ -1,23 +1,24 @@
-# by default OSD output of function keys is disabled because it's too slow
-# set to yes if you want fancy osd overlays
+# By default, OSD output of function keys is disabled because it's too slow.
+# Set to 'yes' if you want fancy OSD overlays.
 ENABLE_OSD='no'
+# Set to the name and size of the font used for the overlay.
 OSD_FONT='DejaVuSans 36'
 
-# set this and ENABLE_OSD to yes if you want brightness changes via Fn-Fx to
-# be reported
+# Set this and ENABLE_OSD to yes if you want brightness changes via Fn-Fx to
+# be reported.
 ENABLE_OSD_BRIGHTNESS='no'
 
-# Leave these empty to attempt to autoconfigure. If they don't work for you
-# lookup the following values by using amixer; one control name per line,
+# Leave these empty to attempt to autoconfigure. If they don't work for you,
+# look up the following values by using amixer; one control name per line,
 # and enclose them all in *one* pair of single quotation marks, e.g.
 # SOUND_LABEL='PCM
 # LineOut'
 #
-# controls with pvolume capabilities:
+# Controls with 'pvolume' capabilities:
 SOUND_LABEL=
-# pswitch capabilities:
+# Controls with 'pswitch' capabilities:
 SOUND_SWITCH=
-# pswitch capabilities only:
+# Controls with 'pswitch' capabilities only:
 SOUND_SWITCH_EXCLUSIVE=
 
 # If auto-configuring, whether to prefer the Master control over others.
@@ -27,86 +28,84 @@ SOUND_PREFER_MASTER=no
 # Default volume level change.
 # You can specify the change in all ways supported by amixer, e.g.
 # raw value ('5'), percentage ('1.5625%') or decibels ('0.8dB').
-# The different representations are probably not equivalent. Check amixer
-# output to determine what's right for your hardware.
+# The different representations are probably not equivalent due to different
+# controls having different (raw) ranges. Check amixer output to determine
+# what's right for your hardware.
 # Leave empty if you want to allow for auto-configuration.
 SOUND_VOLUME_STEP=
 
-# Set to 'yes' to display detailed information when the volup and voldown
-# hotkeys are pressed but the volume percentage of all the playback devices
-# is not the same
+# Set to 'yes' to display detailed information when the volume up and volume
+# down hotkeys are pressed but the volume percentage of all the playback
+# devices is not the same.
 DETAILED_SOUND_INFO=no
 
-# These are the switches for xrandr --output VGA and --output LVDS
-# respectively when Fn-F5 is used to select VGA mode.
-# * If --auto doesn't give good results for your monitor, specify a
-#   mode, e.g.
+# These are the switches for xrandr --output VGA1 and --output LVDS1
+# respectively when Fn-F5 (Fn-F8) is used to select VGA mode.
+# * If --auto doesn't give good results for your monitor, specify a mode, e.g.
 #     VGA_ON='--mode 1024x768'
 #     LVDS_OFF='--off'
-# * For xinerama-style (desktop is split across both displays) try:
+# * For xinerama-style (desktop is split across both displays), try:
 #     VGA_ON='--auto --above LVDS'
 #     LVDS_OFF='--auto'
 VGA_ON='--auto'
 LVDS_OFF='--off'
 
 # Use the specified suspend method, where the method is actually the name
-# of a command.
-# Common methods:
+# of a command. Common methods:
 #   pm-suspend (default), pm-hibernate, pm-suspend-hybrid
 #   hibernate-ram, hibernate-disk
 #
-# s2ram and friends can also be specified but it is usually better to run them
-# via a wrapper.
-# SUSPEND_OPTIONS is passed as-is to the command.
+# s2ram and friends can also be specified, but it is usually better to run
+# them via a wrapper.
+# SUSPEND_OPTIONS is passed as is to the command.
 SUSPEND_METHOD=pm-suspend
 SUSPEND_OPTIONS=--quirk-s3-bios
 
-# attempt to lock running xscreensaver or gnome-screensaver on suspend.
-# if you use hibernate(1) make sure you only indicate in one place to lock the
-# screen.
+# Attempt to lock running xscreensaver or gnome-screensaver on suspend.
+# If you use hibernate(1), make sure you only indicate in one place to lock
+# the screen.
 LOCK_SCREEN_ON_SUSPEND='yes'
 
 # Action to perform when the lid is closed.
-# If left empty, or by specifying "suspend", it will suspend via the
-# SUSPEND_METHOD, as specified above.
+# If left empty or set to "suspend", it will suspend via SUSPEND_METHOD
+# (specified above).
 # To do nothing, set it to "nothing".
-#
 # Setting it to anything else will result in it being treated as a command.
 LID_CLOSE_ACTION=
 
-# try to load/unload the hci_usb module and use hcitool for checking
+# Try to load/unload the hci_usb module and use hcitool for checking
 # bluetooth state when the bluetooth control node in
-# /sys/devices/platform/bluetooth is not present
+# /sys/devices/platform/bluetooth is not present.
 BLUETOOTH_FALLBACK_TO_HCITOOL='yes'
 
-# Configuration of "soft" keys
+# Configuration of "soft" keys.
 # The possible actions are:
 #  - handle_blank_screen
-#      Turns the lid off. Does not activate any screen saver.
-#      Pressing a key turns the lid back on
+#      Turns the display backlight off. Does not activate any screen saver.
+#      Pressing a key turns the display backlight back on.
 #  - handle_bluetooth_toggle
 #      Toggles internal bluetooth adapter on/off.
-#      When there is no bluetooth control node, and
-#      BLUETOOTH_FALLBACK_TO_HCITOOL is equal to 'yes', attempts to toggle
-#      on/off any USB bluetooth adapter found
+#      When there iss no bluetooth control node and
+#      BLUETOOTH_FALLBACK_TO_HCITOOL is set to 'yes', attempts to toggle
+#      on/off any USB bluetooth adapter found.
 #  - handle_camera_toggle
-#      Toggles internal camera on/off
+#      Toggles internal camera on/off.
 #  - handle_gsm_toggle
-#      Toggles internal GSM modem (HUAWEI) on/off
+#      Toggles internal GSM modem (HUAWEI) on/off.
 #  - handle_mute_toggle
-#      Toggles audio on/off
+#      Toggles audio on/off.
 #  - handle_volume_up
 #  - handle_volume_down
-#      Adjust volume level
+#      Adjust volume level.
 #  - handle_shengine
-#      Change 'super hybrid engine' setting
+#      Change 'super hybrid engine' setting.
 #  - handle_touchpad_toggle
-#      Toggles the touchpad on/off
+#      Toggles the touchpad on/off.
 #  - NONE
-#      Ignore the key
+#      Ignore the key.
 #  - custom command
-#      For example you can write a shell function in this file and use its name
-#      as an action, or call another internal or external command
+#      For example you can write a shell function in this file and use its
+#      name as an action, or call another internal or external command.
 
 # The silver keys, found on models 900 and above
 SOFTBTN1_ACTION='handle_blank_screen'
@@ -114,9 +113,9 @@ SOFTBTN2_ACTION='NONE'
 SOFTBTN3_ACTION='handle_camera_toggle'
 SOFTBTN4_ACTION='handle_bluetooth_toggle'
 
-# Various Fn + key, not all of which are found on all models (or all BIOSes)
-# Labelling is "<700/900-series key>/<1000-series key> - function"
-# "--" = not available
+# Various Fn + key, not all of which are found on all models (or all BIOSes).
+# Labelling is "<700/900-series key>/<1000-series key> - function".
+# ("--" = not available.)
 # --/F3 - touchpad toggle
 FnF_TOUCHPAD='handle_touchpad_toggle'
 # --/F7 - backlight off
@@ -130,12 +129,12 @@ FnF_VOLUMEDOWN='handle_volume_down'
 # F9/F12 - increase volume
 FnF_VOLUMEUP='handle_volume_up'
 
-# Clocking options when on AC or battery
-# '0' = overclocked
-# '1' = standard
+# Clocking options when on AC or battery:
+# '0' = overclocked;
+# '1' = standard;
 # '2' = underclocked
-# (etc. as available)
-# '' = fastest (AC) or slowest (battery)
+# (etc. as available).
+# '' = fastest (AC) or slowest (battery).
 PWR_CLOCK_AC=
 PWR_CLOCK_BATTERY=
 # The current state is stored by the BIOS. However, we still have to handle

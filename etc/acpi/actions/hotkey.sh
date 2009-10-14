@@ -143,6 +143,9 @@ case $code in
 
     # --/F4 - resolution change
     00000038)
+	if [ "${FnF_RESCHANGE}" != 'NONE' ]; then
+	    $FnF_RESCHANGE
+	fi
 	;;
 
     # F3/F5 - decrease brightness

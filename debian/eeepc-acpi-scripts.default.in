@@ -118,6 +118,8 @@ SOFTBTN4_ACTION='handle_bluetooth_toggle'
 # ("--" = not available.)
 # --/F3 - touchpad toggle
 FnF_TOUCHPAD='handle_touchpad_toggle'
+# --/F4 - resolution change
+FnF_RESCHANGE='NONE'
 # --/F7 - backlight off
 FnF_BACKLIGHTOFF='handle_blank_screen'
 # F6/F9 - 'task manager' key

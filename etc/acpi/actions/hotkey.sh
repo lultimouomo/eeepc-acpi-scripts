@@ -141,7 +141,7 @@ case $code in
     # --/F3 - touchpad toggle
     00000037)
 	if [ "${FnF_TOUCHPAD}" != 'NONE' ]; then
-	    ${FnF_BACKLIGHTOFF:-handle_touchpad_toggle}
+	    ${FnF_TOUCHPAD:-handle_touchpad_toggle}
 	fi
 	;;
 

@@ -11,6 +11,7 @@ eeepc-acpi-scripts (1.1.3) UNRELEASED; urgency=low
     fully-commented copy in /usr/share/doc/eeepc-acpi-scripts/examples/.
   * Add configuration support for Fn-F4 on 10" models. No action is defined.
   * Make VGA toggling into a bindable function.
+  * Fix a bug which prevented touchpad toggling from working properly.
 
   [ Damyan Ivanov ]
   * rules: call dh_installinit with -u'start 20 S .' to prevent

@@ -23,6 +23,7 @@ case "$cmd" in
     on|enable|1)
 	if [ "$STATE" = 0 ]; then
 	    echo 1 > $wlan_control
+            wakeup_wicd
 	fi
 	;;
     off|disable|0)

@@ -136,6 +136,9 @@ case $code in
 	  /etc/acpi/actions/wireless.sh toggle
 	fi
 	show_wireless
+        if ! /etc/acpi/actions/wireless.sh detect; then
+            wakeup_wicd
+        fi
 	;;
 
     # --/F3 - touchpad toggle

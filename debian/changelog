@@ -22,6 +22,7 @@ eeepc-acpi-scripts (1.1.3) UNRELEASED; urgency=low
     the real situation. Thanks to Paul Menzel for reporting and Raphael
     Geissert for the fix.
   * hotkey.sh/wireless.sh/functions.sh: wake up wicd on switching WiFi on
+  * Standards-Version: 3.8.3 (no changes necessary)
 
   [ Andreas Schreiner ]
   * Fix WLAN toggle using fn-F2 on EeePC 900A. This EeePC model needs to

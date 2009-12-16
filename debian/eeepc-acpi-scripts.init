@@ -105,15 +105,19 @@ case "$1" in
 	    . /etc/default/eeepc-acpi-scripts
 	fi
 	. /etc/acpi/lib/shengine.sh
-	if [ "${SHENGINE_SETTING:-auto}" != auto ]; then
-	    log_action_cont_msg '(manual)'
-	elif [ "$(cat /sys/class/power_supply/AC0/online 2>/dev/null)" = 0 ]; then
-	    log_action_cont_msg '(battery)'
-	    set_shengine "${PWR_CLOCK_BATTERY:-$(($SHENGINE_LIMIT - 1))}" || :
-	else
-	    log_action_cont_msg '(AC)'
-	    set_shengine "${PWR_CLOCK_AC:-0}" || :
-	fi
+        if shengine_supported; then
+            if [ "${SHENGINE_SETTING:-auto}" != auto ]; then
+                log_action_cont_msg '(manual)'
+            elif [ "$(cat /sys/class/power_supply/AC0/online 2>/dev/null)" = 0 ]; then
+                log_action_cont_msg '(battery)'
+                set_shengine "${PWR_CLOCK_BATTERY:-$(($SHENGINE_LIMIT - 1))}" || :
+            else
+                log_action_cont_msg '(AC)'
+                set_shengine "${PWR_CLOCK_AC:-0}" || :
+            fi
+        else
+            log_action_cont_msg '(model not supported)'
+        fi
 	log_action_end_msg $?
     fi
     ;;

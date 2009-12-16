@@ -149,3 +149,6 @@ PWR_CLOCK_BATTERY=
 # file is missing (which, initially, it will be); if you don't, "auto" mode
 # will be chosen for you.
 #DEFAULT_SHENGINE_CONFIG=manual
+# Set the following to '1' to force usage of S.H.E. even on models that don't
+# officialy support it. The default is '0'
+#SHENGINE_FORCE_ENABLE=0

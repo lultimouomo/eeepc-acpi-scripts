@@ -2,6 +2,9 @@ eeepc-acpi-scripts (1.1.4) UNRELEASED; urgency=low
 
   * rules: when stripping comments from /etc/default/eeepc-acpi-scripts, also
     remove lines consisting solely of '#'
+  * when changing Super Hybrid Engine modes, ignore models 701 and 702 which
+    don't officially support S.H.E. (Closes: 559578)
+    Additionally provide a variable in the default file to override the ignore
 
  -- Damyan Ivanov <dmn@debian.org>  Wed, 16 Dec 2009 21:34:59 +0200
 

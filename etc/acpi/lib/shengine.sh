@@ -76,3 +76,15 @@ handle_shengine() {
 	notify error 'S. H. Engine unavailable'
     fi
 }
+
+shengine_supported()
+{
+    local model
+    model=`cat /sys/class/dmi/id/product_name`
+
+    [ "${SHENGINE_FORCE_ENABLE:-0}" = "1" ] && return 0
+
+    # models 701 and 702 are not supported
+    # see http://bugs.debian.org/559578
+    ! [ "$model" = '701' -o "$model" = '702' ]
+}

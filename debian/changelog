@@ -1,3 +1,10 @@
+eeepc-acpi-scripts (1.1.4) UNRELEASED; urgency=low
+
+  * rules: when stripping comments from /etc/default/eeepc-acpi-scripts, also
+    remove lines consisting solely of '#'
+
+ -- Damyan Ivanov <dmn@debian.org>  Wed, 16 Dec 2009 21:34:59 +0200
+
 eeepc-acpi-scripts (1.1.3) unstable; urgency=low
 
   [ Darren Salt ]

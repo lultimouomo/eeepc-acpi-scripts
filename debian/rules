@@ -32,7 +32,7 @@ binary-indep: build install
 	dh_installdocs
 	mkdir -p debian/eeepc-acpi-scripts/usr/share/doc/eeepc-acpi-scripts/examples
 	cat debian/eeepc-acpi-scripts.default.doc-head debian/eeepc-acpi-scripts.default.in >debian/eeepc-acpi-scripts/usr/share/doc/eeepc-acpi-scripts/examples/eeepc-acpi-scripts.default
-	(cat debian/eeepc-acpi-scripts.default.etc-head; sed -e '/^# / d; /^$$/ d' debian/eeepc-acpi-scripts.default.in) >debian/eeepc-acpi-scripts/etc/default/eeepc-acpi-scripts
+	(cat debian/eeepc-acpi-scripts.default.etc-head; sed -e '/^# / d; /^$$/ d; /^#$$/ d' debian/eeepc-acpi-scripts.default.in) >debian/eeepc-acpi-scripts/etc/default/eeepc-acpi-scripts
 	dh_installinit --no-start -u'start 20 S .'
 	dh_compress
 	dh_link

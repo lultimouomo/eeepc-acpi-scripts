@@ -1,3 +1,12 @@
+eeepc-acpi-scripts (1.1.5) unstable; urgency=low
+
+  * Fix Super Hybrid Engine support breakage in 1.1.4.
+    A missing "[" caused the AC-adaptor-unplugged code to fail; consequently,
+    the preferred running-on-battery mode (the default being underclocked)
+    would not be selected.
+
+ -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Thu, 17 Dec 2009 23:48:02 +0000
+
 eeepc-acpi-scripts (1.1.4) unstable; urgency=low
 
   * rules: when stripping comments from /etc/default/eeepc-acpi-scripts, also

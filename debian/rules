@@ -12,6 +12,14 @@ clean:
 	rm -f build-stamp
 	dh_clean
 
+build: build-stamp
+build-stamp:
+	for f in `grep -r -E -l '^#! ?/bin/sh' etc lib` *.sh; do \
+	    echo "Checking $$f"; \
+	    sh -n $$f; \
+	done
+	touch $@
+
 install: build
 	dh_testdir
 	dh_testroot

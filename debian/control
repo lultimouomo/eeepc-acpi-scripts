@@ -4,6 +4,7 @@ Priority: extra
 Maintainer: Debian Eee PC Team <debian-eeepc-devel@lists.alioth.debian.org>
 Uploaders: Ben Armstrong <synrg@sanctuary.nslug.ns.ca>,
  Nico Golde <nion@debian.org>, Damyan Ivanov <dmn@debian.org>,
+ Darren Salt <linux@youmustbejoking.demon.co.uk>,
  Raphael Geissert <geissert@debian.org>
 Build-Depends: debhelper (>= 6)
 Standards-Version: 3.8.3

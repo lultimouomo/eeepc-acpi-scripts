@@ -5,6 +5,7 @@ eeepc-acpi-scripts (1.1.5) unstable; urgency=high
     the preferred running-on-battery mode (the default being underclocked)
     would not be selected.
   * Set urgency=high (for documentation reasons; due to 1.1.4).
+  * Add myself to Uploaders.
 
  -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Fri, 18 Dec 2009 00:00:00 +0000
 

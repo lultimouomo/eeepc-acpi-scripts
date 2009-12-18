@@ -12,7 +12,7 @@ eeepc-acpi-scripts (1.1.5) unstable; urgency=high
   * add DMUA flag
   * rules: add small test suite for all shell scripts
 
- -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Fri, 18 Dec 2009 00:00:00 +0000
+ -- Damyan Ivanov <dmn@debian.org>  Fri, 18 Dec 2009 07:38:14 +0200
 
 eeepc-acpi-scripts (1.1.4) unstable; urgency=low
 

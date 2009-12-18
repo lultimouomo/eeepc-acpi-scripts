@@ -1,0 +1,2 @@
+event=button/(wlan|zoom|mute|volume|prog)
+action=/etc/acpi/actions/hotkey.sh - %e

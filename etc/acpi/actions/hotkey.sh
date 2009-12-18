@@ -12,11 +12,36 @@ case $(runlevel) in
 	;;
 esac
 
+BACKLIGHT=/sys/class/backlight/eeepc/brightness
 if [ -e "$DEFAULT" ]; then . "$DEFAULT"; fi
 . $FUNC_LIB
 
 . /etc/acpi/lib/notify.sh
 code=$3
+value=$(test "$0" = - && cat "$BACKLIGHT" || echo "0x$3")
+
+# In case keys are doubly-reported as hotkey and something else.
+# It's random (and irrelevant) which is seen first.
+acpi=
+acpiwrite=
+ACPITEST=/lib/init/rw/eeepc-acpi-scripts.acpi-ignore
+case "$code" in
+    # Soft buttons 3 & 4 are special.
+    # They're always reported as hotkeys (901, at least).
+    # This will probably break when button events are added for these keys.
+    0000001[cd])
+	;;
+    *)
+	if test -f "$ACPITEST"; then
+	    read acpi <"$ACPITEST"
+	else
+	    acpiwrite=$(test "x$1" = x- && echo hotkey || echo -)
+	fi
+	test "$1" = "$acpi" && exit 0
+	;;
+esac
+
+seen_hotkey() { test "$acpi" = button; }
 
 handle_mute_toggle() {
     /etc/acpi/actions/volume.sh toggle
@@ -87,7 +112,7 @@ handle_camera_toggle() {
 
 show_brightness() {
     # final digit of ACPI code is brightness level in hex
-    level=$((0x$code & 0xF))
+    level=$(($value & 0xF))
     # convert hex digit to percent
     percent=$(((100 * $level + 8) / 15))
     notify brightness "Brightness $percent%" fast
@@ -118,6 +143,23 @@ handle_gsm_toggle() {
     fi
 }
 
+# Handle events which we're handling differently on different modelsz
+case $(cat /sys/class/dmi/id/product_name) in
+    [79]*|1000H)
+	case $code in
+	    ZOOM)
+		code=0000001b # soft button 2
+		;;
+	esac
+	;;
+    *)
+	case $code in
+	    ZOOM)
+		code=00000038 # Fn-F4
+		;;
+	esac
+	;;
+esac
 
 case $code in
     # Fn + key:
@@ -128,7 +170,7 @@ case $code in
     # (not a hotkey, not handled here)
 
     # F2/F2 - toggle wireless
-    0000001[01])
+    0000001[01]|WLAN)
 	notify wireless 'Wireless ...'
 	if grep -q '^H.*\brfkill\b' /proc/bus/input/devices; then
 	  :
@@ -149,7 +191,7 @@ case $code in
 	;;
 
     # --/F4 - resolution change
-    00000038)
+    00000038) # ZOOM
 	if [ "${FnF_RESCHANGE}" != 'NONE' ]; then
 	    $FnF_RESCHANGE
 	fi
@@ -157,7 +199,7 @@ case $code in
 
     # F3/F5 - decrease brightness
     # F4/F6 - increase brightness
-    0000002?)
+    0000002?|BRTDN|BRTUP)
 	# actual brightness change is handled in hardware
 	if [ "x$ENABLE_OSD_BRIGHTNESS" != "xno" ]; then
 	  show_brightness
@@ -172,35 +214,35 @@ case $code in
 	;;
 
     # F5/F8 - toggle VGA
-    0000003[012])
+    0000003[012]|VMOD)
 	if [ "${FnF_VGATOGGLE}" != 'NONE' ]; then
 	    ${FnF_VGATOGGLE:-handle_vga_toggle}
 	fi
 	;;
 
     # F6/F9 - 'task manager' key
-    00000012)
+    00000012|PROG1)
 	if [ "${FnF_TASKMGR:-NONE}" != 'NONE' ]; then
 	    $FnF_TASKMGR
 	fi
 	;;
 
     # F7/F10 - mute/unmute speakers
-    00000013)
+    00000013|MUTE)
 	if [ "${FnF_MUTE}" != 'NONE' ]; then
 	    ${FnF_MUTE:-handle_mute_toggle}
 	fi
 	;;
 
     # F8/F11 - decrease volume
-    00000014)
+    00000014|VOLDN)
 	if [ "${FnF_VOLUMEDOWN}" != 'NONE' ]; then
 	    ${FnF_VOLUMEDOWN:-handle_volume_down}
 	fi
 	;;
 
     # F9/F12 - increase volume
-    00000015)
+    00000015|VOLUP)
 	if [ "${FnF_VOLUMEUP}" != 'NONE' ]; then
 	    ${FnF_VOLUMEUP:-handle_volume_up}
 	fi
@@ -212,14 +254,14 @@ case $code in
     # Silver keys, left to right
 
     # Soft button 1
-    0000001a)
+    0000001a|SCRNLCK)
 	if [ "${SOFTBTN1_ACTION}" != 'NONE' ]; then
 	    ${SOFTBTN1_ACTION:-handle_blank_screen}
 	fi
 	;;
 
     # Soft button 2
-    0000001b)
+    0000001b) # ZOOM
 	if [ "${SOFTBTN2_ACTION}" != 'NONE' ]; then
 	    ${SOFTBTN2_ACTION}
 	fi
@@ -230,6 +272,7 @@ case $code in
 	if [ "${SOFTBTN3_ACTION}" != 'NONE' ]; then
 	    ${SOFTBTN3_ACTION:-handle_camera_toggle}
 	fi
+	acpiwrite=
 	;;
 
     # Soft button 4
@@ -237,6 +280,9 @@ case $code in
 	if [ "${SOFTBTN4_ACTION}" != 'NONE' ]; then
 	    ${SOFTBTN4_ACTION:-handle_bluetooth_toggle}
 	fi
+	acpiwrite=
 	;;
 
 esac
+
+test "$acpiwrite" = '' || echo "$acpiwrite" >"$ACPITEST"

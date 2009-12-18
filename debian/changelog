@@ -1,5 +1,15 @@
 eeepc-acpi-scripts (1.1.6) UNRELEASED; urgency=low
 
+  * Add support for ACPI button/* and video/* events.
+    - It is possible that only these will be reported, but it is also
+      possible that both these and hotkey events will be reported; and there
+      are keys for which only hotkey events are reported (it is expected
+      that this will change).
+    - This is incomplete: no known button or video events for Fn-F3 & Fn-F7.
+    - There is one button/* event which is reported for two different keys,
+      fortunately on different models. Disambiguation is done via the
+      product name (requires DMI support, which is normally enabled).
+
  -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Fri, 18 Dec 2009 16:48:05 +0000
 
 eeepc-acpi-scripts (1.1.5) unstable; urgency=high

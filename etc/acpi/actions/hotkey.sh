@@ -18,7 +18,7 @@ if [ -e "$DEFAULT" ]; then . "$DEFAULT"; fi
 
 . /etc/acpi/lib/notify.sh
 code=$3
-value=$(test "$0" = - && cat "$BACKLIGHT" || echo "0x$3")
+value=$(test "x$1" = x- && cat "$BACKLIGHT" || echo "0x$3")
 
 # In case keys are doubly-reported as hotkey and something else.
 # It's random (and irrelevant) which is seen first.

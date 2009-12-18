@@ -114,6 +114,7 @@ SOFTBTN1_ACTION='handle_blank_screen'
 SOFTBTN2_ACTION='NONE'
 SOFTBTN3_ACTION='handle_camera_toggle'
 SOFTBTN4_ACTION='handle_bluetooth_toggle'
+SOFTBTNSHE_ACTION='handle_shengine'
 
 # Various Fn + key, not all of which are found on all models (or all BIOSes).
 # Labelling is "<700/900-series key>/<1000-series key> - function".

@@ -283,6 +283,14 @@ case $code in
 	acpiwrite=
 	;;
 
+    # SHE button
+    00000039)
+	if [ "${SOFTBTNSHE_ACTION}" != 'NONE' ]; then
+	    ${SOFTBTNSHE_ACTION:-handle_shengine}
+	fi
+	acpiwrite=
+	;;
+
 esac
 
 test "$acpiwrite" = '' || echo "$acpiwrite" >"$ACPITEST"

@@ -9,6 +9,8 @@ eeepc-acpi-scripts (1.1.6) UNRELEASED; urgency=low
     - There is one button/* event which is reported for two different keys,
       fortunately on different models. Disambiguation is done via the
       product name (requires DMI support, which is normally enabled).
+  * Add support for the S.H.E. button on some models, e.g. 1002HA.
+    - This is incomplete: no known button event.
 
  -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Fri, 18 Dec 2009 16:48:05 +0000
 

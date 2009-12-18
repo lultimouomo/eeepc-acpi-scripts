@@ -10,6 +10,7 @@ Build-Depends: debhelper (>= 6)
 Standards-Version: 3.8.3
 Vcs-Git: git://git.debian.org/git/debian-eeepc/eeepc-acpi-scripts.git
 Vcs-Browser: http://git.debian.org/?p=debian-eeepc/eeepc-acpi-scripts.git
+DM-Upload-Allowed: yes
 
 Package: eeepc-acpi-scripts
 Architecture: all

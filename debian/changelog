@@ -1,6 +1,6 @@
 eeepc-acpi-scripts (1.1.6) UNRELEASED; urgency=low
 
-  * Add support for ACPI button/* and video/* events.
+  * Add support for ACPI button/* and video/* events. (Closes: #562166)
     - It is possible that only these will be reported, but it is also
       possible that both these and hotkey events will be reported; and there
       are keys for which only hotkey events are reported (it is expected

@@ -22,8 +22,8 @@ SOUND_SWITCH=
 SOUND_SWITCH_EXCLUSIVE=
 
 # If auto-configuring, whether to prefer the Master control over others.
-# Set to 'yes' to enable this. Normally takes effect on reboot.
-SOUND_PREFER_MASTER=no
+# Set to 'no' to enable this. Normally takes effect on reboot.
+SOUND_PREFER_MASTER=yes
 
 # Default volume level change.
 # You can specify the change in all ways supported by amixer, e.g.

@@ -11,6 +11,9 @@ eeepc-acpi-scripts (1.1.6) UNRELEASED; urgency=low
       product name (requires DMI support, which is normally enabled).
   * Add support for the S.H.E. button on some models, e.g. 1002HA.
     - This is incomplete: no known button event.
+  * Have the audio keys affect the 'Master' mixer control by default. This
+    has a side effect: the 'Beep' control is effectively muted when 'Master'
+    is muted.
 
  -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Fri, 18 Dec 2009 16:48:05 +0000
 

@@ -14,6 +14,8 @@ eeepc-acpi-scripts (1.1.6) UNRELEASED; urgency=low
   * Have the audio keys affect the 'Master' mixer control by default. This
     has a side effect: the 'Beep' control is effectively muted when 'Master'
     is muted.
+  * Fix bugs which prevent touchpad toggling from working (synclient has
+    lost -s at some point), and don't report anything if toggling failed.
 
  -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Fri, 18 Dec 2009 16:48:05 +0000
 

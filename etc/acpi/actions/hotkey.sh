@@ -125,9 +125,15 @@ handle_shengine() {
 
 handle_touchpad_toggle() {
     . /etc/acpi/lib/touchpad.sh
-    toggle_touchpad &&
-	notify touchpad 'Touchpad on' ||
-	notify touchpad 'Touchpad off'
+    toggle_touchpad
+    case "$?" in
+	0)
+	    notify touchpad 'Touchpad on'
+	    ;;
+	1)
+	    notify touchpad 'Touchpad off'
+	    ;;
+    esac
 }
 
 handle_vga_toggle() {

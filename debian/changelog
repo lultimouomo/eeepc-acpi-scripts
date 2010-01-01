@@ -8,7 +8,6 @@ eeepc-acpi-scripts (1.1.7) UNRELEASED; urgency=low
 
 eeepc-acpi-scripts (1.1.6) unstable; urgency=low
 
-  [ Darren Salt ]
   * Add support for ACPI button/* and video/* events. (Closes: #562166)
     - It is possible that only these will be reported, but it is also
       possible that both these and hotkey events will be reported; and there

@@ -1,3 +1,7 @@
+eeepc-acpi-scripts (1.1.7) UNRELEASED; urgency=low
+
+ -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Fri, 01 Jan 2010 21:16:09 +0000
+
 eeepc-acpi-scripts (1.1.6) unstable; urgency=low
 
   * Add support for ACPI button/* and video/* events. (Closes: #562166)

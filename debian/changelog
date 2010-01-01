@@ -1,4 +1,4 @@
-eeepc-acpi-scripts (1.1.6) UNRELEASED; urgency=low
+eeepc-acpi-scripts (1.1.6) unstable; urgency=low
 
   * Add support for ACPI button/* and video/* events. (Closes: #562166)
     - It is possible that only these will be reported, but it is also
@@ -17,7 +17,7 @@ eeepc-acpi-scripts (1.1.6) UNRELEASED; urgency=low
   * Fix bugs which prevent touchpad toggling from working (synclient has
     lost -s at some point), and don't report anything if toggling failed.
 
- -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Fri, 18 Dec 2009 16:48:05 +0000
+ -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Fri, 01 Jan 2010 20:05:10 +0000
 
 eeepc-acpi-scripts (1.1.5) unstable; urgency=high
 

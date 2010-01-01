@@ -1,5 +1,6 @@
 eeepc-acpi-scripts (1.1.6) UNRELEASED; urgency=low
 
+  [ Darren Salt ]
   * Add support for ACPI button/* and video/* events. (Closes: #562166)
     - It is possible that only these will be reported, but it is also
       possible that both these and hotkey events will be reported; and there
@@ -16,6 +17,10 @@ eeepc-acpi-scripts (1.1.6) UNRELEASED; urgency=low
     is muted.
   * Fix bugs which prevent touchpad toggling from working (synclient has
     lost -s at some point), and don't report anything if toggling failed.
+
+  [ Damyan Ivanov ]
+  * add a hook in /etc/pm/sleep.d that switches off wlan on suspend on models
+    using RT2860
 
  -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Fri, 18 Dec 2009 16:48:05 +0000
 

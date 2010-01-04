@@ -19,7 +19,7 @@ if have_dev_rfkill; then
     get_rfkill()
     {
 	# simple yes/no, so...
-	expr length "$(rfkill list | sed -e '/bluetooth:/! d; N; s/.*://')" - 2
+	expr 4 - length "$(rfkill list | sed -e "/$1:/! d; N; s/.*://")"
     }
 
     set_rfkill()

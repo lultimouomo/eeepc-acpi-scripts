@@ -4,6 +4,9 @@ eeepc-acpi-scripts (1.1.7) UNRELEASED; urgency=low
   * add a hook in /etc/pm/sleep.d that switches off wlan on suspend on models
     using RT2860
 
+  [ Darren Salt ]
+  * rfkill-input isn't present in kernel ≥ 2.6.31, so don't try loading it.
+
  -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Fri, 01 Jan 2010 21:16:09 +0000
 
 eeepc-acpi-scripts (1.1.6) unstable; urgency=low

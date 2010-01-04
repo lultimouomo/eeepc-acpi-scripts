@@ -2,14 +2,16 @@
 
 . /usr/share/eeepc-acpi-scripts/functions.sh
 
-detect_rfkill eeepc-wlan
+detect_rfkill eeepc-wlan wlan
 wlan_control="$RFKILL"
 
-[ -n "$wlan_control" -a -e $wlan_control ] \
+if ! have_dev_rfkill; then
+  [ -n "$wlan_control" -a -e $wlan_control ] \
     || wlan_control=/sys/devices/platform/eeepc/wlan # pre-2.6.28
-[ -e "$wlan_control" ] || wlan_control=/proc/acpi/asus/wlan # pre-2.6.26
+  [ -e "$wlan_control" ] || wlan_control=/proc/acpi/asus/wlan # pre-2.6.26
+fi
 
-STATE="$(cat $wlan_control)"
+STATE="$(get_rfkill "$wlan_control")"
 
 cmd="$1"
 if [ "$cmd" = toggle ]; then
@@ -22,13 +24,13 @@ case "$cmd" in
 	;;
     on|enable|1)
 	if [ "$STATE" = 0 ]; then
-	    echo 1 > $wlan_control
+	    set_rfkill "$wlan_control" 1
             wakeup_wicd
 	fi
 	;;
     off|disable|0)
 	if [ "$STATE" = 1 ]; then
-	    echo 0 > $wlan_control
+	    set_rfkill "$wlan_control" 0
 	fi
 	;;
     *)

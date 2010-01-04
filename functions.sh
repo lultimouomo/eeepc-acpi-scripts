@@ -1,18 +1,61 @@
 # common eeepc-acpi-scripts functions
 
 # detect which rfkill has name=$1
-detect_rfkill()
+have_dev_rfkill()
 {
-    local _rfkill
-    for _rfkill in /sys/class/rfkill/*; do
-        if [ -f "$_rfkill/name" ] && [ "$(cat "$_rfkill/name")" = "$1" ]; then
-            echo "Detected $1 as rfkill $_rfkill" >&2
-            RFKILL="$_rfkill/state"
-            return
-        fi
-    done
-    RFKILL=''
+  [ -c /dev/rfkill ]
 }
+
+if have_dev_rfkill; then
+    # detect which rfkill has name=$1
+    detect_rfkill()
+    {
+	RFKILL=''
+	if rfkill list | grep -q "$1:"; then
+	    RFKILL="${2:-1}"
+	fi
+    }
+
+    get_rfkill()
+    {
+	# simple yes/no, so...
+	expr length "$(rfkill list | sed -e '/bluetooth:/! d; N; s/.*://')" - 2
+    }
+
+    set_rfkill()
+    {
+	if [ "$2" = 0 ]; then
+	    rfkill block "$1"
+	else
+	    rfkill unblock "$1"
+	fi
+    }
+else # we have no /dev/rfkill
+
+    # detect which rfkill has name=$1
+    detect_rfkill()
+    {
+	local _rfkill
+	for _rfkill in /sys/class/rfkill/*; do
+	    if [ -f "$_rfkill/name" ] && [ "$(cat "$_rfkill/name")" = "$1" ]; then
+		echo "Detected $1 as rfkill $_rfkill" >&2
+		RFKILL="$_rfkill/state"
+		return
+	    fi
+	done
+	RFKILL=''
+    }
+
+    get_rfkill()
+    {
+	cat "$1"
+    }
+
+    set_rfkill()
+    {
+	echo "$2" > "$1"
+    }
+fi
 
 detect_x_display()
 {

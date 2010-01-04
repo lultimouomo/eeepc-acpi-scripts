@@ -15,7 +15,7 @@ DM-Upload-Allowed: yes
 Package: eeepc-acpi-scripts
 Architecture: all
 Conflicts: acpi-support
-Depends: acpid (>= 1.0.8-6), acpi-support-base, pm-utils
+Depends: acpid (>= 1.0.8-6), acpi-support-base, pm-utils, rfkill
 Recommends: alsa-utils
 Suggests: aosd-cat, ttf-dejavu | ttf-bitstream-vera | ttf-freefont
  | gsfonts-x11 | ttf-mscorefonts-installer | ttf-liberation,

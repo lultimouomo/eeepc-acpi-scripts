@@ -5,6 +5,8 @@ eeepc-acpi-scripts (1.1.7) UNRELEASED; urgency=low
     using RT2860
   * wireless.sh: deconfigure wlan0 and remove the rt2860sta module before
     switching off the hardware
+  * lid.sh/sleep.sh: remove checks for running powersaved. The checks can be
+    faked and powersaved was dropped from Debian. Partly addresses #565855.
 
   [ Darren Salt ]
   * rfkill-input isn't present in kernel ≥ 2.6.31, so don't try loading it.

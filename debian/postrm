@@ -6,7 +6,12 @@ set -e
 
 case "$1" in
     upgrade|failed-upgrade|abort-install|abort-upgrade|remove|disappear)
-        invoke-rc.d acpid restart>/dev/null
+        invoke-rc.d --query acpid restart 2>/dev/null && ret = $? || ret=$?
+        case $ret in
+        0|104|105|106)
+            invoke-rc.d acpid restart>/dev/null
+            ;;
+        esac
     ;;
 
     purge)

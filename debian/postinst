@@ -4,7 +4,12 @@ set -e
 
 case "$1" in
     configure)
-        invoke-rc.d acpid restart>/dev/null
+        invoke-rc.d --query acpid restart 2>/dev/null && ret = $? || ret=$?
+        case $ret in
+        0|104|105|106)
+            invoke-rc.d acpid restart>/dev/null
+            ;;
+        esac
         /lib/udev/eeepc-acpi-scripts
 
         # we no longer configure stop init.d symlinks

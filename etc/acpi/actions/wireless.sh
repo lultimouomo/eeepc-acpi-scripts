@@ -2,7 +2,7 @@
 
 . /usr/share/eeepc-acpi-scripts/functions.sh
 
-detect_rfkill eeepc-wlan wlan
+detect_rfkill eeepc-wlan wifi
 wlan_control="$RFKILL"
 
 if ! have_dev_rfkill; then

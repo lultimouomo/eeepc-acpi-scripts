@@ -11,18 +11,16 @@ if have_dev_rfkill; then
     detect_rfkill()
     {
 	RFKILL=''
-        for i in $@; do
-            if rfkill list | grep -q "$i:"; then
-                RFKILL="$i"
-                break
-            fi
-        done
+	# expecting something like
+	#   0: eeepc-wlan: Wireless LAN
+	# we want the number before the first colon
+	RFKILL=$(rfkill list | sed "/ $1: / s/:.\\+//; q")
     }
 
     get_rfkill()
     {
 	# simple yes/no, so...
-	expr 4 - length "$(rfkill list | sed -e "/$1:/! d; N; s/.*://")"
+	expr 4 - length "$(rfkill list | sed -e "/^$1:/! d; N; s/.*://")"
     }
 
     set_rfkill()

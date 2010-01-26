@@ -11,9 +11,12 @@ if have_dev_rfkill; then
     detect_rfkill()
     {
 	RFKILL=''
-	if rfkill list | grep -q "$1:"; then
-	    RFKILL="${2:-1}"
-	fi
+        for i in $@; do
+            if rfkill list | grep -q "$i:"; then
+                RFKILL="$i"
+                break
+            fi
+        done
     }
 
     get_rfkill()

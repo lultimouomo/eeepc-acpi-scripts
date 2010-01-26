@@ -14,7 +14,7 @@ if have_dev_rfkill; then
 	# expecting something like
 	#   0: eeepc-wlan: Wireless LAN
 	# we want the number before the first colon
-	RFKILL=$(rfkill list | sed "/ $1: / s/:.\\+//; q")
+	RFKILL=$(rfkill list | sed "/ $1: /! d; s/:.\\+//; q")
     }
 
     get_rfkill()

@@ -6,6 +6,7 @@ eeepc-acpi-scripts (1.1.8) UNRELEASED; urgency=low
   [ Damyan Ivanov ]
   * wireless.sh/disable: do not fail if no interface can be brought down
   * functions.sh/detect_rfkill(): extract rfkill index
+  * add ${misc:Depends} to dependencies
 
  -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Sat, 23 Jan 2010 03:59:24 +0000
 

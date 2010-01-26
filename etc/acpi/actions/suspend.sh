@@ -7,7 +7,7 @@ FUNC_LIB=/usr/share/eeepc-acpi-scripts/functions.sh
 . /etc/default/eeepc-acpi-scripts
 . $FUNC_LIB
 
-if (runlevel | grep -q [06]) || (pidof '/sbin/shutdown' > /dev/null); then
+if (runlevel | grep -q [06]) || (pgrep -f -z -u root '/sbin/shutdown' > /dev/null); then
     exit 0
 fi
 

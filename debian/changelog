@@ -1,4 +1,4 @@
-eeepc-acpi-scripts (1.1.8) UNRELEASED; urgency=low
+eeepc-acpi-scripts (1.1.8) unstable; urgency=low
 
   [ Darren Salt ]
   * Don't fail on upgrade, removal etc. if the acpid init script is missing.
@@ -11,7 +11,7 @@ eeepc-acpi-scripts (1.1.8) UNRELEASED; urgency=low
     owned by root. Closes: #565855
     Thanks to Daniel Kahn Gillmor for reporting.
 
- -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Sat, 23 Jan 2010 03:59:24 +0000
+ -- Damyan Ivanov <dmn@debian.org>  Tue, 26 Jan 2010 21:19:50 +0200
 
 eeepc-acpi-scripts (1.1.7) unstable; urgency=low
 

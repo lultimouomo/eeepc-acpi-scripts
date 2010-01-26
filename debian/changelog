@@ -1,6 +1,11 @@
 eeepc-acpi-scripts (1.1.8) UNRELEASED; urgency=low
 
+  [ Darren Salt ]
   * Don't fail on upgrade, removal etc. if the acpid init script is missing.
+
+  [ Damyan Ivanov ]
+  * wireless.sh/disable: do not fail if no interface can be brought down
+  * functions.sh/detect_rfkill(): extract rfkill index
 
  -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Sat, 23 Jan 2010 03:59:24 +0000
 

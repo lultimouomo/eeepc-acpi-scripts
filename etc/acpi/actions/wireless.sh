@@ -32,7 +32,7 @@ case "$cmd" in
 	if [ "$STATE" = 1 ]; then
             # rt2860 needs to be idle when shut down
             if lsmod | grep -q rt2860sta; then
-                ifconfig wlan0 down || ifconfig ra0 down
+                ifconfig wlan0 down || ifconfig ra0 down || true
                 modprobe -r rt2860sta
             fi
 	    set_rfkill "$wlan_control" 0

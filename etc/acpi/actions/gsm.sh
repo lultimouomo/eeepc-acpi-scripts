@@ -8,7 +8,7 @@ FUNC_LIB=/usr/share/$PKG/functions.sh
 . $FUNC_LIB
 
 # first try kernel rfkill
-detect_rfkill eeepc-wwan3g wwan
+detect_rfkill wwan
 
 if [ -n "$RFKILL" ]; then
     if have_dev_rfkill; then

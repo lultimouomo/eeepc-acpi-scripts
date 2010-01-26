@@ -2,7 +2,7 @@
 #
 # to be sourced
 
-detect_rfkill eeepc-bluetooth bluetooth
+detect_rfkill bluetooth
 BT_CTL="$RFKILL"
 if ! have_dev_rfkill; then
   [ -e "$BT_CTL" ] || BT_CTL=/sys/devices/platform/eeepc/bluetooth # pre-2.6.28

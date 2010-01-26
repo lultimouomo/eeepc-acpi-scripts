@@ -10,17 +10,18 @@ if have_dev_rfkill; then
     # detect which rfkill has name=$1
     detect_rfkill()
     {
-	RFKILL=''
 	# expecting something like
 	#   0: eeepc-wlan: Wireless LAN
-	# we want the number before the first colon
-	RFKILL=$(rfkill list | sed "/ $1: /! d; s/:.\\+//; q")
+	RFKILL=''
+	if test "$(rfkill list "$1")" != ''; then
+	    RFKILL="$1"
+	fi
     }
 
     get_rfkill()
     {
 	# simple yes/no, so...
-	expr 4 - length "$(rfkill list | sed -e "/^$1:/! d; N; s/.*://")"
+	expr 4 - length "$(rfkill list "$1" | sed -e '/^\tSoft blocked:/! d; s/.*://; q')"
     }
 
     set_rfkill()

@@ -26,10 +26,10 @@ acpi=
 acpiwrite=
 ACPITEST=/lib/init/rw/eeepc-acpi-scripts.acpi-ignore
 case "$code" in
-    # Soft buttons 3 & 4 are special.
-    # They're always reported as hotkeys (901, at least).
+    # Soft buttons 3 & 4 and Fn-Space/SHE are special.
+    # They're always reported as hotkeys.
     # This will probably break when button events are added for these keys.
-    0000001[cd])
+    0000001[cd]|00000039)
 	;;
     *)
 	if test -f "$ACPITEST"; then
@@ -255,7 +255,7 @@ case $code in
 	;;
 
     # --/Space - SHE management
-    # (ACPI event code not known)
+    # See "SHE button" below
 
     # Silver keys, left to right
 

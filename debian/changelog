@@ -1,3 +1,7 @@
+eeepc-acpi-scripts (1.1.10) UNRELEASED; urgency=low
+
+ -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Wed, 03 Feb 2010 21:41:29 +0000
+
 eeepc-acpi-scripts (1.1.9) unstable; urgency=low
 
   * suspend.sh: fix the check for a running /sbin/shutdown

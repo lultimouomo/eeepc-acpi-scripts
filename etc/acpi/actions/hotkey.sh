@@ -149,7 +149,7 @@ handle_gsm_toggle() {
     fi
 }
 
-# Handle events which we're handling differently on different modelsz
+# Handle events which we're handling differently on different models
 case $(cat /sys/class/dmi/id/product_name) in
     [79]*|1000H)
 	case $code in

@@ -1,3 +1,9 @@
+eeepc-acpi-scripts (1.1.11) UNRELEASED; urgency=low
+
+  * 
+
+ -- Damyan Ivanov <dmn@debian.org>  Tue, 13 Apr 2010 17:51:03 +0300
+
 eeepc-acpi-scripts (1.1.10) unstable; urgency=low
 
   * Fn-Space and the S.H.E. button are the same, and only generate a hotkey

@@ -1,6 +1,7 @@
 eeepc-acpi-scripts (1.1.11) UNRELEASED; urgency=low
 
-  * 
+  * notify: avoid staircase effect when sending notifications to the console.
+    Thanks to Trent W. Buck for reporting and testing.
 
  -- Damyan Ivanov <dmn@debian.org>  Tue, 13 Apr 2010 17:51:03 +0300
 

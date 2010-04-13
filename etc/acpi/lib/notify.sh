@@ -12,7 +12,8 @@ notify() {
     echo "$MSG"  # for /var/log/acpid
 
     if [ ! -S /tmp/.X11-unix/X0 ]; then
-	echo "$MSG" > /dev/console
+        # echo's behaviour wrt "\r" is shell-dependent
+	printf "$MSG\r\n" > /dev/console
 	return
     fi
 

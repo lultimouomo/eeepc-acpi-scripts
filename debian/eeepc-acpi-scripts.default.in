@@ -107,11 +107,11 @@ FnF_VGATOGGLE='handle_vga_toggle'
 # F6/F9 - 'task manager' key
 FnF_TASKMGR='NONE'
 # F7/F10 - mute/unmute speakers
-FnF_MUTE='handle_mute_toggle'
+FnF_MUTE='NONE'
 # F8/F11 - decrease volume
-FnF_VOLUMEDOWN='handle_volume_down'
+FnF_VOLUMEDOWN='NONE'
 # F9/F12 - increase volume
-FnF_VOLUMEUP='handle_volume_up'
+FnF_VOLUMEUP='NONE'
 
 # Clocking options when on AC or battery:
 # '0' = overclocked;

@@ -50,29 +50,6 @@ DETAILED_SOUND_INFO=no
 VGA_ON='--auto'
 LVDS_OFF='--off'
 
-# Use the specified suspend method, where the method is actually the name
-# of a command. Common methods:
-#   pm-suspend (default), pm-hibernate, pm-suspend-hybrid
-#   hibernate-ram, hibernate-disk
-#
-# s2ram and friends can also be specified, but it is usually better to run
-# them via a wrapper.
-# SUSPEND_OPTIONS is passed as is to the command.
-SUSPEND_METHOD=pm-suspend
-SUSPEND_OPTIONS=--quirk-s3-bios
-
-# Attempt to lock running xscreensaver or gnome-screensaver on suspend.
-# If you use hibernate(1), make sure you only indicate in one place to lock
-# the screen.
-LOCK_SCREEN_ON_SUSPEND='yes'
-
-# Action to perform when the lid is closed.
-# If left empty or set to "suspend", it will suspend via SUSPEND_METHOD
-# (specified above).
-# To do nothing, set it to "nothing".
-# Setting it to anything else will result in it being treated as a command.
-LID_CLOSE_ACTION=
-
 # Try to load/unload the hci_usb module and use hcitool for checking
 # bluetooth state when the bluetooth control node in
 # /sys/devices/platform/bluetooth is not present.

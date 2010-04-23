@@ -1,2 +1,0 @@
-event=ac_adapter .* 0000008[01] 00000001
-action=/etc/acpi/actions/ac_adapter.sh %e

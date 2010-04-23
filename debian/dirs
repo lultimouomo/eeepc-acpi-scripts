@@ -3,6 +3,7 @@ etc/acpi/actions
 etc/acpi/events
 etc/acpi/lib
 etc/modprobe.d
+etc/pm/power.d
 lib/udev/rules.d
 usr/share/eeepc-acpi-scripts
 var/lib/eeepc-acpi-scripts

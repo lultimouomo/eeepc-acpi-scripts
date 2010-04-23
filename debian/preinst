@@ -20,6 +20,11 @@ case "$1" in
         if dpkg --compare-versions "$2" le "1.0.11"; then
             prep_mv_conffile "/etc/modprobe.d/eeepc"
         fi
+        if dpkg --compare-versions "$2" le "1.1.10"; then
+            prep_mv_conffile "/etc/acpi/events/ac_adapter_inserted"
+            prep_mv_conffile "/etc/acpi/events/ac_adapter_removed"
+            prep_mv_conffile "/etc/acpi/actions/ac_adapter.sh"
+        fi
     ;;
 
     abort-upgrade)

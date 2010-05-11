@@ -14,6 +14,8 @@ DM-Upload-Allowed: yes
 
 Package: eeepc-acpi-scripts
 Architecture: all
+Conflicts: eeepc-acpi-scripts (<= 1.1.10)
+Replaces: eeepc-acpi-scripts (<= 1.1.10)
 Depends: acpid (>= 1.0.8-6), acpi-support-base, acpi-support, pm-utils, rfkill (>= 0.3-3),
  ${misc:Depends}
 Recommends: alsa-utils

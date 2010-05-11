@@ -10,6 +10,13 @@ case "$1" in
             invoke-rc.d acpid restart>/dev/null
             ;;
         esac
+        # move eeepc-amixer-blacklist that could have been left behind
+        # if the user had changed it.
+        if ( dpkg --compare-versions "$2" le "1.1.10" &&
+            [ -e /etc/acpi/lib/eeepc-amixer-blacklist ] ); then
+            mv /etc/acpi/lib/eeepc-amixer-blacklist /etc/acpi/eeepc-amixer-blacklist
+            rmdir /etc/acpi/lib/ || true
+        fi
         /lib/udev/eeepc-acpi-scripts
 
         # we no longer configure stop init.d symlinks

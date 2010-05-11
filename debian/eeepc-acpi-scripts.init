@@ -8,8 +8,10 @@
 # Short-Description: Load modules which are useful on EeePCs and similar hardware
 ### END INIT INFO
 
+PKG=eeepc-acpi-scripts
+PKG_DIR=/usr/share/acpi-support/$PKG
 # exit if package not installed
-test -f /usr/share/eeepc-acpi-scripts/functions.sh || exit 0
+test -f $PKG_DIR/lib/functions.sh || exit 0
 
 # exit if eeepc-laptop isn't loaded (should be loaded by udev)
 test -d /sys/bus/platform/devices/eeepc || exit 0
@@ -99,12 +101,12 @@ case "$1" in
 
     log_action_end_msg 0
 
-    if [ -f /etc/acpi/lib/shengine.sh ]; then
+    if [ -f $PKG_DIR/lib/shengine.sh ]; then
 	log_action_begin_msg 'Setting super hybrid engine according to configuration'
 	if [ -f /etc/default/eeepc-acpi-scripts ]; then
 	    . /etc/default/eeepc-acpi-scripts
 	fi
-	. /etc/acpi/lib/shengine.sh
+	. $PKG_DIR/lib/shengine.sh
         if shengine_supported; then
             if [ "${SHENGINE_SETTING:-auto}" != auto ]; then
                 log_action_cont_msg '(manual)'

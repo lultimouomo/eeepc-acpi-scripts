@@ -4,13 +4,14 @@
 
 # do nothing if package is removed
 PKG=eeepc-acpi-scripts
-FUNC_LIB=/usr/share/$PKG/functions.sh
+PKG_DIR=/usr/share/acpi-support/$PKG
+FUNC_LIB=$PKG_DIR/lib/functions.sh
 DEFAULT=/etc/default/$PKG
 [ -e "$FUNC_LIB" ] || exit 0
 
 . $FUNC_LIB
-. /etc/acpi/lib/notify.sh
-. /etc/acpi/lib/sound.sh
+. $PKG_DIR/lib/notify.sh
+. $PKG_DIR/lib/sound.sh
 action=$1
 
 usage() {

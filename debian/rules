@@ -14,7 +14,7 @@ clean:
 
 build: build-stamp
 build-stamp:
-	for f in `grep -r -E -l '^#! ?/bin/sh' etc lib` *.sh; do \
+	for f in `grep -r -E -l '^#! ?/bin/sh' etc lib eeepc-acpi-scripts`; do \
 	    echo "Checking $$f"; \
 	    sh -n $$f; \
 	done
@@ -25,14 +25,14 @@ install: build
 	dh_testroot
 	dh_clean -k
 	dh_installdirs
-	install -m 0755 etc/acpi/actions/* $(TMP)/etc/acpi/actions
+	install -m 0755 eeepc-acpi-scripts/* $(TMP)/usr/share/acpi-support/eeepc-acpi-scripts
+	install -m 0644 acpilib/* $(TMP)/usr/share/acpi-support/eeepc-acpi-scripts/lib
 	install -m 0644 etc/acpi/events/* $(TMP)/etc/acpi/events
-	install -m 0644 etc/acpi/lib/* $(TMP)/etc/acpi/lib
+	install -m 0644 etc/acpi/eeepc-amixer-blacklist $(TMP)/etc/acpi
 	install -m 0644 etc/modprobe.d/* $(TMP)/etc/modprobe.d
 	install -m 0755 etc/pm/power.d/* $(TMP)/etc/pm/power.d
 	install -m 0644 lib/udev/rules.d/* $(TMP)/lib/udev/rules.d
 	install -m 0755 lib/udev/[!r]* $(TMP)/lib/udev
-	install -m 0644 functions.sh $(TMP)/usr/share/$(PKG)/
 
 binary-indep: build install
 	dh_testdir

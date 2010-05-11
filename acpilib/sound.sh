@@ -1,6 +1,6 @@
 # Parse amixer output for a regexp (first parameter).
 # Some controls are blacklisted; for this, we use a set of fixed strings in
-# /etc/acpi/lib/eeepc-amixer-blacklist. (No wildcards or regexps.)
+# /etc/acpi/eeepc-amixer-blacklist. (No wildcards or regexps.)
 
 PKG=eeepc-acpi-scripts
 DEFAULT=/etc/default/$PKG
@@ -22,7 +22,7 @@ configureSoundFilter() {
   if [ "$2" = '' ]; then
     grep ^Master
   else
-    grep -ivF "$(sed -nre "/^#/ d; /!/! {p; d}; /!(.*,)?\b$2\b/ d; s/\s*!.*//; p" /etc/acpi/lib/eeepc-amixer-blacklist)"
+    grep -ivF "$(sed -nre "/^#/ d; /!/! {p; d}; /!(.*,)?\b$2\b/ d; s/\s*!.*//; p" /etc/acpi/eeepc-amixer-blacklist)"
   fi
 }
 

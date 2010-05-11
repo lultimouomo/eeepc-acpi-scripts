@@ -1,9 +1,8 @@
 #!/bin/sh
 
-# do nothing if package is removed
 PKG=eeepc-acpi-scripts
-FUNC_LIB=/usr/share/$PKG/functions.sh
-[ -e $FUNC_LIB ] || exit 0
+PKG_DIR=/usr/share/acpi-support/$PKG
+FUNC_LIB=$PKG_DIR/lib/functions.sh
 
 . $FUNC_LIB
 

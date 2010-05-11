@@ -2,7 +2,9 @@
 (
 #. /lib/udev/hotplug.functions
 #wait_for_file ... something which will indicate /var being r/w?
-. /etc/acpi/lib/sound.sh
+PKG=eeepc-acpi-scripts
+PKG_DIR=/usr/share/acpi-support/$PKG
+. $PKG_DIR/lib/sound.sh
 
 SOUND_LABEL=
 SOUND_SWITCH=

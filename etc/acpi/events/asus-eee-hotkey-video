@@ -1,0 +1,2 @@
+event=video/(brightness|switchmode)
+action=/usr/share/acpi-support/eeepc-acpi-scripts/hotkey.sh - %e

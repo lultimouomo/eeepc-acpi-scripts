@@ -3,7 +3,8 @@
 # Handles EeePc Super Hybrid Engine
 # do nothing if package is removed
 PKG=eeepc-acpi-scripts
-FUNC_LIB=/usr/share/$PKG/functions.sh
+PKG_DIR=/usr/share/acpi-support/$PKG
+FUNC_LIB=$PKG_DIR/lib/functions.sh
 DEFAULT=/etc/default/$PKG
 [ -e $FUNC_LIB ] || exit 0
 
@@ -16,12 +17,12 @@ esac
 if [ -e "$DEFAULT" ]; then . "$DEFAULT"; fi
 . $FUNC_LIB
 
-. /etc/acpi/lib/notify.sh
+. $PKG_DIR/lib/notify.sh
 
 case "$1" in
     # AC adapter present
     false)
-	. /etc/acpi/lib/shengine.sh
+	. $PKG_DIR/lib/shengine.sh
 	if shengine_supported && [ "${SHENGINE_SETTING:-auto}" = auto ]; then
 	    PWR_CLOCK_AC="${PWR_CLOCK_AC:-0}"
 	    if [ $(get_shengine -) -gt "$PWR_CLOCK_AC" ]; then
@@ -32,7 +33,7 @@ case "$1" in
 
     # AC adapter not present
     true)
-	. /etc/acpi/lib/shengine.sh
+	. $PKG_DIR/lib/shengine.sh
 	if shengine_supported && [ "${SHENGINE_SETTING:-auto}" = auto ]; then
 	    PWR_CLOCK_BATTERY="${PWR_CLOCK_BATTERY:-$(($SHENGINE_LIMIT - 1))}"
 	    if [ $(get_shengine -) -lt "$PWR_CLOCK_BATTERY" ]; then

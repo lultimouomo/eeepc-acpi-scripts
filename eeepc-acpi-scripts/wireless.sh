@@ -1,6 +1,12 @@
 #!/bin/sh
 
-. /usr/share/eeepc-acpi-scripts/functions.sh
+PKG=eeepc-acpi-scripts
+PKG_DIR=/usr/share/acpi-support/$PKG
+FUNC_LIB=$PKG_DIR/lib/functions.sh
+
+[ -e "$FUNC_LIB" ] || exit 0
+
+. $FUNC_LIB
 
 detect_rfkill wlan
 wlan_control="$RFKILL"

@@ -2,7 +2,8 @@
 
 # do nothing if package is removed
 PKG=eeepc-acpi-scripts
-FUNC_LIB=/usr/share/$PKG/functions.sh
+PKG_DIR=/usr/share/acpi-support/$PKG
+FUNC_LIB=$PKG_DIR/lib/functions.sh
 DEFAULT=/etc/default/$PKG
 [ -e "$FUNC_LIB" ] || exit 0
 
@@ -16,7 +17,7 @@ BACKLIGHT=/sys/class/backlight/eeepc/brightness
 if [ -e "$DEFAULT" ]; then . "$DEFAULT"; fi
 . $FUNC_LIB
 
-. /etc/acpi/lib/notify.sh
+. $PKG_DIR/lib/notify.sh
 code=$3
 value=$(test "x$1" = x- && cat "$BACKLIGHT" || echo "0x$3")
 
@@ -44,19 +45,19 @@ esac
 seen_hotkey() { test "$acpi" = button; }
 
 handle_mute_toggle() {
-    /etc/acpi/actions/volume.sh toggle
+    $PKG_DIR/volume.sh toggle
 }
 
 handle_volume_up() {
-    /etc/acpi/actions/volume.sh up
+    $PKG_DIR/volume.sh up
 }
 
 handle_volume_down() {
-    /etc/acpi/actions/volume.sh down
+    $PKG_DIR/volume.sh down
 }
 
 show_wireless() {
-    if /etc/acpi/actions/wireless.sh detect; then
+    if $PKG_DIR/wireless.sh detect; then
 	status=Off
     else
 	status=On
@@ -83,7 +84,7 @@ show_bluetooth() {
 }
 
 handle_bluetooth_toggle() {
-    . /etc/acpi/lib/bluetooth.sh
+    . $PKG_DIR/lib/bluetooth.sh
     if [ -e "$BT_CTL" ] || [ "$BLUETOOTH_FALLBACK_TO_HCITOOL" = "yes" ]; then
 	toggle_bluetooth
 	show_bluetooth
@@ -101,7 +102,7 @@ show_camera() {
 }
 
 handle_camera_toggle() {
-    . /etc/acpi/lib/camera.sh
+    . $PKG_DIR/lib/camera.sh
     if [ -e "$CAM_CTL" ]; then
 	toggle_camera
 	show_camera
@@ -119,12 +120,12 @@ show_brightness() {
 }
 
 handle_shengine() {
-    . /etc/acpi/lib/shengine.sh
+    . $PKG_DIR/lib/shengine.sh
     handle_shengine "$@"
 }
 
 handle_touchpad_toggle() {
-    . /etc/acpi/lib/touchpad.sh
+    . $PKG_DIR/lib/touchpad.sh
     toggle_touchpad
     case "$?" in
 	0)
@@ -137,12 +138,12 @@ handle_touchpad_toggle() {
 }
 
 handle_vga_toggle() {
-    /etc/acpi/actions/vga-toggle.sh
+    $PKG_DIR/vga-toggle.sh
 }
 
 handle_gsm_toggle() {
-    /etc/acpi/actions/gsm.sh toggle
-    if /etc/acpi/actions/gsm.sh detect; then
+    $PKG_DIR/gsm.sh toggle
+    if $PKG_DIR/gsm.sh detect; then
         notify gsm "GSM off"
     else
         notify gsm "GSM on"
@@ -181,10 +182,10 @@ case $code in
 	if grep -q '^H.*\brfkill\b' /proc/bus/input/devices; then
 	  :
 	else
-	  /etc/acpi/actions/wireless.sh toggle
+	  $PKG_DIR/wireless.sh toggle
 	fi
 	show_wireless
-        if ! /etc/acpi/actions/wireless.sh detect; then
+        if ! $PKG_DIR/wireless.sh detect; then
             wakeup_wicd
         fi
 	;;

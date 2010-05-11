@@ -1,5 +1,6 @@
 #!/bin/sh
 
+test -d /sys/bus/platform/devices/eeepc || exit 0
 # do nothing if package is removed
 PKG=eeepc-acpi-scripts
 PKG_DIR=/usr/share/acpi-support/$PKG

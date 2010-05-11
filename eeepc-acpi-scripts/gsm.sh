@@ -1,5 +1,6 @@
 #!/bin/sh
 
+test -d /sys/bus/platform/devices/eeepc || exit 0
 PKG=eeepc-acpi-scripts
 PKG_DIR=/usr/share/acpi-support/$PKG
 FUNC_LIB=$PKG_DIR/lib/functions.sh

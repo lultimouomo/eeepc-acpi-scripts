@@ -22,6 +22,8 @@ if [ -e "$DEFAULT" ]; then . "$DEFAULT"; fi
 code=$3
 value=$(test "x$1" = x- && cat "$BACKLIGHT" || echo "0x$3")
 
+LINUX_MINOR_REV=`uname -r|cut -d. -f3`
+
 # In case keys are doubly-reported as hotkey and something else.
 # It's random (and irrelevant) which is seen first.
 acpi=
@@ -55,15 +57,6 @@ handle_volume_up() {
 
 handle_volume_down() {
     $PKG_DIR/volume.sh down
-}
-
-show_wireless() {
-    if $PKG_DIR/wireless.sh detect; then
-	status=Off
-    else
-	status=On
-    fi
-    notify wireless "Wireless $status"
 }
 
 handle_blank_screen() {
@@ -178,16 +171,9 @@ case $code in
     # (not a hotkey, not handled here)
 
     # F2/F2 - toggle wireless
-    0000001[01]|WLAN)
-	notify wireless 'Wireless ...'
-	if grep -q '^H.*\brfkill\b' /proc/bus/input/devices; then
-	  :
-	else
-	  $PKG_DIR/wireless.sh toggle
-	fi
-	show_wireless
-        if ! $PKG_DIR/wireless.sh detect; then
-            wakeup_wicd
+    0000001[01])
+	if [ $LINUX_MINOR_REV -le 27 ]; then
+		/etc/acpi/asus-wireless.sh || :
         fi
 	;;
 

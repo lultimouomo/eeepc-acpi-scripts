@@ -115,10 +115,3 @@ lock_x_screen()
         fi
     fi
 }
-
-wakeup_wicd() {
-    WICD_WAKEUP=/usr/share/wicd/autoconnect.py
-    if [ -x $WICD_WAKEUP ]; then
-        $WICD_WAKEUP
-    fi
-}

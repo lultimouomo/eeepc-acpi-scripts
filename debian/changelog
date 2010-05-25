@@ -1,9 +1,13 @@
 eeepc-acpi-scripts (1.1.11) UNRELEASED; urgency=low
 
+  [ Damyan Ivanov ]
   * notify: avoid staircase effect when sending notifications to the console.
     Thanks to Trent W. Buck for reporting and testing.
 
- -- Damyan Ivanov <dmn@debian.org>  Tue, 13 Apr 2010 17:51:03 +0300
+  [ Darren Salt ]
+  * Blacklist snd_pcsp.
+
+ -- Darren Salt <linux@youmustbejoking.demon.co.uk>  Tue, 25 May 2010 19:29:00 +0100
 
 eeepc-acpi-scripts (1.1.10) unstable; urgency=low
 

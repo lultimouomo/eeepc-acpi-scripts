@@ -106,14 +106,6 @@ handle_camera_toggle() {
     fi
 }
 
-show_brightness() {
-    # final digit of ACPI code is brightness level in hex
-    level=$(($value & 0xF))
-    # convert hex digit to percent
-    percent=$(((100 * $level + 8) / 15))
-    notify brightness "Brightness $percent%" fast
-}
-
 handle_shengine() {
     . $PKG_DIR/lib/shengine.sh
     handle_shengine "$@"
@@ -189,15 +181,6 @@ case $code in
     00000038) # ZOOM
 	if [ "${FnF_RESCHANGE}" != 'NONE' ]; then
 	    $FnF_RESCHANGE
-	fi
-	;;
-
-    # F3/F5 - decrease brightness
-    # F4/F6 - increase brightness
-    0000002?|BRTDN|BRTUP)
-	# actual brightness change is handled in hardware
-	if [ "x$ENABLE_OSD_BRIGHTNESS" != "xno" ]; then
-	  show_brightness
 	fi
 	;;
 

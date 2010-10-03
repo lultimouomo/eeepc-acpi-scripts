@@ -11,7 +11,6 @@ DEFAULT=/etc/default/$PKG
 [ -e "$FUNC_LIB" ] || exit 0
 
 . $FUNC_LIB
-. $PKG_DIR/lib/notify.sh
 . $PKG_DIR/lib/sound.sh
 action=$1
 
@@ -42,7 +41,6 @@ show_muteness() {
     if [ "$all_equal" ]; then
 	msg=" $status"
     fi
-    notify audio "Audio$msg"
 }
 
 show_volume() {
@@ -60,7 +58,6 @@ show_volume() {
     if [ "$all_equal" ]; then
 	msg="$percent%"
     fi
-    notify audio "Volume $msg" fast
 }
 
 # cope with control names which contain spaces

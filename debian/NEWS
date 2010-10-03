@@ -1,3 +1,11 @@
+eeepc-acpi-scripts (1.1.12) unstable; urgency=low
+
+ * eeepc-acpi-scritps no longer manages lid events. If you don't use a
+   power manager and want your netbook to go to slip when you close the lid,
+   you can configure acpi-support accordingly in /etc/default/acpi-support 
+
+ -- Luca Niccoli <lultimouomo@gmail.com>  Mon, 04 Oct 2010 00:57:23 +0200
+
 eeepc-acpi-scripts (1.1.0) unstable; urgency=low
 
   * There is no longer any need for pciehp to be listed in /etc/modules.

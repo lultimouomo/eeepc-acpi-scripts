@@ -112,10 +112,10 @@ case "$1" in
                 log_action_cont_msg '(manual)'
             elif [ "$(cat /sys/class/power_supply/AC0/online 2>/dev/null)" = 0 ]; then
                 log_action_cont_msg '(battery)'
-                set_shengine "${PWR_CLOCK_BATTERY:-$(($SHENGINE_LIMIT - 1))}" || :
+                set_shengine "${PWR_CLOCK_BATTERY:-$(($SHENGINE_LIMIT - 1))}" &
             else
                 log_action_cont_msg '(AC)'
-                set_shengine "${PWR_CLOCK_AC:-0}" || :
+                set_shengine "${PWR_CLOCK_AC:-0}" &
             fi
         else
             log_action_cont_msg '(model not supported)'

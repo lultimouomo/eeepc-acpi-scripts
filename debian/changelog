@@ -1,9 +1,17 @@
 eeepc-acpi-scripts (1.1.11) UNRELEASED; urgency=low
 
+  [ Damyan Ivanov ]
   * notify: avoid staircase effect when sending notifications to the console.
     Thanks to Trent W. Buck for reporting and testing.
 
- -- Damyan Ivanov <dmn@debian.org>  Tue, 13 Apr 2010 17:51:03 +0300
+  [ Darren Salt ]
+  * Blacklist snd_pcsp.
+
+  [ Ben Armstrong ]
+  * Set S.H.E. at boot in background to prevent hang on some models when
+    on battery (e.g. 1001PX).
+
+ -- Ben Armstrong <synrg@sanctuary.nslug.ns.ca>  Sun, 03 Oct 2010 08:18:22 -0300
 
 eeepc-acpi-scripts (1.1.10) unstable; urgency=low
 

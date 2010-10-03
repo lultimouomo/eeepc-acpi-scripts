@@ -8,8 +8,6 @@
 # Short-Description: Load modules which are useful on EeePCs and similar hardware
 ### END INIT INFO
 
-set -x
-
 # exit if package not installed
 test -f /usr/share/eeepc-acpi-scripts/functions.sh || exit 0
 

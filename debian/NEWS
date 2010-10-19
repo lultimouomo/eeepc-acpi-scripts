@@ -1,12 +1,12 @@
 eeepc-acpi-scripts (1.1.11) UNRELEASED; urgency=low
 
- * eeepc-acpi-scritps no longer manages lid events. If you don't use a
-   power manager and want your netbook to go to slip when you close the lid,
-   you can configure acpi-support accordingly in /etc/default/acpi-support
- * The default action for the volume keys has been changed to NONE. New
-   kernels generate XF86 keyboard events that are properly handled by most
-   desktop environment; if you prefer the old behaviour, edit
-   /etc/default/eeepc-scpi-scripts
+  * eeepc-acpi-scritps no longer manages lid events. If you don't use a
+    power manager and want your netbook to go to slip when you close the lid,
+    you can configure acpi-support accordingly in /etc/default/acpi-support
+  * The default action for the volume keys has been changed to NONE. New
+    kernels generate XF86 keyboard events that are properly handled by most
+    desktop environment; if you prefer the old behaviour, edit
+    /etc/default/eeepc-scpi-scripts
 
  -- Luca Niccoli <lultimouomo@gmail.com>  Mon, 04 Oct 2010 00:57:23 +0200
 

@@ -22,8 +22,7 @@ if [ -e "$DEFAULT" ]; then . "$DEFAULT"; fi
 code=$3
 value=$(test "x$1" = x- && cat "$BACKLIGHT" || echo "0x$3")
 
-LINUX_FULL_VER=`uname -r`
-LINUX_MINOR_REV=${LINUX_FULL_VER:4:5}
+LINUX_MINOR_REV=`uname -r | cut -c 5,6`
 
 # In case keys are doubly-reported as hotkey and something else.
 # It's random (and irrelevant) which is seen first.
